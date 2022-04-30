@@ -19,6 +19,8 @@ public class PortalDodgeball extends Game {
 
 	public float clickVol = 0.5f;
 
+	public String[] names = {null, null, null, null, null, null};
+
 	public SpriteBatch batch;
 
 	public Music music;
