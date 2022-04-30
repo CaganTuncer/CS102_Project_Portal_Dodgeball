@@ -93,6 +93,7 @@ public class Mode_Selection implements Screen {
             game.batch.draw(twop_sel, twopX, twopY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
+                game.setScreen(new MainGameScreen(game));
             }
         } else {
             game.batch.draw(twop, twopX, twopY);

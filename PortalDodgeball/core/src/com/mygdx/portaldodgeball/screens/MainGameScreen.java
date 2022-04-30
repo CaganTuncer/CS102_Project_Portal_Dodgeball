@@ -5,11 +5,13 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 
 public class MainGameScreen implements Screen {
 
     Texture img;
+    Player player1 = new Player("Universal/BACK.png", "temp");
     float x, y;
 
     PortalDodgeball game;
@@ -20,12 +22,12 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void show() {
-        img = new Texture("Universal/badlogic.jpg");
+        //img = new Texture("Universal/badlogic.jpg");
     }
 
     @Override
     public void render(float delta) {
-        if(Gdx.input.isKeyPressed(Input.Keys.W)){
+        /*if(Gdx.input.isKeyPressed(Input.Keys.W)){
             y += 4;
         }
         if(Gdx.input.isKeyPressed(Input.Keys.S)){
@@ -36,7 +38,9 @@ public class MainGameScreen implements Screen {
         }
         if(Gdx.input.isKeyPressed(Input.Keys.A)){
             x -= 4;
-        }
+        }*/
+
+        player1.move();
 
         if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             game.setScreen(new MainMenu(game));
@@ -45,7 +49,7 @@ public class MainGameScreen implements Screen {
         ScreenUtils.clear(1, 0, 0, 1);
 
         game.batch.begin();
-        game.batch.draw(img, x, y);
+        game.batch.draw(player1, player1.x, player1.y);
         game.batch.end();
     }
 
