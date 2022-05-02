@@ -2,10 +2,14 @@ package com.mygdx.portaldodgeball.Entities;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class Entity extends Texture {
+public class Entity {
 
-    public Entity(String internalPath) {
-        super(internalPath);
+    public Texture texture;
+
+    public Entity() {}
+
+    public void setTexture(String internalPath){
+        this.texture = new Texture(internalPath);
     }
 
 }

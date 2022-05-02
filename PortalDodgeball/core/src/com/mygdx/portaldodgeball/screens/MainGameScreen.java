@@ -11,18 +11,20 @@ import com.mygdx.portaldodgeball.PortalDodgeball;
 public class MainGameScreen implements Screen {
 
     Texture img;
-    Player player1 = new Player("Universal/BACK.png", "temp");
     float x, y;
 
     PortalDodgeball game;
+
+
 
     public MainGameScreen(PortalDodgeball game){
         this.game = game;
     }
 
+
+
     @Override
     public void show() {
-        //img = new Texture("Universal/badlogic.jpg");
     }
 
     @Override
@@ -40,7 +42,34 @@ public class MainGameScreen implements Screen {
             x -= 4;
         }*/
 
-        player1.move();
+
+        switch (game.players.length){
+            case 2:
+                game.players[0].move();
+                game.players[1].move();
+                break;
+            case 3:
+                game.players[0].move();
+                game.players[1].move();
+                game.players[2].move();
+                break;
+            case 4:
+                game.players[0].move();
+                game.players[1].move();
+                game.players[2].move();
+                game.players[3].move();
+                break;
+            case 6:
+                game.players[0].move();
+                game.players[1].move();
+                game.players[2].move();
+                game.players[3].move();
+                game.players[4].move();
+                game.players[5].move();
+                break;
+        }
+
+
 
         if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             game.setScreen(new MainMenu(game));
@@ -49,8 +78,11 @@ public class MainGameScreen implements Screen {
         ScreenUtils.clear(1, 0, 0, 1);
 
         game.batch.begin();
-        game.batch.draw(player1, player1.x, player1.y);
+        for(int i = 0; i < game.players.length; i++){
+            game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
+        }
         game.batch.end();
+        game.inputManager.update();
     }
 
     @Override
