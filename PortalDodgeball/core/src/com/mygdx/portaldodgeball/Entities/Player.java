@@ -17,15 +17,20 @@ public class Player extends Entity {
 
     public Player(String name) {
         super();
-        switch (id) {
+
+        this.number = id;
+
+        switch (this.number) {
             case 0:
                 this.setTexture("Players/Player 1/player0.png");
                 break;
             case 1:
                 this.setTexture("Players/Player 2/player0.png");
+                break;
+            case 2:
+                this.setTexture("Players/Player 3/player0.png");
+                break;
         }
-
-        this.number = id;
 
         keys = new int[6];
         if(id == 0){
@@ -70,18 +75,24 @@ public class Player extends Entity {
                 if(Gdx.input.isKeyPressed(keys[3])){
                     if(this.direction > 0){
                         this.direction -= 1;
+                        this.checkPosMinus();
                         this.checkOrientation();
                     } else {
                         this.direction = 7;
+                        this.y -= 9;
+                        this.checkOrientation();
                     }
                     this.timeSinceInput = 0;
                 }
                 if(Gdx.input.isKeyPressed(keys[1])){
                     if(this.direction < 7){
                         this.direction += 1;
+                        this.checkPosPlus();
                         this.checkOrientation();
                     } else {
                         this.direction = 0;
+                        this.y += 9;
+                        this.checkOrientation();
                     }
                     this.timeSinceInput = 0;
                 }
@@ -176,6 +187,9 @@ public class Player extends Entity {
                     case 1:
                         this.setTexture("Players/Player 2/player0.png");
                         break;
+                    case 2:
+                        this.setTexture("Players/Player 3/player0.png");
+                        break;
                 }
                 break;
             case 1:
@@ -185,6 +199,9 @@ public class Player extends Entity {
                         break;
                     case 1:
                         this.setTexture("Players/Player 2/player1.png");
+                        break;
+                    case 2:
+                        this.setTexture("Players/Player 3/player1.png");
                         break;
                 }
                 break;
@@ -196,6 +213,9 @@ public class Player extends Entity {
                     case 1:
                         this.setTexture("Players/Player 2/player2.png");
                         break;
+                    case 2:
+                        this.setTexture("Players/Player 3/player2.png");
+                        break;
                 }
                 break;
             case 3:
@@ -206,8 +226,95 @@ public class Player extends Entity {
                     case 1:
                         this.setTexture("Players/Player 2/player3.png");
                         break;
+                    case 2:
+                        this.setTexture("Players/Player 3/player3.png");
+                        break;
                 }
                 break;
+            case 4:
+                switch (this.number) {
+                    case 0:
+                        this.setTexture("Players/Player 1/player4.png");
+                        break;
+                    case 1:
+                        this.setTexture("Players/Player 2/player4.png");
+                        break;
+                    case 2:
+                        this.setTexture("Players/Player 3/player4.png");
+                        break;
+                }
+                break;
+            case 5:
+                switch (this.number) {
+                    case 0:
+                        this.setTexture("Players/Player 1/player5.png");
+                        break;
+                    case 1:
+                        this.setTexture("Players/Player 2/player5.png");
+                        break;
+                    case 2:
+                        this.setTexture("Players/Player 3/player5.png");
+                        break;
+                }
+                break;
+            case 6:
+                switch (this.number) {
+                    case 0:
+                        this.setTexture("Players/Player 1/player6.png");
+                        break;
+                    case 1:
+                        this.setTexture("Players/Player 2/player6.png");
+                        break;
+                    case 2:
+                        this.setTexture("Players/Player 3/player6.png");
+                        break;
+                }
+                break;
+            case 7:
+                switch (this.number) {
+                    case 0:
+                        this.setTexture("Players/Player 1/player7.png");
+                        break;
+                    case 1:
+                        this.setTexture("Players/Player 2/player7.png");
+                        break;
+                    case 2:
+                        this.setTexture("Players/Player 3/player7.png");
+                        break;
+                }
+                break;
+        }
+    }
+
+    public void checkPosPlus(){
+        if(this.direction == 3){
+            this.x -= 9;
+        } else if (this.direction == 4){
+            this.x -= 6;
+        } else if (this.direction == 5){
+            this.x += 6;
+            this.y -= 9;
+        } else if (this.direction == 6){
+            this.x += 9;
+            this.y -= 6;
+        } else if (this.direction == 7){
+            this.y += 6;
+        }
+    }
+
+    public void checkPosMinus(){
+        if(this.direction == 6){
+            this.y -= 6;
+        } else if(this.direction == 5){
+            this.y += 6;
+            this.x -= 9;
+        } else if(this.direction == 4){
+            this.x -= 6;
+            this.y += 9;
+        } else if(this.direction == 3){
+            this.x += 6;
+        } else if(this.direction == 2){
+            this.x += 9;
         }
     }
 

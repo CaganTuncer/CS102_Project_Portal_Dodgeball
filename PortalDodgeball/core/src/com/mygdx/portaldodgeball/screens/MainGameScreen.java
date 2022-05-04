@@ -3,6 +3,7 @@ package com.mygdx.portaldodgeball.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Player;
@@ -29,20 +30,10 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        /*if(Gdx.input.isKeyPressed(Input.Keys.W)){
-            y += 4;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.S)){
-            y -= 4;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.D)){
-            x += 4;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.A)){
-            x -= 4;
-        }*/
-
-
+        game.batch.begin();
+        ScreenUtils.clear(1, 0, 0, 1);
+        Gdx.gl.glClearColor(0/255f, 98/255f, 228/255f, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         switch (game.players.length){
             case 2:
                 game.players[0].move();
@@ -69,15 +60,11 @@ public class MainGameScreen implements Screen {
                 break;
         }
 
-
-
         if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             game.setScreen(new MainMenu(game));
         }
 
-        ScreenUtils.clear(1, 0, 0, 1);
 
-        game.batch.begin();
         for(int i = 0; i < game.players.length; i++){
             game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
         }

@@ -31,6 +31,8 @@ public class PortalDodgeball extends Game {
 	public Music music;
 	public Sound click;
 
+	public MainGameScreen mainGameScreen = new MainGameScreen(this);
+
 	public void setPlayers(Player[] players){
 		this.players = players;
 	}
@@ -45,6 +47,7 @@ public class PortalDodgeball extends Game {
 		music.setLooping(true);
 		music.setVolume(0.5f);
 		music.play();
+		this.players = new Player[0];
 		this.setScreen(new MainMenu(this));
 	}
 
