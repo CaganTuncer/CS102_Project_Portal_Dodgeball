@@ -59,14 +59,13 @@ public class MainGameScreen implements Screen {
                 game.players[5].move();
                 break;
         }
-
-        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
-            game.setScreen(new MainMenu(game));
-        }
-
-
         for(int i = 0; i < game.players.length; i++){
             game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+            game.setScreen(new MainMenu(game));
+            Player.id = 0;
+            game.setPlayers(new Player[]{});
         }
         game.batch.end();
         game.inputManager.update();

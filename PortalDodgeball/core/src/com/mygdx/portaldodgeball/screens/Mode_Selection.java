@@ -112,11 +112,14 @@ public class Mode_Selection implements Screen {
             game.batch.draw(threep_sel, threepX, threepY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
-                Player player1 = new Player("p1");
-                Player player2 = new Player("p2");
-                Player player3 = new Player("p3");
-                this.players = new Player[]{player1, player2, player3};
-                game.setPlayers(players);
+                if(this.game.players.length == 0){
+                    Player player1 = new Player("p1");
+                    Player player2 = new Player("p2");
+                    Player player3 = new Player("p3");
+                    this.players = new Player[]{player1, player2, player3};
+                    game.setPlayers(players);
+                }
+                game.setScreen(new MainGameScreen(game));
             }
         } else {
             game.batch.draw(threep, threepX, threepY);

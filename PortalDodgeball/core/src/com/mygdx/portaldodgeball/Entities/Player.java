@@ -33,20 +33,27 @@ public class Player extends Entity {
         }
 
         keys = new int[6];
-        if(id == 0){
+        if(number == 0){
             keys[0] = Input.Keys.W;
             keys[1] = Input.Keys.A;
             keys[2] = Input.Keys.S;
             keys[3] = Input.Keys.D;
             keys[4] = Input.Keys.Q;
             keys[5] = Input.Keys.E;
-        } else if (id == 1) {
+        } else if (number == 1) {
             keys[0] = Input.Keys.T;
             keys[1] = Input.Keys.F;
             keys[2] = Input.Keys.G;
             keys[3] = Input.Keys.H;
             keys[4] = Input.Keys.R;
             keys[5] = Input.Keys.Y;
+        } else if(number == 2) {
+            keys[0] = Input.Keys.NUMPAD_8;
+            keys[1] = Input.Keys.NUMPAD_4;
+            keys[2] = Input.Keys.NUMPAD_5;
+            keys[3] = Input.Keys.NUMPAD_6;
+            keys[4] = Input.Keys.NUMPAD_7;
+            keys[5] = Input.Keys.NUMPAD_9;
         }
         this.x = 0;
         this.y = 0;
