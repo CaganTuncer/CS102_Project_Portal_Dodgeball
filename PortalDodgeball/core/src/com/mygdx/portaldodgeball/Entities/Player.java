@@ -5,13 +5,16 @@ import com.badlogic.gdx.Input;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import com.mygdx.portaldodgeball.Tools.InputManager;
 
+// Player class to initialize the player. Also contains related variables and methods
 public class Player extends Entity {
     public float x, y, timeSinceInput;
     public int direction, score, ballCount, powUp, number;
     public static int limit = 5, id = 0;
+    //border of the screen constraining the player movement
     public int[] limits;
     public boolean isHit, isProtected, canMove;
     public String name;
+    //int array to keep the numeric representation of the key pressed, for further use on player movement
     public int[] keys;
 
 
@@ -32,6 +35,7 @@ public class Player extends Entity {
                 break;
         }
 
+        //assigned key patterns for three diff. player
         keys = new int[6];
         if(number == 0){
             keys[0] = Input.Keys.W;
@@ -73,7 +77,7 @@ public class Player extends Entity {
 
         id++;
     }
-
+    //general control and action methods to generate player movement
     public void move(){
         this.check();
         if(this.canMove){
@@ -326,8 +330,8 @@ public class Player extends Entity {
     }
 
     public void check(){}
-
-    public void thow(){}
+    //throw method changed with throwBall* to settle the dispute with general syntax of Java.
+    public void throwBall(){}
 
     public void portal(){}
 
