@@ -41,12 +41,12 @@ public class Player extends Entity {
             keys[4] = Input.Keys.Q;
             keys[5] = Input.Keys.E;
         } else if (number == 1) {
-            keys[0] = Input.Keys.T;
-            keys[1] = Input.Keys.F;
-            keys[2] = Input.Keys.G;
-            keys[3] = Input.Keys.H;
-            keys[4] = Input.Keys.R;
-            keys[5] = Input.Keys.Y;
+            keys[0] = Input.Keys.UP;
+            keys[1] = Input.Keys.LEFT;
+            keys[2] = Input.Keys.DOWN;
+            keys[3] = Input.Keys.RIGHT;
+            keys[4] = Input.Keys.SPACE;
+            keys[5] = Input.Keys.CONTROL_LEFT;
         } else if(number == 2) {
             keys[0] = Input.Keys.NUMPAD_8;
             keys[1] = Input.Keys.NUMPAD_4;
