@@ -12,7 +12,7 @@ public class Ball extends Entity{
 
     Rectangle hitbox;
     public float angle,time;
-    public int SIDE_SPEED = 50;
+    public int SIDE_SPEED = 500;
     public int CROSS_SPEED = 1;
     public Player player;
     public Timer timer;

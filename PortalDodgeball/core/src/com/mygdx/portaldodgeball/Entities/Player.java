@@ -340,28 +340,28 @@ public class Player extends Entity {
             switch (direction){
 
                 case 0:
-                    balls.add(new Ball(this,0));
+                    balls.add(new Ball(this, (float) Math.toRadians(0)));
                     break;
                 case 1:
-                    balls.add(new Ball(this,45));
+                    balls.add(new Ball(this,(float) Math.toRadians(45)));
                     break;
                 case 2:
-                    balls.add(new Ball(this,90));
+                    balls.add(new Ball(this,(float) Math.toRadians(90)));
                     break;
                 case 3:
-                    balls.add(new Ball(this,135));
+                    balls.add(new Ball(this,(float) Math.toRadians(135)));
                     break;
                 case 4:
-                    balls.add(new Ball(this,180));
+                    balls.add(new Ball(this,(float) Math.toRadians(180)));
                     break;
                 case 5:
-                    balls.add(new Ball(this,225));
+                    balls.add(new Ball(this,(float) Math.toRadians(225)));
                     break;
                 case 6:
-                    balls.add(new Ball(this,270));
+                    balls.add(new Ball(this,(float) Math.toRadians(270)));
                     break;
                 case 7:
-                    balls.add(new Ball(this,315));
+                    balls.add(new Ball(this,(float) Math.toRadians(315)));
                     break;
 
             }
