@@ -81,10 +81,21 @@ public class MainGameScreen implements Screen {
         int[][] map = g.returnMap();
         int WunitSize = 3;
         Texture wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
-
-        for(int i = 0; i < game.players.length; i++){
-            for (Ball ball: game.players[i].balls) {
-                ball.update(Gdx.graphics.getDeltaTime());
+        game.walls = g.walls;
+        for(int i = 0; i < map.length; i++){
+            int Wx = map[i][0];
+            int Wy= map[i][1];
+            int Wheight = map[i][2];
+            int Wwidth = map[i][3];
+            int a = Wy;
+            int b = Wx;
+            while(b < Wx+ Wwidth){
+                while(a< Wy + Wheight){
+                    game.batch.draw(wallUnit,b,a);
+                    a += WunitSize;
+                }
+                b += WunitSize;
+                a =Wy;
             }
         }
 
