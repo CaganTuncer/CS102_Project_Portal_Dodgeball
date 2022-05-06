@@ -17,8 +17,9 @@ public class Player extends Entity {
     //int array to keep the numeric representation of the key pressed, for further use on player movement
     public int[] keys;
     public ArrayList<Ball> balls = new ArrayList<Ball>();
+    public static ArrayList<Ball> deadBalls = new ArrayList<Ball>();
 
-    public Player(String name) {
+    public Player(String name){
         super();
 
         this.number = id;

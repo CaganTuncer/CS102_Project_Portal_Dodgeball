@@ -1,6 +1,7 @@
 package com.mygdx.portaldodgeball.Entities;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,18 +13,22 @@ public class Ball extends Entity{
 
     Rectangle hitbox;
     public float angle,time;
-    public int SIDE_SPEED = 500;
+    public int SIDE_SPEED = 250;
     public Player player;
     public Texture texture;
 
-    public Ball(Player player,float angle){
+    private float timeSeconds = 0f;
+    private float period = 5f;
+
+
+
+    public Ball(final Player player, float angle){
         this.player = player;
         this.x = player.x+15;
         this.y = player.y+15;
         hitbox = new Rectangle(x,y,10,10);
         this.angle = angle;
         texture = new Texture("Players/Player 1/player3.png");
-
 
     }
 
@@ -33,15 +38,16 @@ public class Ball extends Entity{
         time -= delta;
     }
 
-    public boolean isDespawned(){
-        if(time<0){
-            return true;
-        }else {return false;}
-    }
-
     public void draw(SpriteBatch spriteBatch) {
         spriteBatch.draw(texture,hitbox.x,hitbox.y,10,10);
     }
 
-
+    public boolean isLifeSpanOver() {
+        timeSeconds += Gdx.graphics.getDeltaTime();
+        if (timeSeconds > period) {
+            timeSeconds -= period;
+            return true;
+        }
+        return false;
+    }
 }
