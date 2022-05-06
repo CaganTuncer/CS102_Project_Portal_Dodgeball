@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 
 public class Mode_Selection implements Screen {
@@ -20,6 +21,8 @@ public class Mode_Selection implements Screen {
     private final int BACK_HEIGHT = 66;
     private static final int FRAME_WIDTH = 768;
     private static final int FRAME_HEIGHT = 768;
+
+    public Player[] players;
 
     Texture twop;
     Texture twop_sel;
@@ -93,6 +96,13 @@ public class Mode_Selection implements Screen {
             game.batch.draw(twop_sel, twopX, twopY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
+                if(this.game.players.length == 0){
+                    Player player1 = new Player("p1");
+                    Player player2 = new Player("p2");
+                    this.players = new Player[]{player1, player2};
+                    game.setPlayers(players);
+                }
+                game.setScreen(new MainGameScreen(game));
             }
         } else {
             game.batch.draw(twop, twopX, twopY);
@@ -102,6 +112,14 @@ public class Mode_Selection implements Screen {
             game.batch.draw(threep_sel, threepX, threepY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
+                if(this.game.players.length == 0){
+                    Player player1 = new Player("p1");
+                    Player player2 = new Player("p2");
+                    Player player3 = new Player("p3");
+                    this.players = new Player[]{player1, player2, player3};
+                    game.setPlayers(players);
+                }
+                game.setScreen(new MainGameScreen(game));
             }
         } else {
             game.batch.draw(threep, threepX, threepY);
@@ -111,6 +129,12 @@ public class Mode_Selection implements Screen {
             game.batch.draw(fourp_sel, fourpX, fourpY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
+                Player player1 = new Player("p1");
+                Player player2 = new Player("p2");
+                Player player3 = new Player("p3");
+                Player player4 = new Player("p4");
+                this.players = new Player[]{player1, player2, player3, player4};
+                game.setPlayers(players);
             }
         } else {
             game.batch.draw(fourp, fourpX, fourpY);
@@ -120,6 +144,14 @@ public class Mode_Selection implements Screen {
             game.batch.draw(sixp_sel, sixpX, sixpY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
+                Player player1 = new Player("p1");
+                Player player2 = new Player("p2");
+                Player player3 = new Player("p3");
+                Player player4 = new Player("p4");
+                Player player5 = new Player("p5");
+                Player player6 = new Player("p6");
+                this.players = new Player[]{player1, player2, player3, player4, player5, player6};
+                game.setPlayers(players);
             }
         } else {
             game.batch.draw(sixp, sixpX, sixpY);
