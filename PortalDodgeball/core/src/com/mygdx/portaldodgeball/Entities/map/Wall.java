@@ -7,4 +7,5 @@ public class Wall extends Entity {
     public int wallLengthX;
     public int wallLengthY;
 
+
 }

@@ -5,7 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 
@@ -59,15 +61,26 @@ public class MainGameScreen implements Screen {
                 game.players[5].move();
                 break;
         }
+
         for(int i = 0; i < game.players.length; i++){
             game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
+            for (Ball ball: game.players[i].balls) {
+                    ball.draw(game.batch);
+            }
         }
+
         if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             game.setScreen(new MainMenu(game));
             Player.id = 0;
             game.setPlayers(new Player[]{});
         }
         game.batch.end();
+        for(int i = 0; i < game.players.length; i++){
+            for (Ball ball: game.players[i].balls) {
+                ball.update(Gdx.graphics.getDeltaTime());
+            }
+        }
+
         game.inputManager.update();
     }
 

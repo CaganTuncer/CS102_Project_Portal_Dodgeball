@@ -6,6 +6,8 @@ import com.badlogic.gdx.utils.Array;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import com.mygdx.portaldodgeball.Tools.InputManager;
 
+import java.util.ArrayList;
+
 // Player class to initialize the player. Also contains related variables and methods
 public class Player extends Entity {
     public float timeSinceInput;
@@ -17,6 +19,7 @@ public class Player extends Entity {
     public String name;
     //int array to keep the numeric representation of the key pressed, for further use on player movement
     public int[] keys;
+    public ArrayList<Ball> balls = new ArrayList<Ball>();
 
     public Player(String name) {
         super();
@@ -80,6 +83,7 @@ public class Player extends Entity {
     }
     //general control and action methods to generate player movement
     public void move(){
+        throwBall();
         this.check();
         if(this.canMove){
             this.timeSinceInput += Gdx.graphics.getDeltaTime();
@@ -190,6 +194,7 @@ public class Player extends Entity {
     }
 
     public void checkOrientation(){
+
         switch (this.direction) {
             case 0:
                 switch (this.number) {
@@ -332,9 +337,43 @@ public class Player extends Entity {
 
     public void check(){}
     //throw method changed with throwBall* to settle the dispute with general syntax of Java.
-    public void throwBall(){}
+    public void throwBall(){
+
+        if(Gdx.input.isKeyJustPressed(this.keys[4])){
+            switch (direction){
+
+                case 0:
+                    balls.add(new Ball(this,0));
+                    break;
+                case 1:
+                    balls.add(new Ball(this,45));
+                    break;
+                case 2:
+                    balls.add(new Ball(this,90));
+                    break;
+                case 3:
+                    balls.add(new Ball(this,135));
+                    break;
+                case 4:
+                    balls.add(new Ball(this,180));
+                    break;
+                case 5:
+                    balls.add(new Ball(this,225));
+                    break;
+                case 6:
+                    balls.add(new Ball(this,270));
+                    break;
+                case 7:
+                    balls.add(new Ball(this,315));
+                    break;
+
+            }
+        }
+    }
 
     public void portal(){}
 
     public void powerUp(){}
+
+
 }

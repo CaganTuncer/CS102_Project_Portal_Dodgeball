@@ -17,5 +17,12 @@ public abstract class Entity {
     public void setTexture(String internalPath){
         this.texture = new Texture(internalPath);
     }
-    
+
+
+
+
+
+
 }
+
+
