@@ -5,7 +5,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
@@ -45,6 +44,7 @@ public class MainGameScreen implements Screen {
                 game.players[0].move();
                 game.players[1].move();
                 game.players[2].move();
+
                 break;
             case 4:
                 game.players[0].move();
@@ -74,7 +74,10 @@ public class MainGameScreen implements Screen {
             Player.id = 0;
             game.setPlayers(new Player[]{});
         }
+
+
         game.batch.end();
+
         for(int i = 0; i < game.players.length; i++){
             for (Ball ball: game.players[i].balls) {
                 ball.update(Gdx.graphics.getDeltaTime());
