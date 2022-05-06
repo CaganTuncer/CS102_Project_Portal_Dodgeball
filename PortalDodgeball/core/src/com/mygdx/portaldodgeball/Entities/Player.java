@@ -2,9 +2,6 @@ package com.mygdx.portaldodgeball.Entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.utils.Array;
-import com.mygdx.portaldodgeball.PortalDodgeball;
-import com.mygdx.portaldodgeball.Tools.InputManager;
 
 import java.util.ArrayList;
 

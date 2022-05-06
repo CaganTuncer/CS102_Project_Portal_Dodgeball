@@ -25,7 +25,7 @@ public class Ball extends Entity{
         this.y = player.y;
         hitbox = new Rectangle(x,y,10,10);
         this.angle = angle;
-        texture = new Texture("Players/Player 1/player0.png");
+        texture = new Texture("Players/Player 1/player3.png");
 
 
         this.timer = new Timer();
@@ -33,8 +33,8 @@ public class Ball extends Entity{
     }
 
     public void update(float delta){
-        hitbox.x += (int) (SIDE_SPEED * (float)Math.sin(angle) * delta);
-        hitbox.y += (int) (SIDE_SPEED * (float)Math.cos(angle) * delta);
+        hitbox.x += (SIDE_SPEED * (float)Math.cos(angle) * delta);
+        hitbox.y += (SIDE_SPEED * (float)Math.sin(angle) * delta);
         time -= delta;
     }
 
