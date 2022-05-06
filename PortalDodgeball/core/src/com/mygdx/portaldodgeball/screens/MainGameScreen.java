@@ -84,7 +84,7 @@ public class MainGameScreen implements Screen {
         int[][] map = g.returnMap();
         int WunitSize = 3;
         Texture wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
-
+        game.walls = g.walls;
         for(int i = 0; i < map.length; i++){
             int Wx = map[i][0];
             int Wy= map[i][1];
@@ -100,7 +100,6 @@ public class MainGameScreen implements Screen {
                 b += WunitSize;
                 a =Wy;
             }
-            int r = 6;
         }
     }
 

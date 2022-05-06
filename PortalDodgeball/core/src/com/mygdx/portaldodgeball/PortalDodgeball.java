@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Player;
+import com.mygdx.portaldodgeball.Entities.map.Wall;
 import com.mygdx.portaldodgeball.screens.MainGameScreen;
 import com.mygdx.portaldodgeball.screens.MainMenu;
 
@@ -31,6 +32,7 @@ public class PortalDodgeball extends Game {
 	public Sound click;
 
 	public MainGameScreen mainGameScreen = new MainGameScreen(this);
+	public Wall[] walls;
 
 	public void setPlayers(Player[] players){
 		this.players = players;
