@@ -2,9 +2,7 @@ package com.mygdx.portaldodgeball.Entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.utils.Array;
 import com.mygdx.portaldodgeball.PortalDodgeball;
-import com.mygdx.portaldodgeball.Tools.InputManager;
 
 // Player class to initialize the player. Also contains related variables and methods
 public class Player extends Entity {
@@ -13,15 +11,19 @@ public class Player extends Entity {
     public static int limit = 5, id = 0;
     //border of the screen constraining the player movement
     public int[] limits;
-    public boolean isHit, isProtected, canMove;
+    public boolean isHit, isProtected, canIncreaseX, canIncreaseY, canDecreaseX, canDecreaseY;
     public String name;
     //int array to keep the numeric representation of the key pressed, for further use on player movement
     public int[] keys;
+    public Hitbox hitbox;
+    public PortalDodgeball game;
 
-    public Player(String name) {
+    public Player(String name, PortalDodgeball game) {
         super();
 
         this.number = id;
+
+        this.game = game;
 
         switch (this.number) {
             case 0:
@@ -59,20 +61,35 @@ public class Player extends Entity {
             keys[4] = Input.Keys.NUMPAD_7;
             keys[5] = Input.Keys.NUMPAD_9;
         }
-        this.x = 0;
-        this.y = 0;
+
+        switch (this.number){
+            case 0:
+                this.x = 10;
+                this.y = 10;
+                break;
+            case 1:
+                this.x = 100;
+                this.y = 100;
+                break;
+        }
+
         this.direction = 0;
         this.score = 0;
         this.ballCount = 0;
         this.powUp = 0;
         this.timeSinceInput = 0;
         this.speed = 4;
+        this.hitbox = new Hitbox(this.x - 4, this.y - 4, 43, 43, this);
 
         this.limits = new int[] {0, 1600, 0, 900};
 
         this.isHit = false;
         this.isProtected = false;
-        this.canMove = true;
+        this.canIncreaseX = true;
+        this.canIncreaseY = true;
+        this.canDecreaseY = true;
+        this.canDecreaseX = true;
+
 
         this.name = name;
 
@@ -80,109 +97,150 @@ public class Player extends Entity {
     }
     //general control and action methods to generate player movement
     public void move(){
-        this.check();
-        if(this.canMove){
-            this.timeSinceInput += Gdx.graphics.getDeltaTime();
-            if(timeSinceInput > 0.2f){
-                if(Gdx.input.isKeyPressed(keys[3])){
-                    if(this.direction > 0){
-                        this.direction -= 1;
-                        this.checkPosMinus();
-                        this.checkOrientation();
-                    } else {
-                        this.direction = 7;
-                        this.y -= 9;
-                        this.checkOrientation();
-                    }
-                    this.timeSinceInput = 0;
+        this.timeSinceInput += Gdx.graphics.getDeltaTime();
+        if(timeSinceInput > 0.2f){
+            if(Gdx.input.isKeyPressed(keys[3])){
+                if(this.direction > 0){
+                    this.direction -= 1;
+                } else {
+                    this.direction = 7;
                 }
-                if(Gdx.input.isKeyPressed(keys[1])){
-                    if(this.direction < 7){
-                        this.direction += 1;
-                        this.checkPosPlus();
-                        this.checkOrientation();
-                    } else {
-                        this.direction = 0;
-                        this.y += 9;
-                        this.checkOrientation();
-                    }
-                    this.timeSinceInput = 0;
-                }
+                this.checkOrientation();
+                this.timeSinceInput = 0;
             }
+            if(Gdx.input.isKeyPressed(keys[1])){
+                if(this.direction < 7){
+                    this.direction += 1;
+                } else {
+                    this.direction = 0;
+                }
+                this.checkOrientation();
+                this.timeSinceInput = 0;
+            }
+        }
 
-            if(this.direction == 0){
-                if(Gdx.input.isKeyPressed(keys[0])){
-                    this.x += 4;
-                }
-                if(Gdx.input.isKeyPressed(keys[2])){
-                    this.x -= 4;
+        if(this.direction == 0){
+            if(Gdx.input.isKeyPressed(keys[0])){
+                if(this.canIncreaseX){
+                    this.x += speed;
                 }
             }
-            if(this.direction == 1){
-                if(Gdx.input.isKeyPressed(keys[0])){
-                    this.x += 4;
-                    this.y += 4;
-                }
-                if(Gdx.input.isKeyPressed(keys[2])){
-                    this.x -= 4;
-                    this.y -= 4;
-                }
-            }
-            if(this.direction == 2){
-                if(Gdx.input.isKeyPressed(keys[0])){
-                    this.y += 4;
-                }
-                if(Gdx.input.isKeyPressed(keys[2])){
-                    this.y -= 4;
-                }
-            }
-            if(this.direction == 3){
-                if(Gdx.input.isKeyPressed(keys[0])){
-                    this.y += 4;
-                    this.x -= 4;
-                }
-                if(Gdx.input.isKeyPressed(keys[2])){
-                    this.y -= 4;
-                    this.x += 4;
-                }
-            }
-            if(this.direction == 4){
-                if(Gdx.input.isKeyPressed(keys[0])){
-                    this.x -= 4;
-                }
-                if(Gdx.input.isKeyPressed(keys[2])){
-                    this.x += 4;
-                }
-            }
-            if(this.direction == 5){
-                if(Gdx.input.isKeyPressed(keys[0])){
-                    this.y -= 4;
-                    this.x -= 4;
-                }
-                if(Gdx.input.isKeyPressed(keys[2])){
-                    this.y += 4;
-                    this.x += 4;
-                }
-            }
-            if(this.direction == 6){
-                if(Gdx.input.isKeyPressed(keys[0])){
-                    this.y -= 4;
-                }
-                if(Gdx.input.isKeyPressed(keys[2])){
-                    this.y += 4;
-                }
-            }
-            if(this.direction == 7) {
-                if (Gdx.input.isKeyPressed(keys[0])) {
-                    this.y -= 4;
-                    this.x += 4;
-                }
-                if (Gdx.input.isKeyPressed(keys[2])) {
-                    this.y += 4;
-                    this.x -= 4;
+            if(Gdx.input.isKeyPressed(keys[2])){
+                if(this.canDecreaseX){
+                    this.x -= speed;
                 }
             }
         }
+        if(this.direction == 1){
+            if(Gdx.input.isKeyPressed(keys[0])){
+                if(this.canIncreaseX){
+                    this.x += speed;
+                }
+                if(this.canIncreaseY){
+                    this.y += speed;
+                }
+            }
+            if(Gdx.input.isKeyPressed(keys[2])){
+                if(this.canDecreaseX){
+                    this.x -= speed;
+                }
+                if(this.canDecreaseY){
+                    this.y -= speed;
+                }
+            }
+        }
+        if(this.direction == 2){
+            if(Gdx.input.isKeyPressed(keys[0])){
+                if(this.canIncreaseY){
+                    this.y += speed;
+                }
+            }
+            if(Gdx.input.isKeyPressed(keys[2])){
+                if(this.canDecreaseY){
+                    this.y -= speed;
+                }
+            }
+        }
+        if(this.direction == 3){
+            if(Gdx.input.isKeyPressed(keys[0])){
+                if(this.canIncreaseY){
+                    this.y += speed;
+                }
+                if(this.canDecreaseX){
+                    this.x -= speed;
+                }
+            }
+            if(Gdx.input.isKeyPressed(keys[2])){
+                if(this.canDecreaseY){
+                    this.y -= speed;
+                }
+                if(this.canIncreaseX){
+                    this.x += speed;
+                }
+            }
+        }
+        if(this.direction == 4){
+            if(Gdx.input.isKeyPressed(keys[0])){
+                if(this.canDecreaseX){
+                    this.x -= speed;
+                }
+            }
+            if(Gdx.input.isKeyPressed(keys[2])){
+                if(this.canIncreaseX){
+                    this.x += speed;
+                }
+            }
+        }
+        if(this.direction == 5){
+            if(Gdx.input.isKeyPressed(keys[0])){
+                if(this.canDecreaseY){
+                    this.y -= speed;
+                }
+                if(this.canDecreaseX){
+                    this.x -= speed;
+                }
+            }
+            if(Gdx.input.isKeyPressed(keys[2])){
+                if(this.canIncreaseY){
+                    this.y += speed;
+                }
+                if(this.canIncreaseX){
+                    this.x += speed;
+                }
+            }
+        }
+        if(this.direction == 6){
+            if(Gdx.input.isKeyPressed(keys[0])){
+                if(this.canDecreaseY){
+                    this.y -= speed;
+                }
+            }
+            if(Gdx.input.isKeyPressed(keys[2])){
+                if(this.canIncreaseY){
+                    this.y += speed;
+                }
+            }
+        }
+        if(this.direction == 7) {
+            if (Gdx.input.isKeyPressed(keys[0])) {
+                if(this.canDecreaseY){
+                    this.y -= speed;
+                }
+                if(this.canIncreaseX){
+                    this.x += speed;
+                }
+            }
+            if (Gdx.input.isKeyPressed(keys[2])) {
+                if(this.canIncreaseY){
+                    this.y += speed;
+                }
+                if(this.canDecreaseX){
+                    this.x -= speed;
+                }
+            }
+        }
+        this.hitbox.move(this.x, this.y);
+        this.check();
     }
 
     public void setName(String name){
@@ -298,39 +356,30 @@ public class Player extends Entity {
         }
     }
 
-    public void checkPosPlus(){
-        if(this.direction == 3){
-            this.x -= 9;
-        } else if (this.direction == 4){
-            this.x -= 6;
-        } else if (this.direction == 5){
-            this.x += 6;
-            this.y -= 9;
-        } else if (this.direction == 6){
-            this.x += 9;
-            this.y -= 6;
-        } else if (this.direction == 7){
-            this.y += 6;
+
+
+    public void check(){
+        for(int i = 0; i < game.players.length; i++){
+
+            if(game.players[i] != this){
+                boolean hit = this.hitbox.collidesWidth(game.players[i].hitbox);
+                if(hit){
+                    this.canIncreaseX = !(new Hitbox(this.hitbox.x + 1, this.hitbox.y, 39, 39, this).collidesWidth(game.players[i].hitbox));
+                    this.canDecreaseX = !(new Hitbox(this.hitbox.x - 1, this.hitbox.y, 39, 39, this).collidesWidth(game.players[i].hitbox));
+                    this.canIncreaseY = !(new Hitbox(this.hitbox.x, this.hitbox.y + 1, 39, 39, this).collidesWidth(game.players[i].hitbox));
+                    this.canDecreaseX = !(new Hitbox(this.hitbox.x, this.hitbox.y - 1, 39, 39, this).collidesWidth(game.players[i].hitbox));
+                } else {
+                    this.canIncreaseX = true;
+                    this.canDecreaseX = true;
+                    this.canIncreaseY = true;
+                    this.canDecreaseY = true;
+                }
+                System.out.println(hit + " " + this.number);
+            }
+            /**/
+
         }
     }
-
-    public void checkPosMinus(){
-        if(this.direction == 6){
-            this.y -= 6;
-        } else if(this.direction == 5){
-            this.y += 6;
-            this.x -= 9;
-        } else if(this.direction == 4){
-            this.x -= 6;
-            this.y += 9;
-        } else if(this.direction == 3){
-            this.x += 6;
-        } else if(this.direction == 2){
-            this.x += 9;
-        }
-    }
-
-    public void check(){}
     //throw method changed with throwBall* to settle the dispute with general syntax of Java.
     public void throwBall(){}
 

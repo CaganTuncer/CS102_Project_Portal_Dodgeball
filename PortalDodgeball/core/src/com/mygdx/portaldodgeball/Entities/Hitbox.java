@@ -19,6 +19,6 @@ public class Hitbox {
     }
 
     public boolean collidesWidth(Hitbox hitbox){
-        return this.x < hitbox.x + hitbox.width && this.y < hitbox.y + hitbox.height && this.x + width > hitbox.x && this.y + height > hitbox.y;
+        return this.x < hitbox.x + hitbox.width && this.y < hitbox.y + hitbox.height && this.x + this.width > hitbox.x && this.y + this.height > hitbox.y;
     }
 }

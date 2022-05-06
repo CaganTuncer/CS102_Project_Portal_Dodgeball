@@ -97,8 +97,8 @@ public class Mode_Selection implements Screen {
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
                 if(this.game.players.length == 0){
-                    Player player1 = new Player("p1");
-                    Player player2 = new Player("p2");
+                    Player player1 = new Player("p1", game);
+                    Player player2 = new Player("p2", game);
                     this.players = new Player[]{player1, player2};
                     game.setPlayers(players);
                 }
@@ -113,9 +113,9 @@ public class Mode_Selection implements Screen {
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
                 if(this.game.players.length == 0){
-                    Player player1 = new Player("p1");
-                    Player player2 = new Player("p2");
-                    Player player3 = new Player("p3");
+                    Player player1 = new Player("p1", game);
+                    Player player2 = new Player("p2", game);
+                    Player player3 = new Player("p3", game);
                     this.players = new Player[]{player1, player2, player3};
                     game.setPlayers(players);
                 }
@@ -129,10 +129,10 @@ public class Mode_Selection implements Screen {
             game.batch.draw(fourp_sel, fourpX, fourpY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
-                Player player1 = new Player("p1");
-                Player player2 = new Player("p2");
-                Player player3 = new Player("p3");
-                Player player4 = new Player("p4");
+                Player player1 = new Player("p1", game);
+                Player player2 = new Player("p2", game);
+                Player player3 = new Player("p3", game);
+                Player player4 = new Player("p4", game);
                 this.players = new Player[]{player1, player2, player3, player4};
                 game.setPlayers(players);
             }
@@ -144,12 +144,12 @@ public class Mode_Selection implements Screen {
             game.batch.draw(sixp_sel, sixpX, sixpY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
-                Player player1 = new Player("p1");
-                Player player2 = new Player("p2");
-                Player player3 = new Player("p3");
-                Player player4 = new Player("p4");
-                Player player5 = new Player("p5");
-                Player player6 = new Player("p6");
+                Player player1 = new Player("p1", game);
+                Player player2 = new Player("p2", game);
+                Player player3 = new Player("p3", game);
+                Player player4 = new Player("p4", game);
+                Player player5 = new Player("p5", game);
+                Player player6 = new Player("p6", game);
                 this.players = new Player[]{player1, player2, player3, player4, player5, player6};
                 game.setPlayers(players);
             }

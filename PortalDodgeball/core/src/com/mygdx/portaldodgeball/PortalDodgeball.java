@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Player;
-import com.mygdx.portaldodgeball.Tools.InputManager;
 import com.mygdx.portaldodgeball.screens.MainGameScreen;
 import com.mygdx.portaldodgeball.screens.MainMenu;
 
@@ -24,7 +23,7 @@ public class PortalDodgeball extends Game {
 	public String[] names = {null, null, null, null, null, null};
 	public Player[] players;
 
-	public InputManager inputManager;
+
 
 	public SpriteBatch batch;
 
@@ -40,8 +39,6 @@ public class PortalDodgeball extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		inputManager = new InputManager();
-		Gdx.input.setInputProcessor(inputManager);
 		music = Gdx.audio.newMusic(Gdx.files.internal("Audio/main_theme.mp3"));
 		click = Gdx.audio.newSound(Gdx.files.internal("Audio/click.wav"));
 		music.setLooping(true);

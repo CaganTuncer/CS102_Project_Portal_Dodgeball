@@ -78,7 +78,6 @@ public class MainGameScreen implements Screen {
             game.setPlayers(new Player[]{});
         }
         game.batch.end();
-        game.inputManager.update();
     }
     public void drawMap(){
         MapRender g = new MapRender(1);
