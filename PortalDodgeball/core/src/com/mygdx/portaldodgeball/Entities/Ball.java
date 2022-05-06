@@ -13,22 +13,17 @@ public class Ball extends Entity{
     Rectangle hitbox;
     public float angle,time;
     public int SIDE_SPEED = 500;
-    public int CROSS_SPEED = 1;
     public Player player;
-    public Timer timer;
-    public float fireDelay;
     public Texture texture;
 
     public Ball(Player player,float angle){
         this.player = player;
-        this.x = player.x;
-        this.y = player.y;
+        this.x = player.x+15;
+        this.y = player.y+15;
         hitbox = new Rectangle(x,y,10,10);
         this.angle = angle;
         texture = new Texture("Players/Player 1/player3.png");
 
-
-        this.timer = new Timer();
 
     }
 
