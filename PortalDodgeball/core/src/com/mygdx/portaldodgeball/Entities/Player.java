@@ -2,13 +2,14 @@ package com.mygdx.portaldodgeball.Entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.utils.Array;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import com.mygdx.portaldodgeball.Tools.InputManager;
 
 // Player class to initialize the player. Also contains related variables and methods
 public class Player extends Entity {
-    public float x, y, timeSinceInput;
-    public int direction, score, ballCount, powUp, number;
+    public float timeSinceInput;
+    public int score, ballCount, powUp, number;
     public static int limit = 5, id = 0;
     //border of the screen constraining the player movement
     public int[] limits;
@@ -16,7 +17,6 @@ public class Player extends Entity {
     public String name;
     //int array to keep the numeric representation of the key pressed, for further use on player movement
     public int[] keys;
-
 
     public Player(String name) {
         super();
@@ -66,6 +66,7 @@ public class Player extends Entity {
         this.ballCount = 0;
         this.powUp = 0;
         this.timeSinceInput = 0;
+        this.speed = 4;
 
         this.limits = new int[] {0, 1600, 0, 900};
 

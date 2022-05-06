@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.Texture;
 public class Entity {
 
     public Texture texture;
-    private int x;
-    private int y;
-    private int speed;
-    private int direction;
+    public int x;
+    public int y;
+    public int speed;
+    public int direction;
 
     public Entity() {}
 
