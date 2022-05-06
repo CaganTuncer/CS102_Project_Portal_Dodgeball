@@ -18,4 +18,10 @@ public abstract class Entity {
         this.texture = new Texture(internalPath);
     }
 
+
+
+
+
+
 }
+
