@@ -18,9 +18,9 @@ public class Wall extends Entity {
     // 1 if long in x direction 2 if long in y direction
     public int wallRotation;
     Texture wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
-    public Wall(int Wx,int Wy, int Wwidth, int Wheight, Game agame){
+    public Wall(int Wx,int Wy, int Wwidth, int Wheight){
 
-        wallHitbox = new Hitbox(x,y,width,height,this);
+        wallHitbox = new Hitbox(Wx,Wy,Wwidth,Wheight,this);
         if(Wwidth > Wheight){
             wallRotation = 1;
         }

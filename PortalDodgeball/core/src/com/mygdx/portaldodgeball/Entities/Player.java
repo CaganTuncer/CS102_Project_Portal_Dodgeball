@@ -65,8 +65,8 @@ public class Player extends Entity {
 
         switch (this.number){
             case 0:
-                this.x = 10;
-                this.y = 10;
+                this.x = 180;
+                this.y = 180;
                 break;
             case 1:
                 this.x = 100;
@@ -410,14 +410,59 @@ public class Player extends Entity {
 
 
     public void check(){
+
+        for(int j = 0; j < game.walls.length; j++) {
+            boolean hit = this.hitbox.collidesWidth((game.walls[j].wallHitbox));
+            if(hit){
+                if(this.absMove == 0){
+                    this.canIncreaseX = false;
+                    this.x -= 4;
+                } else if (this.absMove == 1){
+                    if(game.walls[j].wallRotation == 2){
+                        this.x -= 4;
+                    } if (game.walls[j].wallRotation == 1){
+                        this.y -= 4;
+                    }
+                } else if (this.absMove == 2) {
+                    this.canIncreaseY = false;
+                    this.y -= 4;
+                } else if (this.absMove == 3) {
+                    if(game.walls[j].wallRotation == 2){
+                        this.x += 4;
+                    } if(game.walls[j].wallRotation == 1){
+                        this.y -= 4;
+                    }
+                } else if (this.absMove == 4) {
+                    this.canDecreaseX = false;
+                    this.x += 4;
+                } else if (this.absMove == 5) {
+                    if(game.walls[j].wallRotation == 1){
+                        this.y += 4;
+                    } if(game.walls[j].wallRotation == 2){
+                        this.x += 4;
+                    }
+                }else if(this.absMove == 6) {
+                    this.canDecreaseX = false;
+                    this.y += 4;
+                } else if (this.absMove == 7){
+                    if(game.walls[j].wallRotation == 1){
+                        this.y += 4;
+                    } if(game.walls[j].wallRotation == 2){
+                        this.x -= 4;
+                    }
+                }
+            } else {
+                this.canIncreaseX = true;
+                this.canDecreaseX = true;
+                this.canIncreaseY = true;
+                this.canDecreaseY = true;
+            }
+        }
+
         for(int i = 0; i < game.players.length; i++){
             if(game.players[i] != this){
                 boolean hit = this.hitbox.collidesWidth(game.players[i].hitbox);
                 if(hit){
-                    /*this.canIncreaseX = !(new Hitbox(this.hitbox.x + 39, this.hitbox.y, 1, 39, this).collidesWidth(new Hitbox(game.players[i].hitbox.x, game.players[i].hitbox.y, game.players[i].hitbox.width, game.players[i].hitbox.height, game.players[i])));
-                    this.canDecreaseX = !(new Hitbox(this.hitbox.x - 1, this.hitbox.y, 1, 39, this).collidesWidth(new Hitbox(game.players[i].hitbox.x, game.players[i].hitbox.y, game.players[i].hitbox.width, game.players[i].hitbox.height, game.players[i])));
-                    this.canIncreaseY = !(new Hitbox(this.hitbox.x, this.hitbox.y + 39, 39, 1, this).collidesWidth(new Hitbox(game.players[i].hitbox.x, game.players[i].hitbox.y, game.players[i].hitbox.width, game.players[i].hitbox.height, game.players[i])));
-                    this.canDecreaseY = !(new Hitbox(this.hitbox.x, this.hitbox.y - 1, 39, 1, this).collidesWidth(new Hitbox(game.players[i].hitbox.x, game.players[i].hitbox.y, game.players[i].hitbox.width, game.players[i].hitbox.height, game.players[i])));*/
                     if(this.absMove == 0){
                         this.canIncreaseX = false;
                         this.x -= 4;
@@ -463,7 +508,7 @@ public class Player extends Entity {
                 }
                 System.out.println(hit + " " + this.number);
             }
-            /**/
+
 
         }
     }
@@ -474,3 +519,4 @@ public class Player extends Entity {
 
     public void powerUp(){}
 }
+
