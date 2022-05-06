@@ -2,7 +2,7 @@ package com.mygdx.portaldodgeball.Entities;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class Entity {
+public abstract class Entity {
 
     public Texture texture;
     public int x;
