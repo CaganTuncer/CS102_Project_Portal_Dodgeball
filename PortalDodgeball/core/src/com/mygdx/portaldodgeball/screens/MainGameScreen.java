@@ -97,6 +97,7 @@ public class MainGameScreen implements Screen {
             game.setPlayers(new Player[]{});
         }
 
+
         game.batch.end();
 
         for(int i = 0; i < game.players.length; i++){
