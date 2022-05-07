@@ -3,7 +3,6 @@ package com.mygdx.portaldodgeball.Entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import java.util.ArrayList;
 
@@ -109,7 +108,6 @@ public class Player extends Entity {
     //general control and action methods to generate player movement
     public void move(){
         throwBall();
-        this.check();
         this.timeSinceInput += Gdx.graphics.getDeltaTime();
         if(timeSinceInput > 0.2f){
             if(Gdx.input.isKeyPressed(keys[3])){
@@ -121,7 +119,6 @@ public class Player extends Entity {
                 this.checkOrientation();
                 this.timeSinceInput = 0;
             }
-
             if(Gdx.input.isKeyPressed(keys[1])){
                 if(this.direction < 7){
                     this.direction += 1;
@@ -131,9 +128,7 @@ public class Player extends Entity {
                 this.checkOrientation();
                 this.timeSinceInput = 0;
             }
-
         }
-
 
         if(this.direction == 0){
             if(Gdx.input.isKeyPressed(keys[0])){
@@ -520,7 +515,6 @@ public class Player extends Entity {
                 System.out.println(hit + " " + this.number);
             }
 
-
         }
     }
     //throw method changed with throwBall* to settle the dispute with general syntax of Java.
@@ -536,7 +530,7 @@ public class Player extends Entity {
                     balls.add(ball);
                     break;
                 case 1:
-                    Ball ball2 = new Ball(this, (float) Math.toRadians(45), this.x + 100,this.y + 100);
+                    Ball ball2 = new Ball(this, (float) Math.toRadians(45), this.x + 40,this.y + 40);
                     balls.add(ball2);
                     break;
                 case 2:
@@ -544,23 +538,23 @@ public class Player extends Entity {
                     balls.add(ball3);
                     break;
                 case 3:
-                    Ball ball4 = new Ball(this, (float) Math.toRadians(135), this.x + 100,this.y + 100);
+                    Ball ball4 = new Ball(this, (float) Math.toRadians(135), this.x,this.y + 40);
                     balls.add(ball4);
                     break;
                 case 4:
-                    Ball ball5 = new Ball(this, (float) Math.toRadians(180), this.x - 10,this.y + 15);
+                    Ball ball5 = new Ball(this, (float) Math.toRadians(180), this.x - 11,this.y + 15);
                     balls.add(ball5);
                     break;
                 case 5:
-                    Ball ball6 = new Ball(this, (float) Math.toRadians(225), this.x + 100,this.y + 100);
+                    Ball ball6 = new Ball(this, (float) Math.toRadians(225), this.x - 11,this.y - 10);
                     balls.add(ball6);
                     break;
                 case 6:
-                    Ball ball7 = new Ball(this, (float) Math.toRadians(270), this.x + 10,this.y - 10);
+                    Ball ball7 = new Ball(this, (float) Math.toRadians(270), this.x + 10,this.y - 11);
                     balls.add(ball7);
                     break;
                 case 7:
-                    Ball ball8 = new Ball(this, (float) Math.toRadians(315), this.x + 100,this.y + 100);
+                    Ball ball8 = new Ball(this, (float) Math.toRadians(315), this.x + 40,this.y);
                     balls.add(ball8);
                     break;
 
