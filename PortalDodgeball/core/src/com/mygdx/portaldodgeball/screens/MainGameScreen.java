@@ -71,12 +71,15 @@ public class MainGameScreen implements Screen {
                 if(ball.isLifeSpanOver() == true){
                     Player.deadBalls.add(ball);
                 }
+<<<<<<< HEAD
                 for(int j = 0; j < game.players.length; j++ ){
                     if(ball.getHitbox().collidesWidth(game.players[j].hitbox)){
                         Player.deadBalls.add(ball);
                         game.players[j].setTexture("Players/Player 3/player0.png");
                     }
                 }
+=======
+>>>>>>> ball
             }
         }
 
