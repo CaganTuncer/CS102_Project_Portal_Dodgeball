@@ -38,6 +38,7 @@ public class MainGameScreen implements Screen {
         ScreenUtils.clear(1, 0, 0, 1);
         Gdx.gl.glClearColor(0/255f, 98/255f, 228/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        drawMap();
         switch (game.players.length){
             case 2:
                 game.players[0].move();

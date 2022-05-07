@@ -104,7 +104,6 @@ public class Player extends Entity {
 
 
         this.name = name;
-        this.hitbox = new Hitbox(this.x, this.y, 39,39);
         id++;
     }
     //general control and action methods to generate player movement
@@ -118,20 +117,23 @@ public class Player extends Entity {
                     this.direction -= 1;
                 } else {
                     this.direction = 7;
-                    this.y -= 9;
                 }
+                this.checkOrientation();
+                this.timeSinceInput = 0;
             }
-            this.timeSinceInput = 0;
-        }
-        if(Gdx.input.isKeyPressed(keys[1])){
-            if(this.direction < 7){
-                this.direction += 1;
-            } else {
-                this.direction = 0;
+
+            if(Gdx.input.isKeyPressed(keys[1])){
+                if(this.direction < 7){
+                    this.direction += 1;
+                } else {
+                    this.direction = 0;
+                }
+                this.checkOrientation();
+                this.timeSinceInput = 0;
             }
-            this.checkOrientation();
-            this.timeSinceInput = 0;
+
         }
+
 
         if(this.direction == 0){
             if(Gdx.input.isKeyPressed(keys[0])){
