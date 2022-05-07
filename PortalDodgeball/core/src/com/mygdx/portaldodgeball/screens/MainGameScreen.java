@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
+import com.mygdx.portaldodgeball.Entities.map.MapRender;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import com.sun.org.apache.bcel.internal.generic.BALOAD;
 
@@ -69,15 +70,14 @@ public class MainGameScreen implements Screen {
                 if(ball.isLifeSpanOver() == true){
                     Player.deadBalls.add(ball);
                 }
-<<<<<<< HEAD
+
                 for(int j = 0; j < game.players.length; j++ ){
                     if(ball.getHitbox().collidesWidth(game.players[j].hitbox)){
                         Player.deadBalls.add(ball);
                         game.players[j].setTexture("Players/Player 3/player0.png");
                     }
                 }
-=======
->>>>>>> ball
+
             }
         }
 
@@ -138,7 +138,6 @@ public class MainGameScreen implements Screen {
             }
         }
 
-        game.inputManager.update();
 
 
 

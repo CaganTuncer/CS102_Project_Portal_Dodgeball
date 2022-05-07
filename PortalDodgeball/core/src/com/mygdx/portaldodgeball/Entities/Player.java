@@ -1,11 +1,13 @@
 package com.mygdx.portaldodgeball.Entities;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.portaldodgeball.PortalDodgeball;
-
 import java.util.ArrayList;
+
+
 
 // Player class to initialize the player. Also contains related variables and methods
 public class Player extends Entity {
@@ -85,11 +87,11 @@ public class Player extends Entity {
         this.powUp = 0;
         this.timeSinceInput = 0;
         this.speed = 4;
-        this.hitbox = new Hitbox(this.x - 1, this.y -1 , 40, 40, this);
-        this.up = new Hitbox(this.x, this.y + 39, 39, 1, this);
-        this.right = new Hitbox(this.x + 39, this.y, 1, 39, this);
-        this.down = new Hitbox(this.x, this.y - 1, 39, 1, this);
-        this.left = new Hitbox(this.x - 1, this.y, 1, 39, this);
+        this.hitbox = new Hitbox(this.x - 1, this.y -1 , 40, 40);
+        this.up = new Hitbox(this.x, this.y + 39, 39, 1);
+        this.right = new Hitbox(this.x + 39, this.y, 1, 39);
+        this.down = new Hitbox(this.x, this.y - 1, 39, 1);
+        this.left = new Hitbox(this.x - 1, this.y, 1, 39);
 
         this.limits = new int[] {0, 1600, 0, 900};
 
@@ -109,33 +111,26 @@ public class Player extends Entity {
     public void move(){
         throwBall();
         this.check();
-        if(this.canMove){
-            this.timeSinceInput += Gdx.graphics.getDeltaTime();
-            if(timeSinceInput > 0.2f){
-                if(Gdx.input.isKeyPressed(keys[3])){
-                    if(this.direction > 0){
-                        this.direction -= 1;
-                        this.checkPosMinus();
-                        this.checkOrientation();
-                    } else {
-                        this.direction = 7;
-                        this.y -= 9;
-                        this.checkOrientation();
-                    }
-                    this.timeSinceInput = 0;
-                }
-                this.checkOrientation();
-                this.timeSinceInput = 0;
-            }
-            if(Gdx.input.isKeyPressed(keys[1])){
-                if(this.direction < 7){
-                    this.direction += 1;
+        this.timeSinceInput += Gdx.graphics.getDeltaTime();
+        if(timeSinceInput > 0.2f){
+            if(Gdx.input.isKeyPressed(keys[3])){
+                if(this.direction > 0){
+                    this.direction -= 1;
                 } else {
-                    this.direction = 0;
+                    this.direction = 7;
+                    this.y -= 9;
                 }
-                this.checkOrientation();
-                this.timeSinceInput = 0;
             }
+            this.timeSinceInput = 0;
+        }
+        if(Gdx.input.isKeyPressed(keys[1])){
+            if(this.direction < 7){
+                this.direction += 1;
+            } else {
+                this.direction = 0;
+            }
+            this.checkOrientation();
+            this.timeSinceInput = 0;
         }
 
         if(this.direction == 0){
@@ -527,40 +522,7 @@ public class Player extends Entity {
         }
     }
     //throw method changed with throwBall* to settle the dispute with general syntax of Java.
-    public void throwBall(){
 
-        if(Gdx.input.isKeyJustPressed(this.keys[4])){
-            switch (direction){
-
-                case 0:
-                    balls.add(new Ball(this,0));
-                    break;
-                case 1:
-                    balls.add(new Ball(this,45));
-                    break;
-                case 2:
-                    balls.add(new Ball(this,90));
-                    break;
-                case 3:
-                    balls.add(new Ball(this,135));
-                    break;
-                case 4:
-                    balls.add(new Ball(this,180));
-                    break;
-                case 5:
-                    balls.add(new Ball(this,225));
-                    break;
-                case 6:
-                    balls.add(new Ball(this,270));
-                    break;
-                case 7:
-                    balls.add(new Ball(this,315));
-                    break;
-
-            }
-        }
-        this.hitbox.move(this.x,this.y);
-    }
 
     public void throwBall(){
 
