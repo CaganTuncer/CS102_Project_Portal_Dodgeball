@@ -9,6 +9,10 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.PortalDodgeball;
+import com.sun.org.apache.bcel.internal.generic.BALOAD;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class MainGameScreen implements Screen {
 
@@ -61,9 +65,39 @@ public class MainGameScreen implements Screen {
         }
 
         for(int i = 0; i < game.players.length; i++){
+            for (Ball ball: game.players[i].balls) {
+                if(ball.isLifeSpanOver() == true){
+                    Player.deadBalls.add(ball);
+                }
+<<<<<<< HEAD
+                for(int j = 0; j < game.players.length; j++ ){
+                    if(ball.getHitbox().collidesWidth(game.players[j].hitbox)){
+                        Player.deadBalls.add(ball);
+                        game.players[j].setTexture("Players/Player 3/player0.png");
+                    }
+                }
+=======
+>>>>>>> ball
+            }
+        }
+
+        for(int i = 0; i < game.players.length; i++){
+            game.players[i].balls.removeAll(Player.deadBalls);
+        }
+
+
+
+        for(int i = 0; i < game.players.length; i++){
             game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
             for (Ball ball: game.players[i].balls) {
                 ball.draw(game.batch);
+            }
+        }
+
+        for(int i = 0; i < game.players.length; i++){
+            game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
+            for (Ball ball: game.players[i].balls) {
+                    ball.draw(game.batch);
             }
         }
 
@@ -72,8 +106,6 @@ public class MainGameScreen implements Screen {
             Player.id = 0;
             game.setPlayers(new Player[]{});
         }
-
-
         game.batch.end();
     }
     public void drawMap(){
@@ -99,7 +131,17 @@ public class MainGameScreen implements Screen {
             }
         }
 
+
+        for(int i = 0; i < game.players.length; i++){
+            for (Ball ball: game.players[i].balls) {
+                ball.update(Gdx.graphics.getDeltaTime());
+            }
+        }
+
         game.inputManager.update();
+
+
+
     }
 
     @Override

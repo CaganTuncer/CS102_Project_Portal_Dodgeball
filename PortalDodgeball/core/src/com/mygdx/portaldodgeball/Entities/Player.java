@@ -18,6 +18,8 @@ public class Player extends Entity {
     public String name;
     //int array to keep the numeric representation of the key pressed, for further use on player movement
     public int[] keys;
+    public ArrayList<Ball> balls = new ArrayList<Ball>();
+    public static ArrayList<Ball> deadBalls = new ArrayList<Ball>();
     public Hitbox hitbox, up, right, left, down;
     public PortalDodgeball game;
 
@@ -100,7 +102,7 @@ public class Player extends Entity {
 
 
         this.name = name;
-
+        this.hitbox = new Hitbox(this.x, this.y, 39,39);
         id++;
     }
     //general control and action methods to generate player movement
@@ -553,6 +555,49 @@ public class Player extends Entity {
                     break;
                 case 7:
                     balls.add(new Ball(this,315));
+                    break;
+
+            }
+        }
+        this.hitbox.move(this.x,this.y);
+    }
+
+    public void throwBall(){
+
+        if(Gdx.input.isKeyJustPressed(this.keys[4])){
+            switch (direction){
+
+                case 0:
+                    Ball ball = new Ball(this, (float) Math.toRadians(0), this.x + 40,this.y + 15);
+                    balls.add(ball);
+                    break;
+                case 1:
+                    Ball ball2 = new Ball(this, (float) Math.toRadians(45), this.x + 100,this.y + 100);
+                    balls.add(ball2);
+                    break;
+                case 2:
+                    Ball ball3 = new Ball(this, (float) Math.toRadians(90), this.x + 10,this.y + 40);
+                    balls.add(ball3);
+                    break;
+                case 3:
+                    Ball ball4 = new Ball(this, (float) Math.toRadians(135), this.x + 100,this.y + 100);
+                    balls.add(ball4);
+                    break;
+                case 4:
+                    Ball ball5 = new Ball(this, (float) Math.toRadians(180), this.x - 10,this.y + 15);
+                    balls.add(ball5);
+                    break;
+                case 5:
+                    Ball ball6 = new Ball(this, (float) Math.toRadians(225), this.x + 100,this.y + 100);
+                    balls.add(ball6);
+                    break;
+                case 6:
+                    Ball ball7 = new Ball(this, (float) Math.toRadians(270), this.x + 10,this.y - 10);
+                    balls.add(ball7);
+                    break;
+                case 7:
+                    Ball ball8 = new Ball(this, (float) Math.toRadians(315), this.x + 100,this.y + 100);
+                    balls.add(ball8);
                     break;
 
             }

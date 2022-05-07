@@ -3,14 +3,14 @@ package com.mygdx.portaldodgeball.Entities;
 public class Hitbox {
     float x, y;
     int width, height;
-    Entity entity;
 
-    public Hitbox(float x, float y, int width, int height, Entity entity){
+
+    public Hitbox(float x, float y, int width, int height){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.entity = entity;
+
     }
 
     public void move(float x, float y){
