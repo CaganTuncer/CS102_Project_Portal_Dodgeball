@@ -53,8 +53,8 @@ public class PortalDodgeball extends Game {
 		this.players = new Player[0];
 		this.setScreen(new MainMenu(this));
 
-		this.powerUps.add(new PowerUp(0,this.mainGameScreen,0, 1000,350));
-		this.powerUps.add(new PowerUp(0,this.mainGameScreen,0, 700,500));
+		this.powerUps.add(new PowerUp(1,this.mainGameScreen,0, 1000,350));
+		this.powerUps.add(new PowerUp(1,this.mainGameScreen,0, 700,500));
 		this.powerUps.add(new PowerUp(0,this.mainGameScreen,0, 1300,200));
 		this.powerUps.add(new PowerUp(0,this.mainGameScreen,0, 650,350));
 

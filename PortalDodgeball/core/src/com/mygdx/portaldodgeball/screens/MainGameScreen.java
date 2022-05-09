@@ -74,6 +74,9 @@ public class MainGameScreen implements Screen {
                         Player.deadBalls.add(ball);
                         if(!game.players[j].hasShield){
                             game.players[j].setTexture("Players/Player 3/player0.png");
+
+                        }else {
+                            game.players[j].hasShield = false;
                         }
                     }
                 }
@@ -125,7 +128,7 @@ public class MainGameScreen implements Screen {
         for (int i = 0; i < game.players.length; i++) {
             for (int j = 0; j < game.powerUps.size(); j++) {
                 if(game.players[i].hitbox.collidesWith(game.powerUps.get(j).getHitbox())){
-                    if(!game.players[i].hasSpeed) {
+                    if(!game.players[i].hasSpeed || game.powerUps.get(j).type != 0) {
                         PowerUp.powerUp(game.players[i], game.powerUps.get(j).type);
                         game.deadPowerUps.add(game.powerUps.get(j));
                     }

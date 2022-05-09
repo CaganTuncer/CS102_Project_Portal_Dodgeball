@@ -28,10 +28,18 @@ public class PowerUp {
         this.type = type;
         this.game = game;
         this.PUpHitbox = new Hitbox(x    ,y   ,30,30);
-        this.texture = new Texture("PowerUps/speedUp.png");
         this.map = map;
         this.x = x;
         this.y = y;
+
+        switch (type){
+
+            case 0:
+                this.texture = new Texture("PowerUps/speedUp.png");
+                break;
+            case 1:
+                this.texture = new Texture("PowerUps/shield.png");
+        }
 
     }
 
