@@ -115,6 +115,15 @@ public class MainGameScreen implements Screen {
             game.players[i].balls.removeAll(Player.deadBalls);
         }
 
+        for (int i = 0; i < game.powerUps.size(); i++) {
+            if(game.powerUps.get(i).isLifeSpanOverPU()){
+                game.deadPowerUps.add(game.powerUps.get(i));
+            }
+        }
+
+        game.powerUps.removeAll(game.deadPowerUps);
+
+
 
 
         for(int i = 0; i < game.players.length; i++){

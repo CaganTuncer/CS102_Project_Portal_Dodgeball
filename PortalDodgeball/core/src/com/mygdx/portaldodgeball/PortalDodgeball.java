@@ -9,12 +9,16 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Player;
+import com.mygdx.portaldodgeball.Entities.PowerUp;
 import com.mygdx.portaldodgeball.Entities.map.Wall;
 import com.mygdx.portaldodgeball.screens.MainGameScreen;
 import com.mygdx.portaldodgeball.screens.MainMenu;
 
-public class PortalDodgeball extends Game {
+import java.util.ArrayList;
 
+public class PortalDodgeball extends Game {
+	public ArrayList<PowerUp> powerUps= new ArrayList<PowerUp>();
+	public ArrayList<PowerUp> deadPowerUps = new ArrayList<PowerUp>();
 	public static int WIDTH = 1600;
 	public static int HEIGHT = 900;
 	public static int FPS = 60;
