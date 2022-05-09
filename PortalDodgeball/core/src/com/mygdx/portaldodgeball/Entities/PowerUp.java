@@ -4,11 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.portaldodgeball.PortalDodgeball;
+import com.mygdx.portaldodgeball.screens.MainGameScreen;
 
 import java.util.Random;
 
 public class PowerUp {
-    int type;
+    public int type;
     Hitbox PUpHitbox;
     private float timeSeconds = 0f;
     private float period = 15f;
@@ -21,18 +22,21 @@ public class PowerUp {
 
     Random random = new Random();
 
-    PortalDodgeball game;
+    MainGameScreen game;
 
-    public PowerUp(int type, PortalDodgeball game, int map){
+    public PowerUp(int type, MainGameScreen game, int map, float x, float y){
         this.type = type;
         this.game = game;
-        this.PUpHitbox = new Hitbox(0    ,0   ,30,30);
+        this.PUpHitbox = new Hitbox(x    ,y   ,30,30);
         this.texture = new Texture("PowerUps/speedUp.png");
         this.map = map;
+        this.x = x;
+        this.y = y;
+
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        spriteBatch.draw(texture,x,y,10,10);
+        spriteBatch.draw(texture,x,y,30,30);
     }
 
     public boolean isLifeSpanOverPU() {
@@ -42,6 +46,27 @@ public class PowerUp {
             return true;
         }
         return false;
+    }
+
+    public Hitbox getHitbox(){
+        return this.PUpHitbox;
+    }
+
+    public static void powerUp(Player player, int type){
+        switch (type){
+
+            case 0:
+                if(!player.hasSpeed) {
+                player.speed *= 2;
+                player.hasSpeed = true;
+                }
+                break;
+            case 1:
+                player.hasShield = true;
+
+
+        }
+
     }
 
 }

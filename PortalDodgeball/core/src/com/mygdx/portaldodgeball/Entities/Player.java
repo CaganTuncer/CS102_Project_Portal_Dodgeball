@@ -25,9 +25,14 @@ public class Player extends Entity {
     public static ArrayList<Portal> thrownPortals = new ArrayList<Portal>();
     public Hitbox hitbox, up, right, left, down;
     public PortalDodgeball game;
+    public boolean hasShield;
+    public boolean hasSpeed;
 
     public Player(String name, PortalDodgeball game) {
         super();
+
+        hasShield = false;
+        hasSpeed = false;
 
         this.number = id;
 
@@ -425,39 +430,39 @@ public class Player extends Entity {
             if(hit){
                 if(this.absMove == 0){
                     this.canIncreaseX = false;
-                    this.x -= 4;
+                    this.x -= speed;
                 } else if (this.absMove == 1){
                     if(game.walls[j].wallRotation == 2){
-                        this.x -= 4;
+                        this.x -= speed;
                     } if (game.walls[j].wallRotation == 1){
-                        this.y -= 4;
+                        this.y -= speed;
                     }
                 } else if (this.absMove == 2) {
                     this.canIncreaseY = false;
-                    this.y -= 4;
+                    this.y -= speed;
                 } else if (this.absMove == 3) {
                     if(game.walls[j].wallRotation == 2){
-                        this.x += 4;
+                        this.x += speed;
                     } if(game.walls[j].wallRotation == 1){
-                        this.y -= 4;
+                        this.y -= speed;
                     }
                 } else if (this.absMove == 4) {
                     this.canDecreaseX = false;
-                    this.x += 4;
+                    this.x += speed;
                 } else if (this.absMove == 5) {
                     if(game.walls[j].wallRotation == 1){
-                        this.y += 4;
+                        this.y += speed;
                     } if(game.walls[j].wallRotation == 2){
-                        this.x += 4;
+                        this.x += speed;
                     }
                 }else if(this.absMove == 6) {
                     this.canDecreaseX = false;
-                    this.y += 4;
+                    this.y += speed;
                 } else if (this.absMove == 7){
                     if(game.walls[j].wallRotation == 1){
-                        this.y += 4;
+                        this.y += speed;
                     } if(game.walls[j].wallRotation == 2){
-                        this.x -= 4;
+                        this.x -= speed;
                     }
                 }
             } else {
@@ -474,39 +479,39 @@ public class Player extends Entity {
                 if(hit){
                     if(this.absMove == 0){
                         this.canIncreaseX = false;
-                        this.x -= 4;
+                        this.x -= speed;
                     } else if (this.absMove == 1){
                         if(this.hitbox.collidesWith(game.players[i].left)){
-                            this.x -= 4;
+                            this.x -= speed;
                         } if (this.hitbox.collidesWith(game.players[i].down)){
-                            this.y -= 4;
+                            this.y -= speed;
                         }
                     } else if (this.absMove == 2) {
                         this.canIncreaseY = false;
-                        this.y -= 4;
+                        this.y -= speed;
                     } else if (this.absMove == 3) {
                         if(this.hitbox.collidesWith(game.players[i].right)){
-                            this.x += 4;
+                            this.x += speed;
                         } if(this.hitbox.collidesWith(game.players[i].down)){
-                            this.y -= 4;
+                            this.y -= speed;
                         }
                     } else if (this.absMove == 4) {
                         this.canDecreaseX = false;
-                        this.x += 4;
+                        this.x += speed;
                     } else if (this.absMove == 5) {
                         if(this.hitbox.collidesWith(game.players[i].up)){
-                            this.y += 4;
+                            this.y += speed;
                         } if(this.hitbox.collidesWith(game.players[i].right)){
-                            this.x += 4;
+                            this.x += speed;
                         }
                     }else if(this.absMove == 6) {
                         this.canDecreaseX = false;
-                        this.y += 4;
+                        this.y += speed;
                     } else if (this.absMove == 7){
                         if(this.hitbox.collidesWith(game.players[i].up)){
-                            this.y += 4;
+                            this.y += speed;
                         } if(this.hitbox.collidesWith(game.players[i].left)){
-                            this.x -= 4;
+                            this.x -= speed;
                         }
                     }
                 } else {
