@@ -22,6 +22,7 @@ public class Portal extends Entity{
     private float timeSeconds = 0f;
     private float period = 5f;
     Hitbox hitbox;
+    public boolean isStill = false;
 
 
     public Portal(final Player player, float angle, int x, int y){
@@ -30,14 +31,21 @@ public class Portal extends Entity{
         this.player = player;
         this.angle = angle;
 
+
         this.hitbox = new Hitbox(x, y,10,10);
         //texture = new Texture("Players/Player 1/player3.png");
         texture = new Texture("PowerUps/shield.png");
+        if(isStill){
+            SIDE_SPEED = 0;
+            isStill = false;
+        }
     }
 
     public void update(float delta){
         hitbox.x += (SIDE_SPEED * (float)Math.cos(angle) * delta);
         hitbox.y += (SIDE_SPEED * (float)Math.sin(angle) * delta);
+        x += (SIDE_SPEED * (float)Math.cos(angle) * delta);
+        y += (SIDE_SPEED * (float)Math.sin(angle) * delta);
         time -= delta;
     }
 

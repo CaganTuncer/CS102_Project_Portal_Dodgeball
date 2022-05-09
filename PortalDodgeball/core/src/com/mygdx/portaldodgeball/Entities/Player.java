@@ -23,8 +23,13 @@ public class Player extends Entity {
     public ArrayList<Portal> portals = new ArrayList<Portal>();
     public static ArrayList<Ball> deadBalls = new ArrayList<Ball>();
     public static ArrayList<Portal> thrownPortals = new ArrayList<Portal>();
+    public ArrayList<StillPortal> stillPortals = new ArrayList<StillPortal>();
+    public static ArrayList<StillPortal > deadStill = new ArrayList<StillPortal>();
+    ArrayList<Integer> indexes  = new ArrayList<>();
     public Hitbox hitbox, up, right, left, down;
     public PortalDodgeball game;
+    public int portalLimit = -1;
+    public boolean canDispose = false;
 
     public Player(String name, PortalDodgeball game) {
         super();

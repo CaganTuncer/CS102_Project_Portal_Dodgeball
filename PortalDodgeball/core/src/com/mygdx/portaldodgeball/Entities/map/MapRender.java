@@ -7,10 +7,9 @@ public class MapRender {
     public Wall[] walls = new Wall[5];
     // x , y , height , width
     public int[][] map1 = {
-                            {50,50,9,1500},
                             {50,50,700,9},
                             {1541,50,700,9},
-                            {50,741,9,1500},
+                            {50,741,9,1500},{50,50,9,1500},
                             {1441,50,100,9}};
     public MapRender(int aChoice){
         mapChoice = aChoice;
@@ -20,7 +19,7 @@ public class MapRender {
             int y = map[i][1];
             int height = map[i][2];
             int width = map[i][3];
-            walls[i] = new Wall(x,y,width,height);
+            walls[i] = new Wall( x , y ,width,height);
         }
     }
     public int[][] returnMap(){
