@@ -421,7 +421,7 @@ public class Player extends Entity {
     public void check(){
 
         for(int j = 0; j < game.walls.length; j++) {
-            boolean hit = this.hitbox.collidesWidth((game.walls[j].wallHitbox));
+            boolean hit = this.hitbox.collidesWith((game.walls[j].wallHitbox));
             if(hit){
                 if(this.absMove == 0){
                     this.canIncreaseX = false;
@@ -470,42 +470,42 @@ public class Player extends Entity {
 
         for(int i = 0; i < game.players.length; i++){
             if(game.players[i] != this){
-                boolean hit = this.hitbox.collidesWidth(game.players[i].hitbox);
+                boolean hit = this.hitbox.collidesWith(game.players[i].hitbox);
                 if(hit){
                     if(this.absMove == 0){
                         this.canIncreaseX = false;
                         this.x -= 4;
                     } else if (this.absMove == 1){
-                        if(this.hitbox.collidesWidth(game.players[i].left)){
+                        if(this.hitbox.collidesWith(game.players[i].left)){
                             this.x -= 4;
-                        } if (this.hitbox.collidesWidth(game.players[i].down)){
+                        } if (this.hitbox.collidesWith(game.players[i].down)){
                             this.y -= 4;
                         }
                     } else if (this.absMove == 2) {
                         this.canIncreaseY = false;
                         this.y -= 4;
                     } else if (this.absMove == 3) {
-                        if(this.hitbox.collidesWidth(game.players[i].right)){
+                        if(this.hitbox.collidesWith(game.players[i].right)){
                             this.x += 4;
-                        } if(this.hitbox.collidesWidth(game.players[i].down)){
+                        } if(this.hitbox.collidesWith(game.players[i].down)){
                             this.y -= 4;
                         }
                     } else if (this.absMove == 4) {
                         this.canDecreaseX = false;
                         this.x += 4;
                     } else if (this.absMove == 5) {
-                        if(this.hitbox.collidesWidth(game.players[i].up)){
+                        if(this.hitbox.collidesWith(game.players[i].up)){
                             this.y += 4;
-                        } if(this.hitbox.collidesWidth(game.players[i].right)){
+                        } if(this.hitbox.collidesWith(game.players[i].right)){
                             this.x += 4;
                         }
                     }else if(this.absMove == 6) {
                         this.canDecreaseX = false;
                         this.y += 4;
                     } else if (this.absMove == 7){
-                        if(this.hitbox.collidesWidth(game.players[i].up)){
+                        if(this.hitbox.collidesWith(game.players[i].up)){
                             this.y += 4;
-                        } if(this.hitbox.collidesWidth(game.players[i].left)){
+                        } if(this.hitbox.collidesWith(game.players[i].left)){
                             this.x -= 4;
                         }
                     }
@@ -529,35 +529,35 @@ public class Player extends Entity {
             switch (direction){
 
                 case 0:
-                    Ball ball1 = new Ball(this, (float) Math.toRadians(0), this.x + 40,this.y + 15);
+                    Ball ball1 = new Ball(this, 0, this.x + 40,this.y + 15);
                     balls.add(ball1);
                     break;
                 case 1:
-                    Ball ball2 = new Ball(this, (float) Math.toRadians(45), this.x + 40,this.y + 40);
+                    Ball ball2 = new Ball(this, 45, this.x + 40,this.y + 40);
                     balls.add(ball2);
                     break;
                 case 2:
-                    Ball ball3 = new Ball(this, (float) Math.toRadians(90), this.x + 10,this.y + 40);
+                    Ball ball3 = new Ball(this, 90 , this.x + 10,this.y + 40);
                     balls.add(ball3);
                     break;
                 case 3:
-                    Ball ball4 = new Ball(this, (float) Math.toRadians(135), this.x,this.y + 40);
+                    Ball ball4 = new Ball(this, 135, this.x,this.y + 40);
                     balls.add(ball4);
                     break;
                 case 4:
-                    Ball ball5 = new Ball(this, (float) Math.toRadians(180), this.x - 11,this.y + 15);
+                    Ball ball5 = new Ball(this, 180, this.x - 11,this.y + 15);
                     balls.add(ball5);
                     break;
                 case 5:
-                    Ball ball6 = new Ball(this, (float) Math.toRadians(225), this.x - 11,this.y - 10);
+                    Ball ball6 = new Ball(this, 225, this.x - 11,this.y - 10);
                     balls.add(ball6);
                     break;
                 case 6:
-                    Ball ball7 = new Ball(this, (float) Math.toRadians(270), this.x + 10,this.y - 11);
+                    Ball ball7 = new Ball(this, 270, this.x + 10,this.y - 11);
                     balls.add(ball7);
                     break;
                 case 7:
-                    Ball ball8 = new Ball(this, (float) Math.toRadians(315), this.x + 40,this.y);
+                    Ball ball8 = new Ball(this, 315, this.x + 40,this.y);
                     balls.add(ball8);
                     break;
 

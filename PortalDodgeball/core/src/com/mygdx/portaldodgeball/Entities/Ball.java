@@ -1,18 +1,13 @@
 package com.mygdx.portaldodgeball.Entities;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Timer;
-
-import java.awt.*;
 
 public class Ball extends Entity{
 
     public float angle,time;
-    public int SIDE_SPEED = 250;
+    public int ballSpeed = 250;
     public Player player;
     public Texture texture;
 
@@ -32,8 +27,9 @@ public class Ball extends Entity{
 
     }
     public void update(float delta){
-        hitbox.x += (SIDE_SPEED * (float)Math.cos(angle) * delta);
-        hitbox.y += (SIDE_SPEED * (float)Math.sin(angle) * delta);
+
+        hitbox.x += (ballSpeed * (float)Math.cos(Math.toRadians(angle)) * delta);
+        hitbox.y += (ballSpeed * (float)Math.sin(Math.toRadians(angle)) * delta);
         time -= delta;
     }
     public Hitbox getHitbox(){

@@ -18,7 +18,7 @@ public class Hitbox {
         this.y = y;
     }
 
-    public boolean collidesWidth(Hitbox hitbox){
+    public boolean collidesWith(Hitbox hitbox){
         return this.x < hitbox.x + hitbox.width && this.y < hitbox.y + hitbox.height && this.x + this.width > hitbox.x && this.y + this.height > hitbox.y;
     }
 }
