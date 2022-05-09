@@ -8,12 +8,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
+import com.mygdx.portaldodgeball.Entities.Portal;
 import com.mygdx.portaldodgeball.Entities.map.MapRender;
 import com.mygdx.portaldodgeball.PortalDodgeball;
-import com.sun.org.apache.bcel.internal.generic.BALOAD;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class MainGameScreen implements Screen {
 
@@ -71,17 +68,49 @@ public class MainGameScreen implements Screen {
                 if(ball.isLifeSpanOver() == true){
                     Player.deadBalls.add(ball);
                 }
-
                 for(int j = 0; j < game.players.length; j++ ){
-                    if(ball.getHitbox().collidesWidth(game.players[j].hitbox)){
+                    if(ball.getHitbox().collidesWith(game.players[j].hitbox)){
                         Player.deadBalls.add(ball);
                         game.players[j].setTexture("Players/Player 3/player0.png");
                     }
                 }
 
+                for (int j = 0; j < game.walls.length; j++) {
+
+                    if(ball.getHitbox().collidesWith(game.walls[j].wallHitbox)){
+
+                        if(ball.angle == 0){
+                            ball.angle = 180;
+                        } else if (ball.angle == 45 && game.walls[j].wallRotation == 1) {
+                            ball.angle = 315;
+                        }else if (ball.angle == 45 && game.walls[j].wallRotation == 2) {
+                            ball.angle = 135;
+                        }else if (ball.angle == 90) {
+                            ball.angle = 270;
+                        }else if (ball.angle == 135 && game.walls[j].wallRotation == 1) {
+                            ball.angle = 225;
+                        }else if (ball.angle == 135 && game.walls[j].wallRotation == 2) {
+                            ball.angle = 45;
+                        }else if (ball.angle == 180) {
+                            ball.angle = 0;
+                        }else if (ball.angle == 225 && game.walls[j].wallRotation == 1) {
+                            ball.angle = 135;
+                        }else if (ball.angle == 225 && game.walls[j].wallRotation == 2) {
+                            ball.angle = 315;
+                        }else if (ball.angle == 270) {
+                            ball.angle = 90;
+                        }else if (ball.angle == 315 && game.walls[j].wallRotation == 1) {
+                            ball.angle = 45;
+                        }else if (ball.angle == 315 && game.walls[j].wallRotation == 2) {
+                            ball.angle = 225;
+                        }
+
+
+                    }
+                }
+
             }
         }
-
         for(int i = 0; i < game.players.length; i++){
             game.players[i].balls.removeAll(Player.deadBalls);
         }
@@ -97,8 +126,8 @@ public class MainGameScreen implements Screen {
 
         for(int i = 0; i < game.players.length; i++){
             game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
-            for (Ball ball: game.players[i].balls) {
-                    ball.draw(game.batch);
+            for (Portal portal:  game.players[i].portals) {
+                portal.draw(game.batch);
             }
         }
 
@@ -132,15 +161,18 @@ public class MainGameScreen implements Screen {
             }
         }
 
-
         for(int i = 0; i < game.players.length; i++){
             for (Ball ball: game.players[i].balls) {
                 ball.update(Gdx.graphics.getDeltaTime());
             }
         }
 
+        for(int i = 0; i < game.players.length; i++){
 
-
+            for (Portal portal: game.players[i].portals) {
+                portal.update(Gdx.graphics.getDeltaTime());
+            }
+        }
 
     }
 
