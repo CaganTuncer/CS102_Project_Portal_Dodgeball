@@ -26,17 +26,20 @@ public class StillPortal {
         texture = new Texture("PowerUps/speedUp.png");
     }
     public void Alternator(){
-        this.player.indexes.add(player.portalLimit);
-        if(this.player.portalLimit == 2){
-            Selector();
-            this.player.portalLimit = -1;
-        }
         this.player.portalLimit++;
+        this.player.indexes.add(this.player.portalLimit);
+        this.player.indexes.add(player.portalLimit);
+        if(this.player.portalLimit >= 2){
+            Selector();
+        }
     }
     public void Selector(){
-        int i = this.player.indexes.indexOf(2);
+        /*int i = this.player.indexes.indexOf(2);
         this.player.indexes.set(i,0);
         Player.deadStill.add(this.player.stillPortals.get(i-2));
+        this.player.canDispose = true;*/
+        Player.deadStill.add(this.player.stillPortals.get(0));
+        this.player.stillPortals.remove(0);
         this.player.canDispose = true;
     }
     public Hitbox getHitbox(){

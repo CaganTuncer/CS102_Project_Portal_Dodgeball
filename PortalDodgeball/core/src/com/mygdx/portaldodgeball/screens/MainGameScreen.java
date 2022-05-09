@@ -90,10 +90,9 @@ public class MainGameScreen implements Screen {
             for (Portal portal: game.players[i].portals) {
                 for(int j = 0; j < game.walls.length; j++ ){
                     if(portal.getHitbox().collidesWidth(game.walls[j].wallHitbox)){
-                        StillPortal still = new StillPortal(game.players[i], portal.x, portal.y);
+                        StillPortal still = new StillPortal(game.players[i], portal.x + Math.round(portal.xChange), portal.y + Math.round(portal.yChange));
                         Player.thrownPortals.add(portal);
                         game.players[i].stillPortals.add(still);
-                        System.out.println("test");
                         still.Alternator();
                     }
                 }
@@ -102,6 +101,7 @@ public class MainGameScreen implements Screen {
         for(int i = 0; i < game.players.length; i++){
             game.players[i].portals.removeAll(Player.thrownPortals);
         }
+
         for(int i = 0; i < game.players.length; i++){
             if(game.players[i].canDispose){
                 game.players[i].stillPortals.removeAll(Player.deadStill);

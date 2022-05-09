@@ -12,7 +12,9 @@ import com.badlogic.gdx.utils.Timer;
 
 public class Portal extends Entity{
     public int x;
+    public float xChange =0;
     public int y;
+    public float yChange=0;
     public float angle,time;
     public int SIDE_SPEED = 250;
     public Player player;
@@ -21,7 +23,7 @@ public class Portal extends Entity{
 
     private float timeSeconds = 0f;
     private float period = 5f;
-    Hitbox hitbox;
+    public Hitbox hitbox;
     public boolean isStill = false;
 
 
@@ -30,7 +32,6 @@ public class Portal extends Entity{
         this.y = y;
         this.player = player;
         this.angle = angle;
-
 
         this.hitbox = new Hitbox(x, y,10,10);
         //texture = new Texture("Players/Player 1/player3.png");
@@ -44,8 +45,8 @@ public class Portal extends Entity{
     public void update(float delta){
         hitbox.x += (SIDE_SPEED * (float)Math.cos(angle) * delta);
         hitbox.y += (SIDE_SPEED * (float)Math.sin(angle) * delta);
-        x += (SIDE_SPEED * (float)Math.cos(angle) * delta);
-        y += (SIDE_SPEED * (float)Math.sin(angle) * delta);
+        xChange += (SIDE_SPEED * (float)Math.cos(angle) * delta);
+        yChange += (SIDE_SPEED * (float)Math.sin(angle) * delta);
         time -= delta;
     }
 
@@ -54,15 +55,6 @@ public class Portal extends Entity{
     }
     public void draw(SpriteBatch spriteBatch) {
         spriteBatch.draw(texture,hitbox.x,hitbox.y,10,10);
-    }
-
-    public boolean isLifeSpanOver() {
-        timeSeconds += Gdx.graphics.getDeltaTime();
-        if (timeSeconds > period) {
-            timeSeconds -= period;
-            return true;
-        }
-        return false;
     }
 
 }
