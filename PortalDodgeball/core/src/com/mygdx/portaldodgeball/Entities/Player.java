@@ -20,7 +20,9 @@ public class Player extends Entity {
     //int array to keep the numeric representation of the key pressed, for further use on player movement
     public int[] keys;
     public ArrayList<Ball> balls = new ArrayList<Ball>();
+    public ArrayList<Portal> portals = new ArrayList<Portal>();
     public static ArrayList<Ball> deadBalls = new ArrayList<Ball>();
+    public static ArrayList<Portal> thrownPortals = new ArrayList<Portal>();
     public Hitbox hitbox, up, right, left, down;
     public PortalDodgeball game;
 
@@ -108,6 +110,7 @@ public class Player extends Entity {
     //general control and action methods to generate player movement
     public void move(){
         throwBall();
+        portal();
         this.timeSinceInput += Gdx.graphics.getDeltaTime();
         if(timeSinceInput > 0.2f){
             if(Gdx.input.isKeyPressed(keys[3])){
@@ -526,8 +529,8 @@ public class Player extends Entity {
             switch (direction){
 
                 case 0:
-                    Ball ball = new Ball(this, (float) Math.toRadians(0), this.x + 40,this.y + 15);
-                    balls.add(ball);
+                    Ball ball1 = new Ball(this, (float) Math.toRadians(0), this.x + 40,this.y + 15);
+                    balls.add(ball1);
                     break;
                 case 1:
                     Ball ball2 = new Ball(this, (float) Math.toRadians(45), this.x + 40,this.y + 40);
@@ -562,7 +565,45 @@ public class Player extends Entity {
         }
     }
 
-    public void portal(){}
+    public void portal(){
+        if(Gdx.input.isKeyJustPressed(this.keys[5])){
+            switch (direction){
+                case 0:
+                    Portal p1 = new Portal(this, (float) Math.toRadians(0), this.x + 40,this.y + 15);
+                    portals.add(p1);
+                    break;
+                case 1:
+                    Portal p2 = new Portal(this, (float) Math.toRadians(45), this.x + 40,this.y + 40);
+                    portals.add(p2);
+                    break;
+                case 2:
+                    Portal p3 = new Portal(this, (float) Math.toRadians(90), this.x + 10,this.y + 40);
+                    portals.add(p3);
+                    break;
+                case 3:
+                    Portal p4 = new Portal(this, (float) Math.toRadians(135), this.x,this.y + 40);
+                    portals.add(p4);
+                    break;
+                case 4:
+                    Portal p5 = new Portal(this, (float) Math.toRadians(180), this.x - 11,this.y + 15);
+                    portals.add(p5);
+                    break;
+                case 5:
+                    Portal p6 = new Portal(this, (float) Math.toRadians(225), this.x - 11,this.y - 10);
+                    portals.add(p6);
+                    break;
+                case 6:
+                    Portal p7 = new Portal(this, (float) Math.toRadians(270), this.x + 10,this.y - 11);
+                    portals.add(p7);
+                    break;
+                case 7:
+                    Portal p8 = new Portal(this, (float) Math.toRadians(315), this.x + 40,this.y);
+                    portals.add(p8);
+                    break;
+
+            }
+        }
+    }
 
     public void powerUp(){}
 

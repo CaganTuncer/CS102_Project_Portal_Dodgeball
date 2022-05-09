@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
+import com.mygdx.portaldodgeball.Entities.Portal;
 import com.mygdx.portaldodgeball.Entities.map.MapRender;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import com.sun.org.apache.bcel.internal.generic.BALOAD;
@@ -71,7 +72,6 @@ public class MainGameScreen implements Screen {
                 if(ball.isLifeSpanOver() == true){
                     Player.deadBalls.add(ball);
                 }
-
                 for(int j = 0; j < game.players.length; j++ ){
                     if(ball.getHitbox().collidesWidth(game.players[j].hitbox)){
                         Player.deadBalls.add(ball);
@@ -81,12 +81,26 @@ public class MainGameScreen implements Screen {
 
             }
         }
-
         for(int i = 0; i < game.players.length; i++){
             game.players[i].balls.removeAll(Player.deadBalls);
         }
+        /*
+        for(int i = 0; i < game.players.length; i++){
+            for (Portal portal: game.players[i].portals) {
 
+                for(int j = 0; j < game.players.length; j++ ){
+                    if(portal.getHitbox().collidesWidth(game.players[j].hitbox)){
+                        Player.thrownPortals.add(portal);
+                        game.players[j].setTexture("Players/Player 3/player0.png");
+                    }
+                }
 
+            }
+        }
+
+        for(int i = 0; i < game.players.length; i++){
+            game.players[i].portals.removeAll(Player.thrownPortals);
+        }*/
 
         for(int i = 0; i < game.players.length; i++){
             game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
@@ -97,8 +111,8 @@ public class MainGameScreen implements Screen {
 
         for(int i = 0; i < game.players.length; i++){
             game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
-            for (Ball ball: game.players[i].balls) {
-                    ball.draw(game.batch);
+            for (Portal portal:  game.players[i].portals) {
+                portal.draw(game.batch);
             }
         }
 
@@ -132,15 +146,18 @@ public class MainGameScreen implements Screen {
             }
         }
 
-
         for(int i = 0; i < game.players.length; i++){
             for (Ball ball: game.players[i].balls) {
                 ball.update(Gdx.graphics.getDeltaTime());
             }
         }
 
+        for(int i = 0; i < game.players.length; i++){
 
-
+            for (Portal portal: game.players[i].portals) {
+                portal.update(Gdx.graphics.getDeltaTime());
+            }
+        }
 
     }
 
