@@ -108,10 +108,10 @@ public class Player extends Entity {
         this.timeSinceInput = 0;
         this.speed = 4;
         this.hitbox = new Hitbox(this.x - 1, this.y -1 , 40, 40);
-        this.up = new Hitbox(this.x, this.y + 39, 39, 1);
-        this.right = new Hitbox(this.x + 39, this.y, 1, 39);
-        this.down = new Hitbox(this.x, this.y - 1, 39, 1);
-        this.left = new Hitbox(this.x - 1, this.y, 1, 39);
+        this.up = new Hitbox(this.x + 3, this.y + 39, 30, 1);
+        this.right = new Hitbox(this.x + 39, this.y + 3, 1, 30);
+        this.down = new Hitbox(this.x + 3, this.y - 1, 30, 1);
+        this.left = new Hitbox(this.x - 1, this.y + 3, 1, 30);
 
         this.limits = new int[] {0, 1600, 0, 900};
 
