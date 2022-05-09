@@ -84,6 +84,9 @@ public class Player extends Entity {
                 this.x = 100;
                 this.y = 100;
                 break;
+            case 2:
+                this.x = 240;
+                this.y = 240;
         }
 
         this.direction = 0;
