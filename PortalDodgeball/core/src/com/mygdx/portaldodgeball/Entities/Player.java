@@ -3,6 +3,7 @@ package com.mygdx.portaldodgeball.Entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.mygdx.portaldodgeball.Entities.map.Wall;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import java.util.ArrayList;
 
@@ -419,41 +420,54 @@ public class Player extends Entity {
 
         for(int j = 0; j < game.walls.length; j++) {
             boolean hit = this.hitbox.collidesWidth((game.walls[j].wallHitbox));
+
             if(hit){
+                Wall aWall = game.walls[j];
+                int Rotat = aWall.wallRotation;
+/*                if((this.hitbox.collidesWidth(aWall.wallEdgeHb1)||this.hitbox.collidesWidth(aWall.wallEdgeHb2)) && !this.hitbox.collidesWidth(aWall.wallHitbox)){
+                    if(Rotat==1){
+                        Rotat = 2;
+                    }
+                    else{
+                        Rotat = 1;
+                    }
+                }
+*/
+
                 if(this.absMove == 0){
                     this.canIncreaseX = false;
                     this.x -= 4;
                 } else if (this.absMove == 1){
-                    if(game.walls[j].wallRotation == 2){
+                    if(right.collidesWidth(aWall.wallHitbox)){
                         this.x -= 4;
-                    } if (game.walls[j].wallRotation == 1){
+                    } else if (up.collidesWidth(aWall.wallHitbox)){
                         this.y -= 4;
                     }
                 } else if (this.absMove == 2) {
                     this.canIncreaseY = false;
                     this.y -= 4;
                 } else if (this.absMove == 3) {
-                    if(game.walls[j].wallRotation == 2){
+                    if(left.collidesWidth(aWall.wallHitbox)){
                         this.x += 4;
-                    } if(game.walls[j].wallRotation == 1){
+                    } else if(up.collidesWidth(aWall.wallHitbox)){
                         this.y -= 4;
                     }
                 } else if (this.absMove == 4) {
                     this.canDecreaseX = false;
                     this.x += 4;
                 } else if (this.absMove == 5) {
-                    if(game.walls[j].wallRotation == 1){
+                    if(down.collidesWidth(aWall.wallHitbox)){
                         this.y += 4;
-                    } if(game.walls[j].wallRotation == 2){
+                    } else if(left.collidesWidth(aWall.wallHitbox)){
                         this.x += 4;
                     }
                 }else if(this.absMove == 6) {
                     this.canDecreaseX = false;
                     this.y += 4;
                 } else if (this.absMove == 7){
-                    if(game.walls[j].wallRotation == 1){
+                    if(down.collidesWidth(aWall.wallHitbox)){
                         this.y += 4;
-                    } if(game.walls[j].wallRotation == 2){
+                    } else if(right.collidesWidth(aWall.wallHitbox)){
                         this.x -= 4;
                     }
                 }
