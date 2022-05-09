@@ -23,7 +23,7 @@ public class Ball extends Entity{
         this.hitbox = new Hitbox(x, y,10,10);
 
         this.angle = angle;
-        texture = new Texture("Players/Player 1/player3.png");
+        texture = player.texture;
 
     }
     public void update(float delta){

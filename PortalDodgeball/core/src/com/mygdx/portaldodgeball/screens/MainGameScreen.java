@@ -70,7 +70,7 @@ public class MainGameScreen implements Screen {
                     Player.deadBalls.add(ball);
                 }
                 for(int j = 0; j < game.players.length; j++ ){
-                    if(ball.getHitbox().collidesWith(game.players[j].hitbox)){
+                    if(ball.getHitbox().collidesWith(game.players[j].hitbox) && ball.player != game.players[j]){
                         Player.deadBalls.add(ball);
                         if(!game.players[j].hasShield){
                             game.players[j].setTexture("Players/Player 3/player0.png");
