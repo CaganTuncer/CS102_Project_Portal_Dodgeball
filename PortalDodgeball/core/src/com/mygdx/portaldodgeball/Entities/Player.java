@@ -31,7 +31,7 @@ public class Player extends Entity {
 
     public float THROW_INTERVAL = 5f;
     public int BALL_AMMO = 6;
-    public float RELOAD = 3f;
+    public float RELOAD = 5f;
     Timer throwTimer;
 
     public Player(String name, PortalDodgeball game) {
@@ -548,35 +548,35 @@ public class Player extends Entity {
                 switch (direction) {
 
                     case 0:
-                        Ball ball1 = new Ball(this, 0, this.x + 40, this.y + 15);
+                        Ball ball1 = new Ball(this, 0, this.x, this.y);
                         balls.add(ball1);
                         break;
                     case 1:
-                        Ball ball2 = new Ball(this, 45, this.x + 40, this.y + 40);
+                        Ball ball2 = new Ball(this, 45, this.x , this.y );
                         balls.add(ball2);
                         break;
                     case 2:
-                        Ball ball3 = new Ball(this, 90, this.x + 10, this.y + 40);
+                        Ball ball3 = new Ball(this, 90, this.x , this.y );
                         balls.add(ball3);
                         break;
                     case 3:
-                        Ball ball4 = new Ball(this, 135, this.x, this.y + 40);
+                        Ball ball4 = new Ball(this, 135, this.x, this.y );
                         balls.add(ball4);
                         break;
                     case 4:
-                        Ball ball5 = new Ball(this, 180, this.x - 11, this.y + 15);
+                        Ball ball5 = new Ball(this, 180, this.x , this.y );
                         balls.add(ball5);
                         break;
                     case 5:
-                        Ball ball6 = new Ball(this, 225, this.x - 11, this.y - 10);
+                        Ball ball6 = new Ball(this, 225, this.x , this.y );
                         balls.add(ball6);
                         break;
                     case 6:
-                        Ball ball7 = new Ball(this, 270, this.x + 10, this.y - 11);
+                        Ball ball7 = new Ball(this, 270, this.x , this.y );
                         balls.add(ball7);
                         break;
                     case 7:
-                        Ball ball8 = new Ball(this, 315, this.x + 40, this.y);
+                        Ball ball8 = new Ball(this, 315, this.x , this.y);
                         balls.add(ball8);
                         break;
                 }
