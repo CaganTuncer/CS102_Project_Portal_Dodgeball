@@ -1,10 +1,12 @@
 package com.mygdx.portaldodgeball.Entities.map;
 
 import com.badlogic.gdx.Game;
+import com.sun.org.apache.bcel.internal.generic.SWITCH;
 
 public class MapRender {
     public int mapChoice;
     public Wall[] walls = new Wall[20];
+    public int[][] map;
     // x , y , height , width
     public int[][] map1 = {
             {50,50,9,1500},
@@ -16,8 +18,8 @@ public class MapRender {
             {100,450,9,180},
             {500,150,9,250},
             {420,350,9,180},
-            {480,530,200,9},
-            {450,550,141,9},
+            {480,550,200,9},
+            {350,550,150,9},
             {150,600,9,150},
             {650,600,9,150},
             {700,400,100,9},
@@ -70,8 +72,19 @@ public class MapRender {
             {1391,400,9,150},
             {1391,600,9,150}};
     public MapRender(int aChoice){
-        mapChoice = aChoice;
-        int[][] map = map1;
+        switch(aChoice) {
+            case 1:
+                map = map1;
+                break;
+            case 2:
+                map = map2;
+                break;
+            case 3:
+                map = map3;
+                break;
+        }
+
+        map = map1;
         for(int i = 0; i < map.length; i++) {
             int x = map[i][0];
             int y = map[i][1];
@@ -81,6 +94,6 @@ public class MapRender {
         }
     }
     public int[][] returnMap(){
-        return map1;
+        return map;
     }
 }

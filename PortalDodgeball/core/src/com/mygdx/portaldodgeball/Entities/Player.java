@@ -440,8 +440,10 @@ public class Player extends Entity {
                 } else if (this.absMove == 1){
                     if(right.collidesWidth(aWall.wallHitbox)){
                         this.x -= 4;
+                        this.canIncreaseX = false;
                     } else if (up.collidesWidth(aWall.wallHitbox)){
                         this.y -= 4;
+                        this.canIncreaseY = false;
                     }
                 } else if (this.absMove == 2) {
                     this.canIncreaseY = false;
@@ -449,8 +451,10 @@ public class Player extends Entity {
                 } else if (this.absMove == 3) {
                     if(left.collidesWidth(aWall.wallHitbox)){
                         this.x += 4;
+                        this.canDecreaseX = false;
                     } else if(up.collidesWidth(aWall.wallHitbox)){
                         this.y -= 4;
+                        this.canIncreaseY = false;
                     }
                 } else if (this.absMove == 4) {
                     this.canDecreaseX = false;
@@ -458,17 +462,21 @@ public class Player extends Entity {
                 } else if (this.absMove == 5) {
                     if(down.collidesWidth(aWall.wallHitbox)){
                         this.y += 4;
+                        this.canDecreaseY = false;
                     } else if(left.collidesWidth(aWall.wallHitbox)){
                         this.x += 4;
+                        this.canDecreaseX = false;
                     }
                 }else if(this.absMove == 6) {
-                    this.canDecreaseX = false;
+                    this.canDecreaseY = false;
                     this.y += 4;
                 } else if (this.absMove == 7){
                     if(down.collidesWidth(aWall.wallHitbox)){
                         this.y += 4;
+                        this.canDecreaseY = false;
                     } else if(right.collidesWidth(aWall.wallHitbox)){
                         this.x -= 4;
+                        this.canIncreaseX = false;
                     }
                 }
             } else {
@@ -487,36 +495,36 @@ public class Player extends Entity {
                         this.canIncreaseX = false;
                         this.x -= 4;
                     } else if (this.absMove == 1){
-                        if(this.hitbox.collidesWidth(game.players[i].left)){
+                        if(this.hitbox.collidesWidth(game.players[i].right)){
                             this.x -= 4;
-                        } if (this.hitbox.collidesWidth(game.players[i].down)){
+                        } if (this.hitbox.collidesWidth(game.players[i].up)){
                             this.y -= 4;
                         }
                     } else if (this.absMove == 2) {
                         this.canIncreaseY = false;
                         this.y -= 4;
                     } else if (this.absMove == 3) {
-                        if(this.hitbox.collidesWidth(game.players[i].right)){
+                        if(this.hitbox.collidesWidth(game.players[i].left)){
                             this.x += 4;
-                        } if(this.hitbox.collidesWidth(game.players[i].down)){
+                        } if(this.hitbox.collidesWidth(game.players[i].up)){
                             this.y -= 4;
                         }
                     } else if (this.absMove == 4) {
                         this.canDecreaseX = false;
                         this.x += 4;
                     } else if (this.absMove == 5) {
-                        if(this.hitbox.collidesWidth(game.players[i].up)){
+                        if(this.hitbox.collidesWidth(game.players[i].down)){
                             this.y += 4;
-                        } if(this.hitbox.collidesWidth(game.players[i].right)){
+                        } if(this.hitbox.collidesWidth(game.players[i].left)){
                             this.x += 4;
                         }
                     }else if(this.absMove == 6) {
                         this.canDecreaseX = false;
                         this.y += 4;
                     } else if (this.absMove == 7){
-                        if(this.hitbox.collidesWidth(game.players[i].up)){
+                        if(this.hitbox.collidesWidth(game.players[i].down)){
                             this.y += 4;
-                        } if(this.hitbox.collidesWidth(game.players[i].left)){
+                        } if(this.hitbox.collidesWidth(game.players[i].right)){
                             this.x -= 4;
                         }
                     }

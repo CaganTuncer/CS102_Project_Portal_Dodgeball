@@ -22,7 +22,7 @@ public class Wall extends Entity {
     Texture wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
     public Wall(int Wx,int Wy, int Wwidth, int Wheight){
 
-        wallHitbox = new Hitbox(Wx-1,Wy-1,Wwidth+2,Wheight+2);
+        wallHitbox = new Hitbox(Wx,Wy,Wwidth,Wheight);
         if(Wwidth > Wheight){
             wallRotation = 1;
             wallEdgeHb1 = new Hitbox(Wx-4,Wy+2,4,4);

@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40889ef9-0a2e-40e0-8633-ee50b07264aa" name="Changes" comment="portal images added">
+    <list default="true" id="7a1416a2-97e4-4c0d-b7c0-105275c8a405" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/map/MapRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/map/MapRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/map/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/map/Wall.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/PortalDodgeball">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -18,7 +26,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="28oOxPlZRdiN94lP6P88OueiTcA" />
+  <component name="ProjectId" id="28w66t7WUEOK3w8J5WjNhBDhRJ1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -26,6 +34,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RunManager">
     <configuration name="DesktopLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -50,20 +59,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="40889ef9-0a2e-40e0-8633-ee50b07264aa" name="Changes" comment="" />
-      <created>1651879723904</created>
+      <changelist id="7a1416a2-97e4-4c0d-b7c0-105275c8a405" name="Changes" comment="" />
+      <created>1652115134350</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1651879723904</updated>
+      <updated>1652115134350</updated>
     </task>
-    <task id="LOCAL-00001" summary="portal images added">
-      <created>1652093994722</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1652093994722</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -76,9 +77,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="portal images added" />
-    <option name="LAST_COMMIT_MESSAGE" value="portal images added" />
   </component>
 </project>
