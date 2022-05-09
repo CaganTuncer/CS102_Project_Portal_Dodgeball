@@ -3,35 +3,42 @@ package com.mygdx.portaldodgeball.Entities;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Ball extends Entity{
-
+public class Portal extends Entity{
+    public int x;
+    public int y;
     public float angle,time;
-    public int ballSpeed = 250;
+    public int SIDE_SPEED = 250;
     public Player player;
     public Texture texture;
+    public Ball projectilePortal;
 
     private float timeSeconds = 0f;
     private float period = 5f;
     Hitbox hitbox;
 
 
-    public Ball(final Player player, float angle, int x, int y){
+    public Portal(final Player player, float angle, int x, int y){
+        this.x = x;
+        this.y = y;
         this.player = player;
-        this.x = player.x + 20 ;
-        this.y = player.y + 20;
-        this.hitbox = new Hitbox(this.x, this.y,10,10);
-
         this.angle = angle;
-        texture = player.texture;
 
+        this.hitbox = new Hitbox(x, y,10,10);
+        //texture = new Texture("Players/Player 1/player3.png");
+        texture = new Texture("PowerUps/shield.png");
     }
-    public void update(float delta){
 
-        hitbox.x += (ballSpeed * (float)Math.cos(Math.toRadians(angle)) * delta);
-        hitbox.y += (ballSpeed * (float)Math.sin(Math.toRadians(angle)) * delta);
+    public void update(float delta){
+        hitbox.x += (SIDE_SPEED * (float)Math.cos(angle) * delta);
+        hitbox.y += (SIDE_SPEED * (float)Math.sin(angle) * delta);
         time -= delta;
     }
+
     public Hitbox getHitbox(){
         return this.hitbox;
     }
@@ -47,4 +54,5 @@ public class Ball extends Entity{
         }
         return false;
     }
+
 }
