@@ -9,12 +9,16 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Player;
+import com.mygdx.portaldodgeball.Entities.PowerUp;
 import com.mygdx.portaldodgeball.Entities.map.Wall;
 import com.mygdx.portaldodgeball.screens.MainGameScreen;
 import com.mygdx.portaldodgeball.screens.MainMenu;
 
-public class PortalDodgeball extends Game {
+import java.util.ArrayList;
 
+public class PortalDodgeball extends Game {
+	public ArrayList<PowerUp> powerUps= new ArrayList<PowerUp>();
+	public ArrayList<PowerUp> deadPowerUps = new ArrayList<PowerUp>();
 	public static int WIDTH = 1600;
 	public static int HEIGHT = 900;
 	public static int FPS = 60;
@@ -48,6 +52,12 @@ public class PortalDodgeball extends Game {
 		music.play();
 		this.players = new Player[0];
 		this.setScreen(new MainMenu(this));
+
+		this.powerUps.add(new PowerUp(1,this.mainGameScreen,0, 1000,350));
+		this.powerUps.add(new PowerUp(1,this.mainGameScreen,0, 700,500));
+		this.powerUps.add(new PowerUp(0,this.mainGameScreen,0, 1300,200));
+		this.powerUps.add(new PowerUp(0,this.mainGameScreen,0, 650,350));
+
 	}
 
 	@Override

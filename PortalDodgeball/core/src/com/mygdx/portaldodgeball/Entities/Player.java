@@ -3,9 +3,10 @@ package com.mygdx.portaldodgeball.Entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import java.util.ArrayList;
-
+import java.util.TimerTask;
 
 
 // Player class to initialize the player. Also contains related variables and methods
@@ -25,9 +26,27 @@ public class Player extends Entity {
     public static ArrayList<Portal> thrownPortals = new ArrayList<Portal>();
     public Hitbox hitbox, up, right, left, down;
     public PortalDodgeball game;
+    public boolean hasShield;
+    public boolean hasSpeed;
+
+    public float THROW_INTERVAL = 5f;
+    public int BALL_AMMO = 6;
+    public float RELOAD = 5f;
+    Timer throwTimer;
 
     public Player(String name, PortalDodgeball game) {
         super();
+
+        this.throwTimer = new Timer();
+        throwTimer.scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                BALL_AMMO = 6;
+            }
+        },THROW_INTERVAL,RELOAD);
+
+        hasShield = false;
+        hasSpeed = false;
 
         this.number = id;
 
@@ -425,39 +444,39 @@ public class Player extends Entity {
             if(hit){
                 if(this.absMove == 0){
                     this.canIncreaseX = false;
-                    this.x -= 4;
+                    this.x -= speed;
                 } else if (this.absMove == 1){
                     if(game.walls[j].wallRotation == 2){
-                        this.x -= 4;
+                        this.x -= speed;
                     } if (game.walls[j].wallRotation == 1){
-                        this.y -= 4;
+                        this.y -= speed;
                     }
                 } else if (this.absMove == 2) {
                     this.canIncreaseY = false;
-                    this.y -= 4;
+                    this.y -= speed;
                 } else if (this.absMove == 3) {
                     if(game.walls[j].wallRotation == 2){
-                        this.x += 4;
+                        this.x += speed;
                     } if(game.walls[j].wallRotation == 1){
-                        this.y -= 4;
+                        this.y -= speed;
                     }
                 } else if (this.absMove == 4) {
                     this.canDecreaseX = false;
-                    this.x += 4;
+                    this.x += speed;
                 } else if (this.absMove == 5) {
                     if(game.walls[j].wallRotation == 1){
-                        this.y += 4;
+                        this.y += speed;
                     } if(game.walls[j].wallRotation == 2){
-                        this.x += 4;
+                        this.x += speed;
                     }
                 }else if(this.absMove == 6) {
                     this.canDecreaseX = false;
-                    this.y += 4;
+                    this.y += speed;
                 } else if (this.absMove == 7){
                     if(game.walls[j].wallRotation == 1){
-                        this.y += 4;
+                        this.y += speed;
                     } if(game.walls[j].wallRotation == 2){
-                        this.x -= 4;
+                        this.x -= speed;
                     }
                 }
             } else {
@@ -474,39 +493,39 @@ public class Player extends Entity {
                 if(hit){
                     if(this.absMove == 0){
                         this.canIncreaseX = false;
-                        this.x -= 4;
+                        this.x -= speed;
                     } else if (this.absMove == 1){
                         if(this.hitbox.collidesWith(game.players[i].left)){
-                            this.x -= 4;
+                            this.x -= speed;
                         } if (this.hitbox.collidesWith(game.players[i].down)){
-                            this.y -= 4;
+                            this.y -= speed;
                         }
                     } else if (this.absMove == 2) {
                         this.canIncreaseY = false;
-                        this.y -= 4;
+                        this.y -= speed;
                     } else if (this.absMove == 3) {
                         if(this.hitbox.collidesWith(game.players[i].right)){
-                            this.x += 4;
+                            this.x += speed;
                         } if(this.hitbox.collidesWith(game.players[i].down)){
-                            this.y -= 4;
+                            this.y -= speed;
                         }
                     } else if (this.absMove == 4) {
                         this.canDecreaseX = false;
-                        this.x += 4;
+                        this.x += speed;
                     } else if (this.absMove == 5) {
                         if(this.hitbox.collidesWith(game.players[i].up)){
-                            this.y += 4;
+                            this.y += speed;
                         } if(this.hitbox.collidesWith(game.players[i].right)){
-                            this.x += 4;
+                            this.x += speed;
                         }
                     }else if(this.absMove == 6) {
                         this.canDecreaseX = false;
-                        this.y += 4;
+                        this.y += speed;
                     } else if (this.absMove == 7){
                         if(this.hitbox.collidesWith(game.players[i].up)){
-                            this.y += 4;
+                            this.y += speed;
                         } if(this.hitbox.collidesWith(game.players[i].left)){
-                            this.x -= 4;
+                            this.x -= speed;
                         }
                     }
                 } else {
@@ -524,43 +543,44 @@ public class Player extends Entity {
 
 
     public void throwBall(){
+        if(BALL_AMMO > 0) {
+            if (Gdx.input.isKeyJustPressed(this.keys[4])) {
+                switch (direction) {
 
-        if(Gdx.input.isKeyJustPressed(this.keys[4])){
-            switch (direction){
-
-                case 0:
-                    Ball ball1 = new Ball(this, 0, this.x + 40,this.y + 15);
-                    balls.add(ball1);
-                    break;
-                case 1:
-                    Ball ball2 = new Ball(this, 45, this.x + 40,this.y + 40);
-                    balls.add(ball2);
-                    break;
-                case 2:
-                    Ball ball3 = new Ball(this, 90 , this.x + 10,this.y + 40);
-                    balls.add(ball3);
-                    break;
-                case 3:
-                    Ball ball4 = new Ball(this, 135, this.x,this.y + 40);
-                    balls.add(ball4);
-                    break;
-                case 4:
-                    Ball ball5 = new Ball(this, 180, this.x - 11,this.y + 15);
-                    balls.add(ball5);
-                    break;
-                case 5:
-                    Ball ball6 = new Ball(this, 225, this.x - 11,this.y - 10);
-                    balls.add(ball6);
-                    break;
-                case 6:
-                    Ball ball7 = new Ball(this, 270, this.x + 10,this.y - 11);
-                    balls.add(ball7);
-                    break;
-                case 7:
-                    Ball ball8 = new Ball(this, 315, this.x + 40,this.y);
-                    balls.add(ball8);
-                    break;
-
+                    case 0:
+                        Ball ball1 = new Ball(this, 0, this.x, this.y);
+                        balls.add(ball1);
+                        break;
+                    case 1:
+                        Ball ball2 = new Ball(this, 45, this.x , this.y );
+                        balls.add(ball2);
+                        break;
+                    case 2:
+                        Ball ball3 = new Ball(this, 90, this.x , this.y );
+                        balls.add(ball3);
+                        break;
+                    case 3:
+                        Ball ball4 = new Ball(this, 135, this.x, this.y );
+                        balls.add(ball4);
+                        break;
+                    case 4:
+                        Ball ball5 = new Ball(this, 180, this.x , this.y );
+                        balls.add(ball5);
+                        break;
+                    case 5:
+                        Ball ball6 = new Ball(this, 225, this.x , this.y );
+                        balls.add(ball6);
+                        break;
+                    case 6:
+                        Ball ball7 = new Ball(this, 270, this.x , this.y );
+                        balls.add(ball7);
+                        break;
+                    case 7:
+                        Ball ball8 = new Ball(this, 315, this.x , this.y);
+                        balls.add(ball8);
+                        break;
+                }
+                BALL_AMMO --;
             }
         }
     }
@@ -604,9 +624,5 @@ public class Player extends Entity {
             }
         }
     }
-
-    public void powerUp(){}
-
-
 }
 

@@ -9,8 +9,11 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.Entities.Portal;
+import com.mygdx.portaldodgeball.Entities.PowerUp;
 import com.mygdx.portaldodgeball.Entities.map.MapRender;
 import com.mygdx.portaldodgeball.PortalDodgeball;
+
+import java.util.ArrayList;
 
 public class MainGameScreen implements Screen {
 
@@ -21,9 +24,7 @@ public class MainGameScreen implements Screen {
 
 
 
-    public MainGameScreen(PortalDodgeball game){
-        this.game = game;
-    }
+    public MainGameScreen(PortalDodgeball game){this.game = game;}
 
     @Override
     public void show() {
@@ -65,13 +66,18 @@ public class MainGameScreen implements Screen {
 
         for(int i = 0; i < game.players.length; i++){
             for (Ball ball: game.players[i].balls) {
-                if(ball.isLifeSpanOver() == true){
+                if(ball.isLifeSpanOver()){
                     Player.deadBalls.add(ball);
                 }
                 for(int j = 0; j < game.players.length; j++ ){
-                    if(ball.getHitbox().collidesWith(game.players[j].hitbox)){
+                    if(ball.getHitbox().collidesWith(game.players[j].hitbox) && ball.player != game.players[j]){
                         Player.deadBalls.add(ball);
-                        game.players[j].setTexture("Players/Player 3/player0.png");
+                        if(!game.players[j].hasShield){
+                            game.players[j].setTexture("Players/Player 3/player0.png");
+
+                        }else {
+                            game.players[j].hasShield = false;
+                        }
                     }
                 }
 
@@ -115,6 +121,28 @@ public class MainGameScreen implements Screen {
             game.players[i].balls.removeAll(Player.deadBalls);
         }
 
+        for (int i = 0; i < game.powerUps.size(); i++) {
+            game.powerUps.get(i).draw(game.batch);
+        }
+
+        for (int i = 0; i < game.players.length; i++) {
+            for (int j = 0; j < game.powerUps.size(); j++) {
+                if(game.players[i].hitbox.collidesWith(game.powerUps.get(j).getHitbox())){
+                    if(!game.players[i].hasSpeed || game.powerUps.get(j).type != 0) {
+                        PowerUp.powerUp(game.players[i], game.powerUps.get(j).type);
+                        game.deadPowerUps.add(game.powerUps.get(j));
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < game.powerUps.size(); i++) {
+            if(game.powerUps.get(i).isLifeSpanOverPU()){
+                game.deadPowerUps.add(game.powerUps.get(i));
+            }
+        }
+
+        game.powerUps.removeAll(game.deadPowerUps);
 
 
         for(int i = 0; i < game.players.length; i++){
@@ -144,20 +172,20 @@ public class MainGameScreen implements Screen {
         int WunitSize = 3;
         Texture wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
         game.walls = g.walls;
-        for(int i = 0; i < map.length; i++){
-            int Wx = map[i][0];
-            int Wy= map[i][1];
-            int Wheight = map[i][2];
-            int Wwidth = map[i][3];
+        for (int[] ints : map) {
+            int Wx = ints[0];
+            int Wy = ints[1];
+            int Wheight = ints[2];
+            int Wwidth = ints[3];
             int a = Wy;
             int b = Wx;
-            while(b < Wx+ Wwidth){
-                while(a< Wy + Wheight){
-                    game.batch.draw(wallUnit,b,a);
+            while (b < Wx + Wwidth) {
+                while (a < Wy + Wheight) {
+                    game.batch.draw(wallUnit, b, a);
                     a += WunitSize;
                 }
                 b += WunitSize;
-                a =Wy;
+                a = Wy;
             }
         }
 
