@@ -8,10 +8,7 @@ import com.mygdx.portaldodgeball.Entities.map.Wall;
 public class StillPortal {
     public int x;
     public int y;
-    public final int isEntry = 0;
-    public final int isExit = 1;
     public int index = 0;
-    public boolean allow = false;
     public float normal;
     public int rotation;
     public int direction;
@@ -22,7 +19,7 @@ public class StillPortal {
     public Player player;
     Hitbox hitbox;
     public Texture texture;
-    public Wall wallHit;
+    public Wall wallHit = new Wall(1,1,1,1);
 
     public StillPortal(final Player player, int x, int y){
         this.player = player;
@@ -33,19 +30,19 @@ public class StillPortal {
 
         switch (this.direction){
             case 1:
-                this.normal = (float)Math.toRadians(180);
-            case 2:
-                this.normal = (float)Math.toRadians(270);
-            case 3:
-                this.normal = (float)Math.toRadians(0);
-            case 4:
                 this.normal = (float)Math.toRadians(90);
+            case 2:
+                this.normal = (float)Math.toRadians(180);
+            case 3:
+                this.normal = (float)Math.toRadians(270);
+            case 4:
+                this.normal = (float)Math.toRadians(0);
         }
         if(this.normal == (float)Math.toRadians(270) || this.normal == (float)Math.toRadians(90) ){
-            this.rotation = 1;
+            this.rotation = 0;
         }
         else{
-            this.rotation = 0;
+            this.rotation = 1;
         }
         if(direction == 2 || direction == 4){
             this.hitbox = new Hitbox(this.x-11, this.y-20,width,height);
@@ -73,8 +70,6 @@ public class StillPortal {
     public void draw(SpriteBatch spriteBatch) {
         spriteBatch.draw(texture,hitbox.x,hitbox.y,width,height);
     }
-    //    public boolean canBePlaced(){
-    //}
     public void findWallHit(){
         Hitbox tester = new Hitbox(x+10,y+10,10,10);
         Hitbox tester2 = new Hitbox(x+10,y-10,10,10);
@@ -83,7 +78,7 @@ public class StillPortal {
         for(int i = 0; i< MapRender.walls.length;i++){
             Wall testWall = MapRender.walls[i];
             if(tester.collidesWidth(testWall.wallHitbox)||tester2.collidesWidth(testWall.wallHitbox)||tester3.collidesWidth(testWall.wallHitbox)||tester4.collidesWidth(testWall.wallHitbox)){
-                wallHit =testWall;
+                wallHit = testWall;
                 break;
             }
         }

@@ -427,8 +427,6 @@ public class Player extends Entity {
         }
     }
 
-
-
     public void check(){
 
         for(int j = 0; j < game.walls.length; j++) {
