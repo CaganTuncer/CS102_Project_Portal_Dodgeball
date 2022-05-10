@@ -64,13 +64,22 @@ public class PowerUp extends Entity{
         return this.PUpHitbox;
     }
 
-    public static void powerUp(Player player, int type){
+    public static void powerUp(final Player player, int type){
         switch (type){
 
             case 0:
                 if(!player.hasSpeed) {
-                player.speed *= 2;
-                player.hasSpeed = true;
+                    Timer timer = new Timer();
+                    player.hasSpeed = true;
+                    player.speed *= 2;
+
+                    timer.scheduleTask(new Timer.Task() {
+                        @Override
+                        public void run() {
+                            player.speed /= 2;
+                            player.hasSpeed = false;
+                        }
+                    },10f);
                 }
                 break;
             case 1:
@@ -86,7 +95,7 @@ public class PowerUp extends Entity{
         timer.scheduleTask(new Timer.Task() {
             @Override
             public void run() {
-                int location = random.nextInt(puLocations.length+1);
+                int location = random.nextInt(puLocations.length);
                 int type = random.nextInt(2);
                 screen.game.powerUps.add(new PowerUp(type,screen,0,puLocations[location][0],puLocations[location][1]));
 
