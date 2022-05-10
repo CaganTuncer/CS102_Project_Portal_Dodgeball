@@ -4,14 +4,79 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40889ef9-0a2e-40e0-8633-ee50b07264aa" name="Changes" comment="">
+    <list default="true" id="fccfd43f-ee19-46ab-bda6-b7172bb95631" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/map/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/map/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1Back.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1Back.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterLeft.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterLeft.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterLeftUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterLeftUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterLeftUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterLeftUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterMiddle.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterMiddle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterRight.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterRight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterRightUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterRightUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterRightUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowAfterRightUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeLeft.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeLeft.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeLeftUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeLeftUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeLeftUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeLeftUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeMiddle.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeMiddle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeRight.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeRight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeRightUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeRightUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeRightUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player1edited/p1ThrowBeforeRightUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2Back.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2Back.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterLeft.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterLeft.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterLeftUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterLeftUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterLeftUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterLeftUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterMiddle.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterMiddle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterRight.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterRight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterRightUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterRightUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterRightUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowAfterRightUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeLeft.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeLeft.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeLeftUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeLeftUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeLeftUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeLeftUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeMiddle.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeMiddle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeRight.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeRight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeRightUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeRightUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeRightUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player2edited/p2ThrowBeforeRightUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3Back.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3Back.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterLeft.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterLeft.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterLeftUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterLeftUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterLeftUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterLeftUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterMiddle.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterMiddle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterRight.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterRight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterRightUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterRightUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterRightUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowAfterRightUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeLeft.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeLeft.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeLeftUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeLeftUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeLeftUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeLeftUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeMiddle.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeMiddle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeRight.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeRight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeRightUnder.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeRightUnder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeRightUpper.png" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/assets/Players/Player3edited/p3ThrowBeforeRightUpper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/PortalDodgeball.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/PortalDodgeball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/screens/MainGameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/screens/MainGameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/screens/Name_Selection.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/screens/Name_Selection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/PortalDodgeball">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,10 +89,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.24597701"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="DesktopLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mygdx.portaldodgeball.DesktopLauncher" />

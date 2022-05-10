@@ -2,16 +2,15 @@ package com.mygdx.portaldodgeball;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.Entities.PowerUp;
 import com.mygdx.portaldodgeball.Entities.map.Wall;
-import com.mygdx.portaldodgeball.screens.MainGameScreen;
 import com.mygdx.portaldodgeball.screens.MainMenu;
 
 import java.util.ArrayList;
@@ -27,8 +26,12 @@ public class PortalDodgeball extends Game {
 
 	public String[] names = {null, null, null, null, null, null};
 	public Player[] players;
+	public FreeTypeFontGenerator fontGenerator;
+	public FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
+	public BitmapFont p1ScoreFont, p2ScoreFont, p3ScoreFont, minuteFont, secondFont;
 
-
+	public ArrayList<Player> playerList = new ArrayList<Player>();
+	public ArrayList<Player> deadPlayerList = new ArrayList<Player>();
 
 	public SpriteBatch batch;
 
@@ -50,6 +53,19 @@ public class PortalDodgeball extends Game {
 		music.play();
 		this.players = new Player[0];
 		this.setScreen(new MainMenu(this));
+
+		fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("FFFFORWA.TTF"));
+		fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+		fontParameter.size = 55;
+		fontParameter.borderColor = Color.BLACK;
+		fontParameter.color = Color.BLACK;
+		fontParameter.borderWidth = 1;
+		p1ScoreFont = fontGenerator.generateFont(fontParameter);
+		p2ScoreFont = fontGenerator.generateFont(fontParameter);
+		p3ScoreFont = fontGenerator.generateFont(fontParameter);
+		secondFont = fontGenerator.generateFont(fontParameter);
+		minuteFont = fontGenerator.generateFont(fontParameter);
+
 	}
 
 	@Override

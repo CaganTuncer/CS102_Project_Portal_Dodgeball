@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel>
-      <module name="PortalDodgeball.core" target="1.7" />
-      <module name="PortalDodgeball.core.main" target="1.7" />
-      <module name="PortalDodgeball.core.test" target="1.7" />
-      <module name="PortalDodgeball.desktop" target="1.8" />
-      <module name="PortalDodgeball.desktop.main" target="1.8" />
-      <module name="PortalDodgeball.desktop.test" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.7" />
   </component>
 </project>
