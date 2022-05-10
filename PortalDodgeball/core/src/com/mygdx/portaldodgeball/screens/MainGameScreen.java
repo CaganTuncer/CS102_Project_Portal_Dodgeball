@@ -82,7 +82,8 @@ public class MainGameScreen implements Screen {
                         if (ball.getHitbox().collidesWidth(still.getHitbox())){
                             //Player.deadBalls.add(ball);
                             //ball.setTexture("Players/Player 3/player0.png");
-                            ball.transport(still);
+                            int in = game.players[i].stillPortals.indexOf(still);
+                            ball.transport(in);
                             //ball.setter(200,200);
                             //game.players[i].transportBall();
                             //Ball ballNew = (,still.Teleport().x, still.Teleport().y);

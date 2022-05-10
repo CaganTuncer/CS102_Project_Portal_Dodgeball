@@ -54,19 +54,25 @@ public class Ball extends Entity{
         this.hitbox.x = x;
         this.hitbox.y = y;
     }
-    public void transport(StillPortal stillPortal){
-        int targetIndex = 0;
-        if((this.player.stillPortals.get(0)).equals(stillPortal)){
-            int xP = (this.player.stillPortals.get(1)).x;
-            int yP = (this.player.stillPortals.get(1)).y;
-            targetIndex = 1;
+    public void transport(int in){
+        int xP;
+        int yP;
+
+        //this.player.stillPortals.indexOf(stillPortal)) == 0
+        if(in == 1) {
+            xP= this.player.stillPortals.get(0).x;
+            yP = this.player.stillPortals.get(0).y;
+            this.setter(xP,yP);
+        }else{
+
+            System.out.println("Test");
+            System.out.println(this.player.stillPortals.get(0).y);
+            System.out.println(this.player.stillPortals.get(1).y);
+            xP = this.player.stillPortals.get(1).x;
+            yP = this.player.stillPortals.get(1).y;
             this.setter(xP,yP);
         }
-        else{
-            int xP = (this.player.stillPortals.get(0)).x;
-            int yP = (this.player.stillPortals.get(0)).y;
-            this.setter(xP,yP);
-        }
+
 
         /*
         this.player.stillPortals.get(targetIndex).allowance = false;

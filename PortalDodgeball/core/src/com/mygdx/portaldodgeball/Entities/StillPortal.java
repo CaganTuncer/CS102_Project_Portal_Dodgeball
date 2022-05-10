@@ -47,10 +47,6 @@ public class StillPortal {
         }
     }
     public void Selector(){
-        /*int i = this.player.indexes.indexOf(2);
-        this.player.indexes.set(i,0);
-        Player.deadStill.add(this.player.stillPortals.get(i-2));
-        this.player.canDispose = true;*/
         Player.deadStill.add(this.player.stillPortals.get(0));
         this.player.stillPortals.remove(0);
         this.player.canDispose = true;
