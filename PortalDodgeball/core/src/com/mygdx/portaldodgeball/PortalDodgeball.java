@@ -28,7 +28,8 @@ public class PortalDodgeball extends Game {
 	public String[] names = {null, null, null, null, null, null};
 	public Player[] players;
 
-
+	public ArrayList<Player> playerList = new ArrayList<Player>();
+	public ArrayList<Player> deadPlayerList = new ArrayList<Player>();
 
 	public SpriteBatch batch;
 

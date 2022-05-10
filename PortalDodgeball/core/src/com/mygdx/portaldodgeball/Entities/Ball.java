@@ -12,7 +12,7 @@ public class Ball extends Entity{
     public Texture texture;
 
     private float timeSeconds = 0f;
-    private float period = 5f;
+    private float lifeSpan = 5f;
     Hitbox hitbox;
 
 
@@ -41,8 +41,8 @@ public class Ball extends Entity{
 
     public boolean isLifeSpanOver() {
         timeSeconds += Gdx.graphics.getDeltaTime();
-        if (timeSeconds > period) {
-            timeSeconds -= period;
+        if (timeSeconds > lifeSpan) {
+            timeSeconds -= lifeSpan;
             return true;
         }
         return false;

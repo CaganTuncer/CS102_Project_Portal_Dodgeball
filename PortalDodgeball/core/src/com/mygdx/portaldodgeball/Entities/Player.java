@@ -3,10 +3,10 @@ package com.mygdx.portaldodgeball.Entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import java.util.ArrayList;
-import java.util.TimerTask;
 
 
 // Player class to initialize the player. Also contains related variables and methods
@@ -32,7 +32,12 @@ public class Player extends Entity {
     public float THROW_INTERVAL = 5f;
     public int BALL_AMMO = 6;
     public float RELOAD = 5f;
+
+    public float DEATH_TIME = 5f;
     Timer throwTimer;
+    public boolean isDead = false;
+
+
 
     public Player(String name, PortalDodgeball game) {
         super();
@@ -42,6 +47,7 @@ public class Player extends Entity {
             @Override
             public void run() {
                 BALL_AMMO = 6;
+
             }
         },THROW_INTERVAL,RELOAD);
 
@@ -91,12 +97,18 @@ public class Player extends Entity {
 
         switch (this.number){
             case 0:
+                this.x = 250;
+                this.y = 250;
+                break;
+
+            case 1:
                 this.x = 180;
                 this.y = 180;
                 break;
-            case 1:
-                this.x = 100;
-                this.y = 100;
+
+            case 2:
+                this.x = 300;
+                this.y = 350;
                 break;
         }
 
@@ -131,194 +143,196 @@ public class Player extends Entity {
         throwBall();
         portal();
         this.timeSinceInput += Gdx.graphics.getDeltaTime();
-        if(timeSinceInput > 0.2f){
-            if(Gdx.input.isKeyPressed(keys[3])){
-                if(this.direction > 0){
-                    this.direction -= 1;
-                } else {
-                    this.direction = 7;
+        if(!isDead) {
+            if (timeSinceInput > 0.2f) {
+                if (Gdx.input.isKeyPressed(keys[3])) {
+                    if (this.direction > 0) {
+                        this.direction -= 1;
+                    } else {
+                        this.direction = 7;
+                    }
+                    this.checkOrientation();
+                    this.timeSinceInput = 0;
                 }
-                this.checkOrientation();
-                this.timeSinceInput = 0;
-            }
-            if(Gdx.input.isKeyPressed(keys[1])){
-                if(this.direction < 7){
-                    this.direction += 1;
-                } else {
-                    this.direction = 0;
+                if (Gdx.input.isKeyPressed(keys[1])) {
+                    if (this.direction < 7) {
+                        this.direction += 1;
+                    } else {
+                        this.direction = 0;
+                    }
+                    this.checkOrientation();
+                    this.timeSinceInput = 0;
                 }
-                this.checkOrientation();
-                this.timeSinceInput = 0;
             }
-        }
 
-        if(this.direction == 0){
-            if(Gdx.input.isKeyPressed(keys[0])){
-                this.check();
-                if(this.canIncreaseX){
-                    this.x += speed;
-                    this.absMove = 0;
+            if (this.direction == 0) {
+                if (Gdx.input.isKeyPressed(keys[0])) {
+                    this.check();
+                    if (this.canIncreaseX) {
+                        this.x += speed;
+                        this.absMove = 0;
+                    }
+                }
+                if (Gdx.input.isKeyPressed(keys[2])) {
+                    this.check();
+                    if (this.canDecreaseX) {
+                        this.x -= speed;
+                        this.absMove = 4;
+                    }
                 }
             }
-            if(Gdx.input.isKeyPressed(keys[2])){
-                this.check();
-                if(this.canDecreaseX){
-                    this.x -= speed;
-                    this.absMove = 4;
+            if (this.direction == 1) {
+                if (Gdx.input.isKeyPressed(keys[0])) {
+                    this.check();
+                    if (this.canIncreaseX) {
+                        this.x += speed;
+                        this.absMove = 1;
+                    }
+                    this.check();
+                    if (this.canIncreaseY) {
+                        this.y += speed;
+                        this.absMove = 1;
+                    }
+                }
+                if (Gdx.input.isKeyPressed(keys[2])) {
+                    this.check();
+                    if (this.canDecreaseX) {
+                        this.x -= speed;
+                        this.absMove = 5;
+                    }
+                    this.check();
+                    if (this.canDecreaseY) {
+                        this.y -= speed;
+                        this.absMove = 5;
+                    }
                 }
             }
+            if (this.direction == 2) {
+                if (Gdx.input.isKeyPressed(keys[0])) {
+                    this.check();
+                    if (this.canIncreaseY) {
+                        this.y += speed;
+                        this.absMove = 2;
+                    }
+                }
+                if (Gdx.input.isKeyPressed(keys[2])) {
+                    this.check();
+                    if (this.canDecreaseY) {
+                        this.y -= speed;
+                        this.absMove = 6;
+                    }
+                }
+            }
+            if (this.direction == 3) {
+                if (Gdx.input.isKeyPressed(keys[0])) {
+                    this.check();
+                    if (this.canIncreaseY) {
+                        this.y += speed;
+                        this.absMove = 3;
+                    }
+                    if (this.canDecreaseX) {
+                        this.x -= speed;
+                        this.absMove = 3;
+                    }
+                }
+                if (Gdx.input.isKeyPressed(keys[2])) {
+                    this.check();
+                    if (this.canDecreaseY) {
+                        this.y -= speed;
+                        this.absMove = 7;
+                    }
+                    if (this.canIncreaseX) {
+                        this.x += speed;
+                        this.absMove = 7;
+                    }
+                }
+            }
+            if (this.direction == 4) {
+                this.check();
+                if (Gdx.input.isKeyPressed(keys[0])) {
+                    if (this.canDecreaseX) {
+                        this.x -= speed;
+                        this.absMove = 4;
+                    }
+                }
+                if (Gdx.input.isKeyPressed(keys[2])) {
+                    this.check();
+                    if (this.canIncreaseX) {
+                        this.x += speed;
+                        this.absMove = 0;
+                    }
+                }
+            }
+            if (this.direction == 5) {
+                if (Gdx.input.isKeyPressed(keys[0])) {
+                    this.check();
+                    if (this.canDecreaseY) {
+                        this.y -= speed;
+                        this.absMove = 5;
+                    }
+                    if (this.canDecreaseX) {
+                        this.x -= speed;
+                        this.absMove = 5;
+                    }
+                }
+                if (Gdx.input.isKeyPressed(keys[2])) {
+                    this.check();
+                    if (this.canIncreaseY) {
+                        this.y += speed;
+                        this.absMove = 1;
+                    }
+                    if (this.canIncreaseX) {
+                        this.x += speed;
+                        this.absMove = 1;
+                    }
+                }
+            }
+            if (this.direction == 6) {
+                if (Gdx.input.isKeyPressed(keys[0])) {
+                    this.check();
+                    if (this.canDecreaseY) {
+                        this.y -= speed;
+                        this.absMove = 6;
+                    }
+                }
+                if (Gdx.input.isKeyPressed(keys[2])) {
+                    this.check();
+                    if (this.canIncreaseY) {
+                        this.y += speed;
+                        this.absMove = 2;
+                    }
+                }
+            }
+            if (this.direction == 7) {
+                if (Gdx.input.isKeyPressed(keys[0])) {
+                    this.check();
+                    if (this.canDecreaseY) {
+                        this.y -= speed;
+                        this.absMove = 7;
+                    }
+                    if (this.canIncreaseX) {
+                        this.x += speed;
+                        this.absMove = 7;
+                    }
+                }
+                if (Gdx.input.isKeyPressed(keys[2])) {
+                    this.check();
+                    if (this.canIncreaseY) {
+                        this.y += speed;
+                        this.absMove = 3;
+                    }
+                    if (this.canDecreaseX) {
+                        this.x -= speed;
+                        this.absMove = 3;
+                    }
+                }
+            }
+            this.hitbox.move(this.x - 1, this.y - 1);
+            this.right.move(this.x + 39, this.y);
+            this.left.move(this.x - 1, this.y);
+            this.up.move(this.x, this.y + 39);
+            this.down.move(this.x, this.y - 1);
         }
-        if(this.direction == 1){
-            if(Gdx.input.isKeyPressed(keys[0])){
-                this.check();
-                if(this.canIncreaseX){
-                    this.x += speed - 1;
-                    this.absMove = 1;
-                }
-                this.check();
-                if(this.canIncreaseY){
-                    this.y += speed - 1;
-                    this.absMove = 1;
-                }
-            }
-            if(Gdx.input.isKeyPressed(keys[2])){
-                this.check();
-                if(this.canDecreaseX){
-                    this.x -= speed - 1;
-                    this.absMove = 5;
-                }
-                this.check();
-                if(this.canDecreaseY){
-                    this.y -= speed - 1;
-                    this.absMove = 5;
-                }
-            }
-        }
-        if(this.direction == 2){
-            if(Gdx.input.isKeyPressed(keys[0])){
-                this.check();
-                if(this.canIncreaseY){
-                    this.y += speed;
-                    this.absMove = 2;
-                }
-            }
-            if(Gdx.input.isKeyPressed(keys[2])){
-                this.check();
-                if(this.canDecreaseY){
-                    this.y -= speed;
-                    this.absMove = 6;
-                }
-            }
-        }
-        if(this.direction == 3){
-            if(Gdx.input.isKeyPressed(keys[0])){
-                this.check();
-                if(this.canIncreaseY){
-                    this.y += speed - 1;
-                    this.absMove = 3;
-                }
-                if(this.canDecreaseX){
-                    this.x -= speed - 1;
-                    this.absMove = 3;
-                }
-            }
-            if(Gdx.input.isKeyPressed(keys[2])){
-                this.check();
-                if(this.canDecreaseY){
-                    this.y -= speed - 1;
-                    this.absMove = 7;
-                }
-                if(this.canIncreaseX){
-                    this.x += speed - 1;
-                    this.absMove = 7;
-                }
-            }
-        }
-        if(this.direction == 4){
-            this.check();
-            if(Gdx.input.isKeyPressed(keys[0])){
-                if(this.canDecreaseX){
-                    this.x -= speed;
-                    this.absMove = 4;
-                }
-            }
-            if(Gdx.input.isKeyPressed(keys[2])){
-                this.check();
-                if(this.canIncreaseX){
-                    this.x += speed;
-                    this.absMove = 0;
-                }
-            }
-        }
-        if(this.direction == 5){
-            if(Gdx.input.isKeyPressed(keys[0])){
-                this.check();
-                if(this.canDecreaseY){
-                    this.y -= speed - 1;
-                    this.absMove = 5;
-                }
-                if(this.canDecreaseX){
-                    this.x -= speed - 1;
-                    this.absMove = 5;
-                }
-            }
-            if(Gdx.input.isKeyPressed(keys[2])){
-                this.check();
-                if(this.canIncreaseY){
-                    this.y += speed - 1;
-                    this.absMove = 1;
-                }
-                if(this.canIncreaseX){
-                    this.x += speed - 1;
-                    this.absMove = 1;
-                }
-            }
-        }
-        if(this.direction == 6){
-            if(Gdx.input.isKeyPressed(keys[0])){
-                this.check();
-                if(this.canDecreaseY){
-                    this.y -= speed;
-                    this.absMove = 6;
-                }
-            }
-            if(Gdx.input.isKeyPressed(keys[2])){
-                this.check();
-                if(this.canIncreaseY){
-                    this.y += speed;
-                    this.absMove = 2;
-                }
-            }
-        }
-        if(this.direction == 7) {
-            if (Gdx.input.isKeyPressed(keys[0])) {
-                this.check();
-                if(this.canDecreaseY){
-                    this.y -= speed - 1;
-                    this.absMove = 7;
-                }
-                if(this.canIncreaseX){
-                    this.x += speed - 1;
-                    this.absMove = 7;
-                }
-            }
-            if (Gdx.input.isKeyPressed(keys[2])) {
-                this.check();
-                if(this.canIncreaseY){
-                    this.y += speed - 1;
-                    this.absMove = 3;
-                }
-                if(this.canDecreaseX){
-                    this.x -= speed - 1;
-                    this.absMove = 3;
-                }
-            }
-        }
-        this.hitbox.move(this.x - 1, this.y - 1);
-        this.right.move(this.x + 39, this.y);
-        this.left.move(this.x - 1, this.y);
-        this.up.move(this.x, this.y + 39);
-        this.down.move(this.x, this.y - 1);
     }
 
     public void setName(String name){
@@ -624,5 +638,51 @@ public class Player extends Entity {
             }
         }
     }
+
+    public void die(){
+        isDead = true;
+        final int tempHBWidth = this.hitbox.width;
+        final int tempHBHeight = this.hitbox.height;
+        final Texture tempTexture = this.texture;
+        final int tempSpeed = this.speed;
+
+        //x = 62;
+        //y = 818;
+
+        x = 4000;
+        y = 4000;
+        this.hitbox.x = 4000;
+        this.hitbox.y = 4000;
+
+
+        //this.hitbox.width = 0;
+        //this.hitbox.height = 0;
+        //this.texture = new Texture("Players/death.jpg");
+
+
+        //this.speed = 0;
+
+        Timer timer = new Timer();
+        timer.scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                isDead = false;
+                spawn();
+
+                //hitbox.width = tempHBWidth;
+                //hitbox.height = tempHBHeight;
+
+                texture = tempTexture;
+                speed = tempSpeed;
+            }
+
+        }, DEATH_TIME);
+    }
+
+    public void spawn(){
+        this.x = 100;
+        this.y = 500;
+    }
+
 }
 
