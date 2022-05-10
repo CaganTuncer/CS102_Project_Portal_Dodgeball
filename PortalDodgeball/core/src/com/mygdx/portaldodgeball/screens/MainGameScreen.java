@@ -5,10 +5,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.Entities.Portal;
@@ -16,20 +14,25 @@ import com.mygdx.portaldodgeball.Entities.PowerUp;
 import com.mygdx.portaldodgeball.Entities.map.MapRender;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 
-import java.util.ArrayList;
-
 public class MainGameScreen implements Screen {
 
     PortalDodgeball game;
     Texture player1Score;
     Texture player2Score;
     Texture player3Score;
+    Texture p1Screen;
+    Texture p2Screen;
+    Texture p3Screen;
+
+
+
+
     Texture timer;
 
-    public MainGameScreen(PortalDodgeball game){
-        this.game = game;
-       // scoreFont = new BitmapFont(Gdx.files.internal("fonts/score.fnt"));
-    }
+    public long startTime = 0;
+    int timeSecond = 180;
+    int secondRemaining = 0;
+    int timeMinute = timeSecond / 60;
 
     Texture wallUnit;
     MapRender g = new MapRender(1);
@@ -39,6 +42,9 @@ public class MainGameScreen implements Screen {
         player1Score = new Texture("Game_Screen/player1Score.png");
         player2Score = new Texture("Game_Screen/player2Score.png");
         player3Score = new Texture("Game_Screen/player3Score.png");
+        p1Screen = new Texture("Players/Player1edited/p1ThrowBeforeMiddle.png");
+        p2Screen = new Texture("Players/Player2edited/p2ThrowBeforeMiddle.png");
+        p3Screen = new Texture("Players/Player3edited/p3ThrowBeforeMiddle.png");
         timer = new Texture("Game_Screen/timer.png");
         wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
         this.game.powerUps.add(new PowerUp(1,this,0, 1000,350));
@@ -61,33 +67,50 @@ public class MainGameScreen implements Screen {
         drawMap();
         game.batch.draw(player1Score, 50, 790);
         game.batch.draw(player2Score, 1325, 790);
-        game.batch.draw(player3Score, 687, 0);
+
         game.batch.draw(timer, 678, 795);
-        game.scoreFont.draw(game.batch, "" + 50, 250,250);
+        game.p1ScoreFont.draw(game.batch, game.players[0].score + "", 165,875);
+        game.p2ScoreFont.draw(game.batch, game.players[1].score + "", 1395,875);
+        if(game.players.length == 3) {
+            game.batch.draw(player3Score, 687, 0);
+            game.p3ScoreFont.draw(game.batch, game.players[2].score + "", 825, 85);
+
+        }
+        game.batch.draw(p1Screen,62,817);
+        game.batch.draw(p2Screen,1499,817);
+        game.batch.draw(p3Screen,711,30);
+
+
+        if (TimeUtils.timeSinceNanos(startTime) > 1000000000) {
+            // if time passed since the time you set startTime at is more than 1 second
+            timeSecond--;
+            //so this block will execute every one second
+            startTime = TimeUtils.nanoTime();
+        }
+        if(secondRemaining < 10){
+            game.secondFont.draw(game.batch, "0" + secondRemaining,818, 880);
+        }
+        else{
+            game.secondFont.draw(game.batch, secondRemaining + "",818, 880);
+        }
+        timeMinute = timeSecond / 60;
+        secondRemaining = timeSecond % 60;
+        game.minuteFont.draw(game.batch,"0" + timeMinute, 708,880);
+
         switch (game.players.length){
             case 2:
+                game.players[0].checkOrientation();
                 game.players[0].move();
+                game.players[1].checkOrientation();
                 game.players[1].move();
                 break;
             case 3:
+                game.players[0].checkOrientation();
                 game.players[0].move();
+                game.players[1].checkOrientation();
                 game.players[1].move();
+                game.players[2].checkOrientation();
                 game.players[2].move();
-
-                break;
-            case 4:
-                game.players[0].move();
-                game.players[1].move();
-                game.players[2].move();
-                game.players[3].move();
-                break;
-            case 6:
-                game.players[0].move();
-                game.players[1].move();
-                game.players[2].move();
-                game.players[3].move();
-                game.players[4].move();
-                game.players[5].move();
                 break;
         }
 
@@ -98,6 +121,7 @@ public class MainGameScreen implements Screen {
                 }
                 for(int j = 0; j < game.players.length; j++ ){
                     if(ball.getHitbox().collidesWith(game.players[j].hitbox) && ball.player != game.players[j]){
+                        ball.player.score++;
                         Player.deadBalls.add(ball);
                         if(!game.players[j].hasShield){
                             game.players[j].setTexture("Players/Player 3/player0.png");
@@ -137,8 +161,6 @@ public class MainGameScreen implements Screen {
                         }else if (ball.angle == 315 && game.walls[j].wallRotation == 2) {
                             ball.angle = 225;
                         }
-
-
                     }
                 }
             }

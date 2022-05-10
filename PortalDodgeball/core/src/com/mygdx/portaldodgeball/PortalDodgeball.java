@@ -2,19 +2,15 @@ package com.mygdx.portaldodgeball;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.Entities.PowerUp;
 import com.mygdx.portaldodgeball.Entities.map.Wall;
-import com.mygdx.portaldodgeball.screens.MainGameScreen;
 import com.mygdx.portaldodgeball.screens.MainMenu;
 
 import java.util.ArrayList;
@@ -32,7 +28,7 @@ public class PortalDodgeball extends Game {
 	public Player[] players;
 	public FreeTypeFontGenerator fontGenerator;
 	public FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
-	public BitmapFont scoreFont;
+	public BitmapFont p1ScoreFont, p2ScoreFont, p3ScoreFont, minuteFont, secondFont;
 
 
 
@@ -59,15 +55,15 @@ public class PortalDodgeball extends Game {
 
 		fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("FFFFORWA.TTF"));
 		fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-		fontParameter.size = 250;
+		fontParameter.size = 55;
 		fontParameter.borderColor = Color.BLACK;
 		fontParameter.color = Color.BLACK;
 		fontParameter.borderWidth = 1;
-		scoreFont = fontGenerator.generateFont(fontParameter);
-		this.powerUps.add(new PowerUp(1,this.mainGameScreen,0, 1000,350));
-		this.powerUps.add(new PowerUp(1,this.mainGameScreen,0, 700,500));
-		this.powerUps.add(new PowerUp(0,this.mainGameScreen,0, 1300,200));
-		this.powerUps.add(new PowerUp(0,this.mainGameScreen,0, 650,350));
+		p1ScoreFont = fontGenerator.generateFont(fontParameter);
+		p2ScoreFont = fontGenerator.generateFont(fontParameter);
+		p3ScoreFont = fontGenerator.generateFont(fontParameter);
+		secondFont = fontGenerator.generateFont(fontParameter);
+		minuteFont = fontGenerator.generateFont(fontParameter);
 
 	}
 
