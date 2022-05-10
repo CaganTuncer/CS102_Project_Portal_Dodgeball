@@ -349,222 +349,441 @@ public class Player extends Entity {
 
     public void checkOrientation(){
 
-        if(this.BALL_AMMO > 0){
-            switch (this.direction) {
-                case 0:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowBeforeRight.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowBeforeRight.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowBeforeRight.png");
-                            break;
-                    }
-                    break;
-                case 1:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowBeforeRightUpper.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowBeforeRightUpper.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowBeforeRightUpper.png");
-                            break;
-                    }
-                    break;
-                case 2:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1Back.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2Back.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3Back.png");
-                            break;
-                    }
-                    break;
-                case 3:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowBeforeLeftUpper.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowBeforeLeftUpper.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowBeforeLeftUpper.png");
-                            break;
-                    }
-                    break;
-                case 4:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowBeforeLeft.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowBeforeLeft.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowBeforeLeft.png");
-                            break;
-                    }
-                    break;
-                case 5:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowBeforeLeftUnder.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowBeforeLeftUnder.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowBeforeLeftUnder.png");
-                            break;
-                    }
-                    break;
-                case 6:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowBeforeMiddle.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowBeforeMiddle.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowBeforeMiddle.png");
-                            break;
-                    }
-                    break;
-                case 7:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowBeforeRightUnder.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowBeforeRightUnder.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowBeforeRightUnder.png");
-                            break;
-                    }
-                    break;
-            }
-        }
-        else{
-            switch (this.direction) {
-                case 0:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowAfterRight.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowAfterRight.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowAfterRight.png");
-                            break;
-                    }
-                    break;
-                case 1:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowAfterRightUpper.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowAfterRightUpper.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowAfterRightUpper.png");
-                            break;
-                    }
-                    break;
-                case 2:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1Back.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2Back.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3Back.png");
-                            break;
-                    }
-                    break;
-                case 3:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowAfterLeftUpper.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowAfterLeftUpper.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowAfterLeftUpper.png");
-                            break;
-                    }
-                    break;
-                case 4:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowAfterLeft.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowAfterLeft.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowAfterLeft.png");
-                            break;
-                    }
-                    break;
-                case 5:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowAfterLeftUnder.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowAfterLeftUnder.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowAfterLeftUnder.png");
-                            break;
-                    }
-                    break;
-                case 6:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowAfterMiddle.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowAfterMiddle.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowAfterMiddle.png");
-                            break;
-                    }
-                    break;
-                case 7:
-                    switch (this.number) {
-                        case 0:
-                            this.setTexture("Players/Player1edited/p1ThrowAfterRightUnder.png");
-                            break;
-                        case 1:
-                            this.setTexture("Players/Player2edited/p2ThrowAfterRightUnder.png");
-                            break;
-                        case 2:
-                            this.setTexture("Players/Player3edited/p3ThrowAfterRightUnder.png");
-                            break;
-                    }
-                    break;
-            }
-        }
+       if(hasShield){
+           if(this.BALL_AMMO > 0){
+               switch (this.direction) {
+                   case 0:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("p1Shield/p1ThrowBeforeRightShieldOn.png");
+                               break;
+                           case 1:
+                               this.setTexture("p2Shield/p2ThrowBeforeRightShieldOn.png");
+                               break;
+                           case 2:
+                               this.setTexture("p3Shield/p3ThrowBeforeRightShieldOn.png");
+                               break;
+                       }
+                       break;
+                   case 1:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("p1Shield/p1ThrowBeforeRightUpperShieldOn.png");
+                               break;
+                           case 1:
+                               this.setTexture("p2Shield/p2ThrowBeforeRightUpperShieldOn.png");
+                               break;
+                           case 2:
+                               this.setTexture("p3Shield/p3ThrowBeforeRightUpperShieldOn.png");
+                               break;
+                       }
+                       break;
+                   case 2:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("p1Shield/p1BackShieldOn.png");
+                               break;
+                           case 1:
+                               this.setTexture("p2Shield/p2BackShieldOn.png");
+                               break;
+                           case 2:
+                               this.setTexture("p3Shield/p3BackShieldOn.png");
+                               break;
+                       }
+                       break;
+                   case 3:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("p1Shield/p1ThrowBeforeLeftUpperShieldOn.png");
+                               break;
+                           case 1:
+                               this.setTexture("p2Shield/p2ThrowBeforeLeftUpperShieldOn.png");
+                               break;
+                           case 2:
+                               this.setTexture("p3Shield/p3ThrowBeforeLeftUpperShieldOn.png");
+                               break;
+                       }
+                       break;
+                   case 4:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("p1Shield/p1ThrowBeforeLeftShieldOn.png");
+                               break;
+                           case 1:
+                               this.setTexture("p2Shield/p2ThrowBeforeLeftShieldOn.png");
+                               break;
+                           case 2:
+                               this.setTexture("p3Shield/p3ThrowBeforeLeftShieldOn.png");
+                               break;
+                       }
+                       break;
+                   case 5:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("p1Shield/p1ThrowBeforeLeftUnderShieldOn.png");
+                               break;
+                           case 1:
+                               this.setTexture("p2Shield/p2ThrowBeforeLeftUnderShieldOn.png");
+                               break;
+                           case 2:
+                               this.setTexture("p3Shield/p3ThrowBeforeLeftUnderShieldOn.png");
+                               break;
+                       }
+                       break;
+                   case 6:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("p1Shield/p1ThrowBeforeMiddleShieldOn.png");
+                               break;
+                           case 1:
+                               this.setTexture("p2Shield/p2ThrowBeforeMiddleShieldOn.png");
+                               break;
+                           case 2:
+                               this.setTexture("p3Shield/p3ThrowBeforeMiddleShieldOn.png");
+                               break;
+                       }
+                       break;
+                   case 7:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("p1Shield/p1ThrowBeforeRightUnderShieldOn.png");
+                               break;
+                           case 1:
+                               this.setTexture("p2Shield/p2ThrowBeforeRightUnderShieldOn.png");
+                               break;
+                           case 2:
+                               this.setTexture("p3Shield/p3ThrowBeforeRightUnderShieldOn.png");
+                               break;
+                       }
+                       break;
+               }
+           }
+           else{
+               switch (this.direction) {
+                   case 0:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterRight.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterRight.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterRight.png");
+                               break;
+                       }
+                       break;
+                   case 1:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterRightUpper.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterRightUpper.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterRightUpper.png");
+                               break;
+                       }
+                       break;
+                   case 2:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1Back.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2Back.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3Back.png");
+                               break;
+                       }
+                       break;
+                   case 3:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterLeftUpper.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterLeftUpper.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterLeftUpper.png");
+                               break;
+                       }
+                       break;
+                   case 4:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterLeft.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterLeft.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterLeft.png");
+                               break;
+                       }
+                       break;
+                   case 5:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterLeftUnder.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterLeftUnder.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterLeftUnder.png");
+                               break;
+                       }
+                       break;
+                   case 6:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterMiddle.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterMiddle.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterMiddle.png");
+                               break;
+                       }
+                       break;
+                   case 7:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterRightUnder.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterRightUnder.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterRightUnder.png");
+                               break;
+                       }
+                       break;
+               }
+           }
+       } else {
+           if(this.BALL_AMMO > 0){
+               switch (this.direction) {
+                   case 0:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowBeforeRight.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowBeforeRight.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowBeforeRight.png");
+                               break;
+                       }
+                       break;
+                   case 1:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowBeforeRightUpper.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowBeforeRightUpper.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowBeforeRightUpper.png");
+                               break;
+                       }
+                       break;
+                   case 2:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1Back.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2Back.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3Back.png");
+                               break;
+                       }
+                       break;
+                   case 3:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowBeforeLeftUpper.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowBeforeLeftUpper.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowBeforeLeftUpper.png");
+                               break;
+                       }
+                       break;
+                   case 4:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowBeforeLeft.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowBeforeLeft.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowBeforeLeft.png");
+                               break;
+                       }
+                       break;
+                   case 5:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowBeforeLeftUnder.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowBeforeLeftUnder.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowBeforeLeftUnder.png");
+                               break;
+                       }
+                       break;
+                   case 6:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowBeforeMiddle.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowBeforeMiddle.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowBeforeMiddle.png");
+                               break;
+                       }
+                       break;
+                   case 7:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowBeforeRightUnder.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowBeforeRightUnder.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowBeforeRightUnder.png");
+                               break;
+                       }
+                       break;
+               }
+           }
+           else{
+               switch (this.direction) {
+                   case 0:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterRight.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterRight.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterRight.png");
+                               break;
+                       }
+                       break;
+                   case 1:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterRightUpper.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterRightUpper.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterRightUpper.png");
+                               break;
+                       }
+                       break;
+                   case 2:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1Back.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2Back.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3Back.png");
+                               break;
+                       }
+                       break;
+                   case 3:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterLeftUpper.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterLeftUpper.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterLeftUpper.png");
+                               break;
+                       }
+                       break;
+                   case 4:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterLeft.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterLeft.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterLeft.png");
+                               break;
+                       }
+                       break;
+                   case 5:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterLeftUnder.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterLeftUnder.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterLeftUnder.png");
+                               break;
+                       }
+                       break;
+                   case 6:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterMiddle.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterMiddle.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterMiddle.png");
+                               break;
+                       }
+                       break;
+                   case 7:
+                       switch (this.number) {
+                           case 0:
+                               this.setTexture("Players/Player1edited/p1ThrowAfterRightUnder.png");
+                               break;
+                           case 1:
+                               this.setTexture("Players/Player2edited/p2ThrowAfterRightUnder.png");
+                               break;
+                           case 2:
+                               this.setTexture("Players/Player3edited/p3ThrowAfterRightUnder.png");
+                               break;
+                       }
+                       break;
+               }
+           }
+       }
     }
 
 

@@ -31,7 +31,7 @@ public class MainGameScreen implements Screen {
     Texture timer;
 
     public long startTime = 0;
-    int timeSecond = 20;
+    int timeSecond = 40;
     int secondRemaining = 0;
     int timeMinute = timeSecond / 60;
 
