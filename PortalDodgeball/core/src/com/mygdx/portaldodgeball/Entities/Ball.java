@@ -47,4 +47,33 @@ public class Ball extends Entity{
         }
         return false;
     }
+    public void setter(int x, int y){
+        this.x = x;
+        this.y = y;
+        this.hitbox.x = x;
+        this.hitbox.y = y;
+    }
+    public void transport(int in){
+        int xP;
+        int yP;
+
+        //this.player.stillPortals.indexOf(stillPortal)) == 0
+        if(in == 1) {
+
+        }else{
+
+        }
+
+
+        /*
+        this.player.stillPortals.get(targetIndex).allowance = false;
+        this.player.stillPortals.get(targetIndex).calcRotation();
+        this.player.stillPortals.get(targetIndex).allowance = true;
+        stillPortal.Assign();*/
+
+    }
+   /* public boolean portalCollision(int i){
+        if(this.player.ball.getHitbox().collidesWidth(game.players[i].hitbox))
+
+    }*/
 }

@@ -11,6 +11,7 @@ import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.Entities.Portal;
 import com.mygdx.portaldodgeball.Entities.PowerUp;
+import com.mygdx.portaldodgeball.Entities.StillPortal;
 import com.mygdx.portaldodgeball.Entities.map.MapRender;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 
@@ -30,7 +31,7 @@ public class MainGameScreen implements Screen {
     Texture timer;
 
     public long startTime = 0;
-    int timeSecond = 180;
+    int timeSecond = 20;
     int secondRemaining = 0;
     int timeMinute = timeSecond / 60;
 
@@ -130,6 +131,18 @@ public class MainGameScreen implements Screen {
                             game.players[j].hasShield = false;
                         }
                     }
+                    
+                    for (StillPortal still : game.players[i].stillPortals) {
+                        if (ball.getHitbox().collidesWith(still.getHitbox())){
+                            //Player.deadBalls.add(ball);
+                            //ball.setTexture("Players/Player 3/player0.png");
+                            int in = game.players[i].stillPortals.indexOf(still);
+                            ball.transport(in);
+                            //ball.setter(200,200);
+                            //game.players[i].transportBall();
+                            //Ball ballNew = (,still.Teleport().x, still.Teleport().y);
+                            }
+                        }
                 }
 
                 for (int j = 0; j < game.walls.length; j++) {
@@ -165,6 +178,7 @@ public class MainGameScreen implements Screen {
                 }
             }
         }
+
         for(int i = 0; i < game.players.length; i++){
             game.players[i].balls.removeAll(Player.deadBalls);
         }
@@ -194,6 +208,13 @@ public class MainGameScreen implements Screen {
 
 
         for(int i = 0; i < game.players.length; i++){
+            if(game.players[i].canDispose){
+                game.players[i].stillPortals.removeAll(Player.deadStill);
+                game.players[i].canDispose = false;
+            }
+        }
+
+        for(int i = 0; i < game.players.length; i++){
             game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
             for (Ball ball: game.players[i].balls) {
                 ball.draw(game.batch);
@@ -204,6 +225,13 @@ public class MainGameScreen implements Screen {
                 game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
             for (Portal portal:  game.players[i].portals) {
                 portal.draw(game.batch);
+            }
+        }
+
+        for(int i = 0; i < game.players.length; i++){
+            game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
+            for (StillPortal still:  game.players[i].stillPortals) {
+                still.draw(game.batch);
             }
         }
 
