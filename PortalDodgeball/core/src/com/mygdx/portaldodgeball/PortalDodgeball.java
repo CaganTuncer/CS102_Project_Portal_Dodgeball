@@ -30,7 +30,8 @@ public class PortalDodgeball extends Game {
 	public FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
 	public BitmapFont p1ScoreFont, p2ScoreFont, p3ScoreFont, minuteFont, secondFont;
 
-
+	public ArrayList<Player> playerList = new ArrayList<Player>();
+	public ArrayList<Player> deadPlayerList = new ArrayList<Player>();
 
 	public SpriteBatch batch;
 

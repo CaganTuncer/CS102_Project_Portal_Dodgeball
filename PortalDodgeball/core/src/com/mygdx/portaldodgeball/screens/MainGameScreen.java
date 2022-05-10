@@ -124,7 +124,7 @@ public class MainGameScreen implements Screen {
                         ball.player.score++;
                         Player.deadBalls.add(ball);
                         if(!game.players[j].hasShield){
-                            game.players[j].setTexture("Players/Player 3/player0.png");
+                            game.players[j].die();
 
                         }else {
                             game.players[j].hasShield = false;
@@ -201,7 +201,7 @@ public class MainGameScreen implements Screen {
         }
 
         for(int i = 0; i < game.players.length; i++){
-            game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
+                game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
             for (Portal portal:  game.players[i].portals) {
                 portal.draw(game.batch);
             }
