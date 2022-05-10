@@ -20,7 +20,6 @@ public class Ball extends Entity{
     private float period = 5f;
     Hitbox hitbox;
 
-
     public Ball(final Player player, float angle, int x, int y){
         this.player = player;
         this.x = player.x ;
@@ -57,28 +56,82 @@ public class Ball extends Entity{
         this.hitbox.y = y;
     }
     public void transport(int in){
+        float change = 0;
+        float xDiff = 0;
+        float yDiff = 0;
         int xP;
         int yP;
-
-        //this.player.stillPortals.indexOf(stillPortal)) == 0
         if(in == 1) {
+            xP = this.player.stillPortals.get(0).x;
+            yP = this.player.stillPortals.get(0).y;
+            switch(this.player.stillPortals.get(0).direction){
+                case 1:
+                    this.setter(xP - 50 ,yP);
+                case 2:
+                    this.setter(xP, yP - 50);
+                case 3:
+                    this.setter(xP + 50, yP );
+                case 4:
+                    this.setter(xP,  yP + 50);
+            }
+
+            if(this.player.stillPortals.get(0).rotation == 0){
+                change = (float)Math.abs(Math.toRadians(this.angle - (float) 90));
+            }
+            else{
+                change = (float)Math.abs(Math.toRadians(this.angle - (float) 180));
+            }
+        xDiff = this.player.stillPortals.get(0).x - this.player.stillPortals.get(1).x;
+            yDiff = this.player.stillPortals.get(0).y - this.player.stillPortals.get(1).y;
+            if(xDiff > 0 && yDiff > 0){
+                this.angle =  this.player.stillPortals.get(0).normal + (-2) * change;
+            }
+            else if(xDiff < 0 && yDiff > 0){
+                this.angle = this.player.stillPortals.get(0).normal - (-2) * change;
+            }
+            else if(xDiff < 0 && yDiff < 0 ){
+                this.angle =  this.player.stillPortals.get(0).normal + (-2) * change;
+            }
+            else if (xDiff > 0 && yDiff < 0){
+                this.angle = this.player.stillPortals.get(0).normal - (-2) * change;
+            }
 
         }else{
-<<<<<<< Updated upstream
-
-=======
-            System.out.println("Test");
-            System.out.println(this.player.stillPortals.get(0).y);
-            System.out.println(this.player.stillPortals.get(1).y);
             xP = this.player.stillPortals.get(1).x;
             yP = this.player.stillPortals.get(1).y;
-            this.setter(xP,yP);
->>>>>>> Stashed changes
+            switch(this.player.stillPortals.get(1).direction){
+                case 1:
+                    this.setter(xP - 50 ,yP);
+                case 2:
+                    this.setter(xP, yP - 50);
+                case 3:
+                    this.setter(xP + 50, yP );
+                case 4:
+                    this.setter(xP,  yP + 50);
+            }
+
+            if(this.player.stillPortals.get(1).rotation == 0){
+                change = (float)(Math.abs(Math.toRadians(this.angle - (float) 90)));
+            }
+            else{
+                change = (float)(Math.abs(Math.toRadians(this.angle - (float) 180)));
+            }
+            xDiff = this.player.stillPortals.get(1).x - this.player.stillPortals.get(0).x;
+            yDiff = this.player.stillPortals.get(1).y - this.player.stillPortals.get(0).y;
+            if(xDiff > 0 && yDiff > 0){
+                this.angle = this.player.stillPortals.get(1).normal + (-2) * change;
+            }
+            else if(xDiff < 0 && yDiff > 0){
+                this.angle = this.player.stillPortals.get(1).normal - (-2) * change;
+            }
+            else if(xDiff < 0 && yDiff < 0 ){
+                this.angle =  this.player.stillPortals.get(1).normal + (-2) * change;
+            }
+            else if (xDiff > 0 && yDiff < 0){
+                this.angle = this.player.stillPortals.get(1).normal - (-2) * change;
+            }
+
         }
 
     }
-   /* public boolean portalCollision(int i){
-        if(this.player.ball.getHitbox().collidesWidth(game.players[i].hitbox))
-
-    }*/
 }

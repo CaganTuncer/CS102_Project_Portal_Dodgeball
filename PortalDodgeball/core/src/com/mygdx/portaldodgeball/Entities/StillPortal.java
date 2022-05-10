@@ -5,8 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.portaldodgeball.Entities.map.MapRender;
 import com.mygdx.portaldodgeball.Entities.map.Wall;
 
-import java.util.ArrayList;
-
 public class StillPortal {
     public int x;
     public int y;
@@ -14,6 +12,8 @@ public class StillPortal {
     public final int isExit = 1;
     public int index = 0;
     public boolean allow = false;
+    public float normal;
+    public int rotation;
     public int direction;
     public int width;
     public int height;
@@ -31,6 +31,22 @@ public class StillPortal {
         findWallHit();
         calcRotation();
 
+        switch (this.direction){
+            case 1:
+                this.normal = (float)Math.toRadians(180);
+            case 2:
+                this.normal = (float)Math.toRadians(270);
+            case 3:
+                this.normal = (float)Math.toRadians(0);
+            case 4:
+                this.normal = (float)Math.toRadians(90);
+        }
+        if(this.normal == (float)Math.toRadians(270) || this.normal == (float)Math.toRadians(90) ){
+            this.rotation = 1;
+        }
+        else{
+            this.rotation = 0;
+        }
         if(direction == 2 || direction == 4){
             this.hitbox = new Hitbox(this.x-11, this.y-20,width,height);
         }
@@ -87,14 +103,15 @@ public class StillPortal {
             width = 39;
             height = 21;
         }
-        if(wallHit.wallRotation==2){
+
+        if(wallHit.wallRotation == 2){
             if(x>(wallHit.wallHitbox.x)){
-                direction = 3;
+                direction = 1;
                 texture = new Texture("Portals/p1InLeft.png");
-                this.x = wallHit.x+29;
+                this.x = wallHit.x + 29;
             }
             else{
-                direction = 1;
+                direction = 3;
                 texture = new Texture("Portals/p1InRight.png");
                 this.x = wallHit.x;
             }
