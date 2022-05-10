@@ -59,13 +59,74 @@ public class Ball extends Entity{
     public void transport(int in){
         int xP;
         int yP;
-
-        //this.player.stillPortals.indexOf(stillPortal)) == 0
-        if(in == 1) {
-
-        }else{
-
+        int gathererPortalIndex;
+        int senderPortalIndex;
+        StillPortal gathererPortal;
+        StillPortal senderPortal;
+        double relativeangle;
+        int check = 0;
+        if(in == 1){
+            gathererPortal =this.player.stillPortals.get(1);
+            senderPortal =this.player.stillPortals.get(0);
         }
+        else{
+            gathererPortal =this.player.stillPortals.get(0);
+            senderPortal =this.player.stillPortals.get(1);
+        }
+        int gathererAngle = gathererPortal.direction;
+        int senderAngle = senderPortal.direction;
+        int angleChange;
+        double angleindegrees = Math.toDegrees(this.angle);
+        int anglerounded = Math.round(this.angle);
+
+        if(anglerounded == 45 && gathererAngle == 2){
+            relativeangle = 135;
+        }
+        else if(anglerounded == 135 && gathererAngle == 3){
+            relativeangle = 135;
+        }
+        else if(anglerounded == 225 && gathererAngle == 4){
+            relativeangle = 135;
+        }
+        else if(anglerounded == 315 && gathererAngle == 1){
+            relativeangle = 135;
+        }
+        else if((anglerounded % 90) == 0){
+            relativeangle = 90;
+        }
+        else{
+            relativeangle = 45;
+        }
+
+
+
+        if(senderAngle<gathererAngle){
+            angleChange = senderAngle+4 - gathererAngle;
+        }
+        else{
+            angleChange = senderAngle - gathererAngle;
+        }
+
+        if (relativeangle ==90){
+            this.angle = (float) Math.toRadians(((senderAngle -1) * 90) + 180);
+        }
+        else if(relativeangle > 90){
+            this.angle = (float) Math.toRadians((relativeangle - 90 + (senderAngle-1)*90) %360 );
+        }
+        else {
+            this.angle = (float) Math.toRadians((relativeangle +90 + (senderAngle-1)*90) %360);
+        }
+        hitbox.x += (60 * (float)Math.cos(angle));
+        hitbox.y += (60 * (float)Math.sin(angle));
+
+
+
+
+        xP = senderPortal.x;
+        yP = senderPortal.y;
+        this.setter(xP,yP);
+
+
 
 
         /*

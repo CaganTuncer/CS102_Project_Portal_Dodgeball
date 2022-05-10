@@ -75,12 +75,12 @@ public class StillPortal {
     public void calcRotation(){
         if(wallHit.wallRotation==1){
             if(y>wallHit.wallHitbox.y){
-                direction = 2;
+                direction = 4;
                 texture = new Texture("Portals/p1InDown.png");
                 this.y = wallHit.y+29;
             }
             else{
-                direction = 4;
+                direction = 2;
                 texture = new Texture("Portals/p1InUp.png");
                 this.y = wallHit.y;
             }
