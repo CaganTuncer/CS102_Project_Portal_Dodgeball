@@ -5,7 +5,7 @@ import com.sun.org.apache.bcel.internal.generic.SWITCH;
 
 public class MapRender {
     public int mapChoice;
-    public Wall[] walls = new Wall[20];
+    public static Wall[] walls = new Wall[20];
     public int[][] map;
     // x , y , height , width
     public int[][] map1 = {
