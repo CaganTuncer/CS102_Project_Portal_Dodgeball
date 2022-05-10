@@ -97,8 +97,8 @@ public class Mode_Selection implements Screen {
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
                 if(this.game.players.length == 0){
-                    Player player1 = new Player("p1", game);
-                    Player player2 = new Player("p2", game);
+                    Player player1 = new Player("EFE", game);
+                    Player player2 = new Player("ALP", game);
                     this.players = new Player[]{player1, player2};
                     game.setPlayers(players);
                 }
@@ -113,9 +113,9 @@ public class Mode_Selection implements Screen {
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
                 if(this.game.players.length == 0){
-                    Player player1 = new Player("p1", game);
-                    Player player2 = new Player("p2", game);
-                    Player player3 = new Player("p3", game);
+                    Player player1 = new Player("EFE", game);
+                    Player player2 = new Player("ALP", game);
+                    Player player3 = new Player("ART", game);
                     this.players = new Player[]{player1, player2, player3};
                     game.setPlayers(players);
                 }

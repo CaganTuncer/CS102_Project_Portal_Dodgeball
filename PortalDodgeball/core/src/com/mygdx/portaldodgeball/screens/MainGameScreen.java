@@ -60,7 +60,9 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        //scoreLayout = new GlyphLayout(scoreFont,"" + score);
+        if(timeSecond < 0){
+            game.setScreen(new End_Game(this.game));
+        }
         game.batch.begin();
         ScreenUtils.clear(1, 0, 0, 1);
         Gdx.gl.glClearColor(0/255f, 98/255f, 228/255f, 1);
@@ -122,11 +124,10 @@ public class MainGameScreen implements Screen {
                 }
                 for(int j = 0; j < game.players.length; j++ ){
                     if(ball.getHitbox().collidesWith(game.players[j].hitbox) && ball.player != game.players[j]){
-                        ball.player.score++;
                         Player.deadBalls.add(ball);
                         if(!game.players[j].hasShield){
                             game.players[j].die();
-
+                            ball.player.score++;
                         }else {
                             game.players[j].hasShield = false;
                         }
@@ -245,7 +246,7 @@ public class MainGameScreen implements Screen {
     public void drawMap(){
         int[][] map = g.returnMap();
         int WunitSize = 3;
-        game.walls = g.walls;
+        game.walls = MapRender.walls;
         for (int[] ints : map) {
             int Wx = ints[0];
             int Wy = ints[1];
