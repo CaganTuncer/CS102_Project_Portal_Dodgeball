@@ -433,9 +433,9 @@ public class Player extends Entity {
                     this.x -= speed;
                 } else if (this.absMove == 1){
                     if(game.walls[j].wallRotation == 2){
-                        this.x -= speed;
+                        this.x -= speed + 5;
                     } if (game.walls[j].wallRotation == 1){
-                        this.y -= speed;
+                        this.y -= speed + 5;
                     }
                 } else if (this.absMove == 2) {
                     this.canIncreaseY = false;

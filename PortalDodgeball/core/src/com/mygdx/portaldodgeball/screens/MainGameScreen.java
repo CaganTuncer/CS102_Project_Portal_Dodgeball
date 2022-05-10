@@ -5,6 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
@@ -22,9 +25,10 @@ public class MainGameScreen implements Screen {
 
     PortalDodgeball game;
 
-
-
-    public MainGameScreen(PortalDodgeball game){this.game = game;}
+    public MainGameScreen(PortalDodgeball game){
+        this.game = game;
+       // scoreFont = new BitmapFont(Gdx.files.internal("fonts/score.fnt"));
+    }
 
     @Override
     public void show() {
@@ -32,11 +36,13 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        //scoreLayout = new GlyphLayout(scoreFont,"" + score);
         game.batch.begin();
         ScreenUtils.clear(1, 0, 0, 1);
         Gdx.gl.glClearColor(0/255f, 98/255f, 228/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         drawMap();
+        game.scoreFont.draw(game.batch, "" + 50, 250,250);
         switch (game.players.length){
             case 2:
                 game.players[0].move();
