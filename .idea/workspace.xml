@@ -7,8 +7,6 @@
     <list default="true" id="e8fa5cd8-a87d-4409-81d0-6aa8033e7df1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/StillPortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/StillPortal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/map/MapRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/map/MapRender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/map/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/map/Wall.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
