@@ -11,6 +11,7 @@ import com.mygdx.portaldodgeball.Entities.Ball;
 import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.Entities.Portal;
 import com.mygdx.portaldodgeball.Entities.PowerUp;
+import com.mygdx.portaldodgeball.Entities.StillPortal;
 import com.mygdx.portaldodgeball.Entities.map.MapRender;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 
@@ -30,7 +31,7 @@ public class MainGameScreen implements Screen {
     Texture timer;
 
     public long startTime = 0;
-    int timeSecond = 180;
+    int timeSecond = 20;
     int secondRemaining = 0;
     int timeMinute = timeSecond / 60;
 
@@ -61,7 +62,9 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        //scoreLayout = new GlyphLayout(scoreFont,"" + score);
+        if(timeSecond < 0){
+            game.setScreen(new End_Game(this.game));
+        }
         game.batch.begin();
         ScreenUtils.clear(1, 0, 0, 1);
         Gdx.gl.glClearColor(0/255f, 98/255f, 228/255f, 1);
@@ -123,16 +126,26 @@ public class MainGameScreen implements Screen {
                 }
                 for(int j = 0; j < game.players.length; j++ ){
                     if(ball.getHitbox().collidesWith(game.players[j].hitbox) && ball.player != game.players[j]){
-
                         Player.deadBalls.add(ball);
                         if(!game.players[j].hasShield){
                             game.players[j].die();
                             ball.player.score++;
-
                         }else {
                             game.players[j].hasShield = false;
                         }
                     }
+                    
+                    for (StillPortal still : game.players[i].stillPortals) {
+                        if (ball.getHitbox().collidesWith(still.getHitbox())){
+                            //Player.deadBalls.add(ball);
+                            //ball.setTexture("Players/Player 3/player0.png");
+                            int in = game.players[i].stillPortals.indexOf(still);
+                            ball.transport(in);
+                            //ball.setter(200,200);
+                            //game.players[i].transportBall();
+                            //Ball ballNew = (,still.Teleport().x, still.Teleport().y);
+                            }
+                        }
                 }
 
                 for (int j = 0; j < game.walls.length; j++) {
@@ -168,6 +181,7 @@ public class MainGameScreen implements Screen {
                 }
             }
         }
+
         for(int i = 0; i < game.players.length; i++){
             game.players[i].balls.removeAll(Player.deadBalls);
         }
@@ -197,6 +211,13 @@ public class MainGameScreen implements Screen {
 
 
         for(int i = 0; i < game.players.length; i++){
+            if(game.players[i].canDispose){
+                game.players[i].stillPortals.removeAll(Player.deadStill);
+                game.players[i].canDispose = false;
+            }
+        }
+
+        for(int i = 0; i < game.players.length; i++){
             game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
             for (Ball ball: game.players[i].balls) {
                 ball.draw(game.batch);
@@ -210,6 +231,13 @@ public class MainGameScreen implements Screen {
             }
         }
 
+        for(int i = 0; i < game.players.length; i++){
+            game.batch.draw(game.players[i].texture, game.players[i].x, game.players[i].y);
+            for (StillPortal still:  game.players[i].stillPortals) {
+                still.draw(game.batch);
+            }
+        }
+
         if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             game.setScreen(new MainMenu(game));
             Player.id = 0;
@@ -220,7 +248,7 @@ public class MainGameScreen implements Screen {
     public void drawMap(){
         int[][] map = g.returnMap();
         int WunitSize = 3;
-        game.walls = g.walls;
+        game.walls = MapRender.walls;
         for (int[] ints : map) {
             int Wx = ints[0];
             int Wy = ints[1];

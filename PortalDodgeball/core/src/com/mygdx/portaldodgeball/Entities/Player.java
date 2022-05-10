@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Timer;
+import com.mygdx.portaldodgeball.Entities.map.Wall;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import java.util.ArrayList;
 
@@ -24,10 +25,17 @@ public class Player extends Entity {
     public ArrayList<Portal> portals = new ArrayList<Portal>();
     public static ArrayList<Ball> deadBalls = new ArrayList<Ball>();
     public static ArrayList<Portal> thrownPortals = new ArrayList<Portal>();
+    public ArrayList<StillPortal> stillPortals = new ArrayList<StillPortal>();
+    public ArrayList<Ball> transports = new ArrayList<Ball>();
+    public static ArrayList<StillPortal > deadStill = new ArrayList<StillPortal>();
+    ArrayList<Integer> indexes  = new ArrayList<>();
     public Hitbox hitbox, up, right, left, down;
     public PortalDodgeball game;
     public boolean hasShield;
     public boolean hasSpeed;
+    public int portalLimit = -1;
+    public boolean canDispose = false;
+    public boolean indictor = false;
 
     public float THROW_INTERVAL = 5f;
     public int BALL_AMMO = 6;
@@ -566,6 +574,18 @@ public class Player extends Entity {
         for(int j = 0; j < game.walls.length; j++) {
             boolean hit = this.hitbox.collidesWith((game.walls[j].wallHitbox));
             if(hit){
+                Wall aWall = game.walls[j];
+                int Rotat = aWall.wallRotation;
+/*                if((this.hitbox.collidesWidth(aWall.wallEdgeHb1)||this.hitbox.collidesWidth(aWall.wallEdgeHb2)) && !this.hitbox.collidesWidth(aWall.wallHitbox)){
+                    if(Rotat==1){
+                        Rotat = 2;
+                    }
+                    else{
+                        Rotat = 1;
+                    }
+                }
+*/
+
                 if(this.absMove == 0){
                     this.canIncreaseX = false;
                     this.x -= speed;
@@ -660,11 +680,14 @@ public class Player extends Entity {
                 }
                 System.out.println(hit + " " + this.number);
             }
-
         }
     }
     //throw method changed with throwBall* to settle the dispute with general syntax of Java.
-
+    /*
+    public void transportBall(){
+        Ball ball5 = new Ball(this, (float) Math.toRadians(180), this.x - 11,this.y + 15);
+        balls.add(ball5);
+    }*/
 
     public void throwBall(){
         if(BALL_AMMO > 0) {
@@ -706,12 +729,14 @@ public class Player extends Entity {
                 }
                 BALL_AMMO --;
             }
+            indictor = false;
         }
     }
 
     public void portal(){
         if(Gdx.input.isKeyJustPressed(this.keys[5])){
             switch (direction){
+
                 case 0:
                     Portal p1 = new Portal(this, (float) Math.toRadians(0), this.x + 40,this.y + 15);
                     portals.add(p1);
