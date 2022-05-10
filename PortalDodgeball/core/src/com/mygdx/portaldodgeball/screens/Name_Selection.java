@@ -4,11 +4,13 @@ import com.badlogic.gdx.Screen;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 
 public class Name_Selection implements Screen {
-
+    public int playerCount;
+    public String[] names;
     PortalDodgeball game;
 
     public Name_Selection(PortalDodgeball game){
         this.game = game;
+        this.game
     }
 
     @Override
