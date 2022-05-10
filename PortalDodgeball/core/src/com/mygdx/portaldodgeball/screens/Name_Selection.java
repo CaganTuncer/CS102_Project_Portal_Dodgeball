@@ -10,7 +10,6 @@ public class Name_Selection implements Screen {
 
     public Name_Selection(PortalDodgeball game){
         this.game = game;
-        this.game
     }
 
     @Override
