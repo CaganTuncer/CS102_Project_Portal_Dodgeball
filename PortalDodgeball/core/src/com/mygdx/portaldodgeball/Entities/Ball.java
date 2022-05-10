@@ -51,6 +51,8 @@ public class Ball extends Entity{
         return false;
     }
     public void setter(int x, int y){
+        this.x = x;
+        this.y = y;
         this.hitbox.x = x;
         this.hitbox.y = y;
     }
@@ -60,17 +62,9 @@ public class Ball extends Entity{
 
         //this.player.stillPortals.indexOf(stillPortal)) == 0
         if(in == 1) {
-            xP= this.player.stillPortals.get(0).x;
-            yP = this.player.stillPortals.get(0).y;
-            this.setter(xP,yP);
+
         }else{
 
-            System.out.println("Test");
-            System.out.println(this.player.stillPortals.get(0).y);
-            System.out.println(this.player.stillPortals.get(1).y);
-            xP = this.player.stillPortals.get(1).x;
-            yP = this.player.stillPortals.get(1).y;
-            this.setter(xP,yP);
         }
 
 

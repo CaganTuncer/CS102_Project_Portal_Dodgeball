@@ -60,10 +60,10 @@ public class StillPortal {
     //    public boolean canBePlaced(){
     //}
     public void findWallHit(){
-        Hitbox tester = new Hitbox(x+11,y+11,1,1);
-        Hitbox tester2 = new Hitbox(x+11,y-1,1,1);
-        Hitbox tester3 = new Hitbox(x-1,y+11,1,1);
-        Hitbox tester4 = new Hitbox(x-1,y-1,1,1);
+        Hitbox tester = new Hitbox(x+10,y+10,10,10);
+        Hitbox tester2 = new Hitbox(x+10,y-10,10,10);
+        Hitbox tester3 = new Hitbox(x-10,y+10,10,10);
+        Hitbox tester4 = new Hitbox(x-10,y-10,10,10);
         for(int i = 0; i< MapRender.walls.length;i++){
             Wall testWall = MapRender.walls[i];
             if(tester.collidesWidth(testWall.wallHitbox)||tester2.collidesWidth(testWall.wallHitbox)||tester3.collidesWidth(testWall.wallHitbox)||tester4.collidesWidth(testWall.wallHitbox)){
@@ -102,5 +102,8 @@ public class StillPortal {
             height = 39;
         }
     }
+    public int findPortalWallRotation(){
 
+        return 0;
+    }
 }

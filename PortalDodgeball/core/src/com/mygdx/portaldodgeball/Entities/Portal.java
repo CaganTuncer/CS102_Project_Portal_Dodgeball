@@ -26,6 +26,8 @@ public class Portal extends Entity{
     public Hitbox hitbox;
     public boolean isStill = false;
 
+    public float hitX, hitY;
+
 
     public Portal(final Player player, float angle, int x, int y){
         this.x = x;
@@ -55,6 +57,11 @@ public class Portal extends Entity{
     }
     public void draw(SpriteBatch spriteBatch) {
         spriteBatch.draw(texture,hitbox.x,hitbox.y,10,10);
+    }
+
+    public void setHitxAndHitY(){
+
+
     }
 
 }
