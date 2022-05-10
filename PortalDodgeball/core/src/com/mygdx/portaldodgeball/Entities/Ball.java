@@ -64,15 +64,17 @@ public class Ball extends Entity{
         if(in == 1) {
 
         }else{
+<<<<<<< Updated upstream
 
+=======
+            System.out.println("Test");
+            System.out.println(this.player.stillPortals.get(0).y);
+            System.out.println(this.player.stillPortals.get(1).y);
+            xP = this.player.stillPortals.get(1).x;
+            yP = this.player.stillPortals.get(1).y;
+            this.setter(xP,yP);
+>>>>>>> Stashed changes
         }
-
-
-        /*
-        this.player.stillPortals.get(targetIndex).allowance = false;
-        this.player.stillPortals.get(targetIndex).calcRotation();
-        this.player.stillPortals.get(targetIndex).allowance = true;
-        stillPortal.Assign();*/
 
     }
    /* public boolean portalCollision(int i){
