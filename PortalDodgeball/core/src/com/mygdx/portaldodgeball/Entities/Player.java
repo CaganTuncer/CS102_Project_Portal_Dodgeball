@@ -24,12 +24,14 @@ public class Player extends Entity {
     public static ArrayList<Ball> deadBalls = new ArrayList<Ball>();
     public static ArrayList<Portal> thrownPortals = new ArrayList<Portal>();
     public ArrayList<StillPortal> stillPortals = new ArrayList<StillPortal>();
+    public ArrayList<Ball> transports = new ArrayList<Ball>();
     public static ArrayList<StillPortal > deadStill = new ArrayList<StillPortal>();
     ArrayList<Integer> indexes  = new ArrayList<>();
     public Hitbox hitbox, up, right, left, down;
     public PortalDodgeball game;
     public int portalLimit = -1;
     public boolean canDispose = false;
+    public boolean indictor = false;
 
     public Player(String name, PortalDodgeball game) {
         super();
@@ -525,11 +527,14 @@ public class Player extends Entity {
                 }
                 System.out.println(hit + " " + this.number);
             }
-
         }
     }
     //throw method changed with throwBall* to settle the dispute with general syntax of Java.
-
+    /*
+    public void transportBall(){
+        Ball ball5 = new Ball(this, (float) Math.toRadians(180), this.x - 11,this.y + 15);
+        balls.add(ball5);
+    }*/
 
     public void throwBall(){
 
@@ -570,12 +575,14 @@ public class Player extends Entity {
                     break;
 
             }
+            indictor = false;
         }
     }
 
     public void portal(){
         if(Gdx.input.isKeyJustPressed(this.keys[5])){
             switch (direction){
+
                 case 0:
                     Portal p1 = new Portal(this, (float) Math.toRadians(0), this.x + 40,this.y + 15);
                     portals.add(p1);

@@ -21,10 +21,8 @@ public class MainGameScreen implements Screen {
 
     Texture img;
     float x, y;
-
+    boolean indicator = false;
     PortalDodgeball game;
-
-
 
     public MainGameScreen(PortalDodgeball game){
         this.game = game;
@@ -68,16 +66,28 @@ public class MainGameScreen implements Screen {
                 break;
         }
 
-        for(int i = 0; i < game.players.length; i++){
-            for (Ball ball: game.players[i].balls) {
-                if(ball.isLifeSpanOver() == true){
+        for(int i = 0; i < game.players.length; i++) {
+            for (Ball ball : game.players[i].balls) {
+                if (ball.isLifeSpanOver()) {
                     Player.deadBalls.add(ball);
-                }
-                for(int j = 0; j < game.players.length; j++ ){
-                    if(ball.getHitbox().collidesWidth(game.players[j].hitbox)){
-                        Player.deadBalls.add(ball);
-                        game.players[j].setTexture("Players/Player 3/player0.png");
+                } else {
+                    for (int j = 0; j < game.players.length; j++) {
+                        if (ball.getHitbox().collidesWidth(game.players[j].hitbox)) {
+                            Player.deadBalls.add(ball);
+                            game.players[j].setTexture("Players/Player 3/player0.png");
+                        }
                     }
+                    
+                    for (StillPortal still : game.players[i].stillPortals) {
+                        if (ball.getHitbox().collidesWidth(still.getHitbox())){
+                            //Player.deadBalls.add(ball);
+                            //ball.setTexture("Players/Player 3/player0.png");
+                            ball.transport(still);
+                            //ball.setter(200,200);
+                            //game.players[i].transportBall();
+                            //Ball ballNew = (,still.Teleport().x, still.Teleport().y);
+                            }
+                        }
                 }
             }
         }
@@ -85,6 +95,7 @@ public class MainGameScreen implements Screen {
         for(int i = 0; i < game.players.length; i++){
             game.players[i].balls.removeAll(Player.deadBalls);
         }
+
 
         for(int i = 0; i < game.players.length; i++){
             for (Portal portal: game.players[i].portals) {

@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 
 public class MapRender {
     public int mapChoice;
-    public Wall[] walls = new Wall[5];
+    public static Wall[] walls = new Wall[5];
     // x , y , height , width
     public int[][] map1 = {
                             {50,50,700,9},

@@ -29,7 +29,6 @@ public class Ball extends Entity{
 
         this.angle = angle;
         texture = new Texture("Players/Player 1/player3.png");
-
     }
     public void update(float delta){
         hitbox.x += (SIDE_SPEED * (float)Math.cos(angle) * delta);
@@ -51,4 +50,33 @@ public class Ball extends Entity{
         }
         return false;
     }
+    public void setter(int x, int y){
+        this.hitbox.x = x;
+        this.hitbox.y = y;
+    }
+    public void transport(StillPortal stillPortal){
+        int targetIndex = 0;
+        if((this.player.stillPortals.get(0)).equals(stillPortal)){
+            int xP = (this.player.stillPortals.get(1)).x;
+            int yP = (this.player.stillPortals.get(1)).y;
+            targetIndex = 1;
+            this.setter(xP,yP);
+        }
+        else{
+            int xP = (this.player.stillPortals.get(0)).x;
+            int yP = (this.player.stillPortals.get(0)).y;
+            this.setter(xP,yP);
+        }
+
+        /*
+        this.player.stillPortals.get(targetIndex).allowance = false;
+        this.player.stillPortals.get(targetIndex).calcRotation();
+        this.player.stillPortals.get(targetIndex).allowance = true;
+        stillPortal.Assign();*/
+
+    }
+   /* public boolean portalCollision(int i){
+        if(this.player.ball.getHitbox().collidesWidth(game.players[i].hitbox))
+
+    }*/
 }
