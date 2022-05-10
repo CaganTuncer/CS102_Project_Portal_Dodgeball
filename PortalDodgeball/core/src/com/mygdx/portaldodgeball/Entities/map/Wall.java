@@ -27,10 +27,5 @@ public class Wall extends Entity {
         else{
             wallRotation = 2;
         }
-
-
-
     }
-
-
 }

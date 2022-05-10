@@ -20,14 +20,31 @@ import java.util.ArrayList;
 
 public class MainGameScreen implements Screen {
 
-    Texture img;
-    float x, y;
-
     PortalDodgeball game;
+    Texture player1Score;
+    Texture player2Score;
+    Texture player3Score;
+    Texture timer;
 
     public MainGameScreen(PortalDodgeball game){
         this.game = game;
        // scoreFont = new BitmapFont(Gdx.files.internal("fonts/score.fnt"));
+    }
+
+    Texture wallUnit;
+    MapRender g = new MapRender(1);
+
+    public MainGameScreen(PortalDodgeball game){
+        this.game = game;
+        player1Score = new Texture("Game_Screen/player1Score.png");
+        player2Score = new Texture("Game_Screen/player2Score.png");
+        player3Score = new Texture("Game_Screen/player3Score.png");
+        timer = new Texture("Game_Screen/timer.png");
+        wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
+        this.game.powerUps.add(new PowerUp(1,this,0, 1000,350));
+        this.game.powerUps.add(new PowerUp(1,this,0, 700,500));
+        this.game.powerUps.add(new PowerUp(0,this,0, 1300,200));
+        this.game.powerUps.add(new PowerUp(0,this,0, 650,350));
     }
 
     @Override
@@ -42,6 +59,10 @@ public class MainGameScreen implements Screen {
         Gdx.gl.glClearColor(0/255f, 98/255f, 228/255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         drawMap();
+        game.batch.draw(player1Score, 50, 790);
+        game.batch.draw(player2Score, 1325, 790);
+        game.batch.draw(player3Score, 687, 0);
+        game.batch.draw(timer, 678, 795);
         game.scoreFont.draw(game.batch, "" + 50, 250,250);
         switch (game.players.length){
             case 2:
@@ -120,7 +141,6 @@ public class MainGameScreen implements Screen {
 
                     }
                 }
-
             }
         }
         for(int i = 0; i < game.players.length; i++){
@@ -173,10 +193,8 @@ public class MainGameScreen implements Screen {
         game.batch.end();
     }
     public void drawMap(){
-        MapRender g = new MapRender(1);
         int[][] map = g.returnMap();
         int WunitSize = 3;
-        Texture wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
         game.walls = g.walls;
         for (int[] ints : map) {
             int Wx = ints[0];

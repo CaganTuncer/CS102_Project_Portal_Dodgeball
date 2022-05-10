@@ -40,8 +40,6 @@ public class PortalDodgeball extends Game {
 
 	public Music music;
 	public Sound click;
-
-	public MainGameScreen mainGameScreen = new MainGameScreen(this);
 	public Wall[] walls;
 
 	public void setPlayers(Player[] players){

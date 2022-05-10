@@ -18,9 +18,9 @@ public class Ball extends Entity{
 
     public Ball(final Player player, float angle, int x, int y){
         this.player = player;
-        this.x = player.x ;
-        this.y = player.y ;
-        this.hitbox = new Hitbox(x, y,10,10);
+        this.x = player.x + 20 ;
+        this.y = player.y + 20;
+        this.hitbox = new Hitbox(this.x, this.y,10,10);
 
         this.angle = angle;
         texture = player.texture;

@@ -7,11 +7,11 @@ public class MapRender {
     public Wall[] walls = new Wall[5];
     // x , y , height , width
     public int[][] map1 = {
-                            {50,50,9,1500},
-                            {50,50,700,9},
-                            {1541,50,700,9},
-                            {50,741,9,1500},
-                            {1441,50,100,9}};
+                            {50,93,9,1500},
+                            {50,93,700,9},
+                            {1541,93,700,9},
+                            {50,783,9,1500},
+                            {1441,93,100,9}};
     public MapRender(int aChoice){
         mapChoice = aChoice;
         int[][] map = map1;

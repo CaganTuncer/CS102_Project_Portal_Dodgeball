@@ -3,7 +3,7 @@ package com.mygdx.portaldodgeball.screens;
 import com.badlogic.gdx.Screen;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 
-public class Ffa2 implements Screen {
+public class Ffa2 implements Screen{
 
     PortalDodgeball game;
 

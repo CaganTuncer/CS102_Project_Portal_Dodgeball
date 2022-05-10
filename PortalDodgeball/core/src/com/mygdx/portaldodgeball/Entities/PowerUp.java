@@ -8,7 +8,7 @@ import com.mygdx.portaldodgeball.screens.MainGameScreen;
 
 import java.util.Random;
 
-public class PowerUp {
+public class PowerUp extends Entity{
     public int type;
     Hitbox PUpHitbox;
     private float timeSeconds = 0f;
