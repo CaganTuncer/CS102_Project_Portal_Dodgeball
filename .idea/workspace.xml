@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8fa5cd8-a87d-4409-81d0-6aa8033e7df1" name="Changes" comment="">
+    <list default="true" id="83880913-9ef0-4919-8bd3-d9018e3beedf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/StillPortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/StillPortal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +24,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="28yIIbKdBYbzgi5oDrpRLaxAYyg" />
+  <component name="ProjectId" id="28zQFQipcUc9AfRGPx9GvJglbzd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -58,11 +57,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e8fa5cd8-a87d-4409-81d0-6aa8033e7df1" name="Changes" comment="" />
-      <created>1652182326330</created>
+      <changelist id="83880913-9ef0-4919-8bd3-d9018e3beedf" name="Changes" comment="" />
+      <created>1652216835811</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1652182326330</updated>
+      <updated>1652216835811</updated>
     </task>
     <servers />
   </component>
@@ -76,25 +75,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/Ball.java</url>
-          <line>58</line>
-          <properties class="com.mygdx.portaldodgeball.Entities.Ball" method="transport">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/PortalDodgeball/core/src/com/mygdx/portaldodgeball/Entities/Ball.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

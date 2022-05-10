@@ -76,7 +76,8 @@ public class Ball extends Entity{
         int gathererAngle = gathererPortal.direction;
         int senderAngle = senderPortal.direction;
         int angleChange;
-        double angleindegrees = Math.toDegrees(this.angle);
+        
+/*        double angleindegrees = Math.toDegrees(this.angle);
         int anglerounded = Math.round(this.angle);
 
         if(anglerounded == 45 && gathererAngle == 2){
@@ -100,6 +101,8 @@ public class Ball extends Entity{
 
 
 
+
+
         if(senderAngle<gathererAngle){
             angleChange = senderAngle+4 - gathererAngle;
         }
@@ -107,17 +110,20 @@ public class Ball extends Entity{
             angleChange = senderAngle - gathererAngle;
         }
 
-        if (relativeangle ==90){
+ */
+
+
             this.angle = (float) Math.toRadians(((senderAngle -1) * 90) + 180);
-        }
-        else if(relativeangle > 90){
+
+/*        else if(relativeangle > 90){
             this.angle = (float) Math.toRadians((relativeangle - 90 + (senderAngle-1)*90) %360 );
         }
         else {
             this.angle = (float) Math.toRadians((relativeangle +90 + (senderAngle-1)*90) %360);
         }
-        hitbox.x += (60 * (float)Math.cos(angle));
-        hitbox.y += (60 * (float)Math.sin(angle));
+
+ */
+
 
 
 
@@ -125,6 +131,8 @@ public class Ball extends Entity{
         xP = senderPortal.x;
         yP = senderPortal.y;
         this.setter(xP,yP);
+        hitbox.x += (60 * (float)Math.cos(angle));
+        hitbox.y += (60 * (float)Math.sin(angle));
 
 
 
