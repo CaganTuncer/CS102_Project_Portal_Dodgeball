@@ -3,6 +3,7 @@ package com.mygdx.portaldodgeball.Entities;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 import com.mygdx.portaldodgeball.screens.MainGameScreen;
 
@@ -19,8 +20,11 @@ public class PowerUp extends Entity{
 
     public static int [][] spawnLocations;
     public int map;
+    public static int[][] puLocations= {
+            {100,300},{300,500},{1000,350},{700,500},{1300,200},{650,350},{425,700}
+    };
 
-    Random random = new Random();
+    static Random random = new Random();
 
     MainGameScreen game;
 
@@ -74,6 +78,23 @@ public class PowerUp extends Entity{
 
 
         }
+
+    }
+
+    public static void spawnPUs(final MainGameScreen screen){
+        Timer timer = new Timer();
+        timer.scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                int location = random.nextInt(puLocations.length+1);
+                int type = random.nextInt(2);
+                screen.game.powerUps.add(new PowerUp(type,screen,0,puLocations[location][0],puLocations[location][1]));
+
+            }
+        }, 0f,10f);
+
+
+
 
     }
 

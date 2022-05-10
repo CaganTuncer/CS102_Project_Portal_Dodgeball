@@ -17,7 +17,7 @@ import com.mygdx.portaldodgeball.PortalDodgeball;
 
 public class MainGameScreen implements Screen {
 
-    PortalDodgeball game;
+    public PortalDodgeball game;
     Texture player1Score;
     Texture player2Score;
     Texture player3Score;
@@ -48,10 +48,12 @@ public class MainGameScreen implements Screen {
         p3Screen = new Texture("Players/Player3edited/p3ThrowBeforeMiddle.png");
         timer = new Texture("Game_Screen/timer.png");
         wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
-        this.game.powerUps.add(new PowerUp(1,this,0, 1000,350));
+        PowerUp.spawnPUs(this);
+
+        /*this.game.powerUps.add(new PowerUp(1,this,0, 1000,350));
         this.game.powerUps.add(new PowerUp(1,this,0, 700,500));
         this.game.powerUps.add(new PowerUp(0,this,0, 1300,200));
-        this.game.powerUps.add(new PowerUp(0,this,0, 650,350));
+        this.game.powerUps.add(new PowerUp(0,this,0, 650,350));*/
     }
 
     @Override
