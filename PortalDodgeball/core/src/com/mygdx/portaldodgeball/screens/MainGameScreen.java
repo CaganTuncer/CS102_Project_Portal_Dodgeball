@@ -27,7 +27,7 @@ public class MainGameScreen implements Screen {
     Texture timer;
 
     public long startTime = 0;
-    int timeSecond = 40;
+    int timeSecond = 5;
     int secondRemaining = 0;
     int timeMinute = timeSecond / 60;
 
@@ -61,7 +61,7 @@ public class MainGameScreen implements Screen {
     @Override
     public void render(float delta) {
         if(timeSecond < 0){
-            game.setScreen(new End_Game(this.game));
+            game.setScreen(new End_Game(this.game,this));
         }
         game.batch.begin();
         ScreenUtils.clear(1, 0, 0, 1);
