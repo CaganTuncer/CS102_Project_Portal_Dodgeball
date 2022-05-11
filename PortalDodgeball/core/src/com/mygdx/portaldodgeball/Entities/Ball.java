@@ -12,7 +12,7 @@ public class Ball extends Entity{
     public Texture texture;
 
     private float timeSeconds = 0f;
-    private float lifeSpan = 5f;
+    private float period = 5f;
     Hitbox hitbox;
 
 
@@ -41,8 +41,8 @@ public class Ball extends Entity{
 
     public boolean isLifeSpanOver() {
         timeSeconds += Gdx.graphics.getDeltaTime();
-        if (timeSeconds > lifeSpan) {
-            timeSeconds -= lifeSpan;
+        if (timeSeconds > period) {
+            timeSeconds -= period;
             return true;
         }
         return false;
@@ -56,24 +56,22 @@ public class Ball extends Entity{
     public void transport(int in){
         int xP;
         int yP;
-
-        //this.player.stillPortals.indexOf(stillPortal)) == 0
-        if(in == 1) {
-
-        }else{
-
+        StillPortal senderPortal;
+        if(in == 1){
+            senderPortal = this.player.stillPortals.get(0);
         }
+        else{
+            senderPortal =this.player.stillPortals.get(1);
+        }
+        int senderAngle = senderPortal.direction;
 
+        this.angle = (((senderAngle -1) * 90) + 180)%360;
+        xP = senderPortal.x;
+        yP = senderPortal.y;
+        this.setter(xP,yP);
+        hitbox.x += (40 * (float)Math.cos(Math.toRadians(angle)));
+        hitbox.y += (40 * (float)Math.sin(Math.toRadians(angle)));
 
-        /*
-        this.player.stillPortals.get(targetIndex).allowance = false;
-        this.player.stillPortals.get(targetIndex).calcRotation();
-        this.player.stillPortals.get(targetIndex).allowance = true;
-        stillPortal.Assign();*/
 
     }
-   /* public boolean portalCollision(int i){
-        if(this.player.ball.getHitbox().collidesWidth(game.players[i].hitbox))
-
-    }*/
 }

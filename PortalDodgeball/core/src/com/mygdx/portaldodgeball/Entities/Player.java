@@ -105,17 +105,17 @@ public class Player extends Entity {
 
         switch (this.number){
             case 0:
-                this.x = 250;
-                this.y = 250;
+                this.x = 80;
+                this.y = 150;
                 break;
 
             case 1:
-                this.x = 180;
-                this.y = 180;
+                this.x = 1280;
+                this.y = 700;
                 break;
 
             case 2:
-                this.x = 300;
+                this.x = 1350;
                 this.y = 350;
                 break;
         }
@@ -910,45 +910,44 @@ public class Player extends Entity {
 
     public void throwBall(){
         if(BALL_AMMO > 0) {
-            if (Gdx.input.isKeyJustPressed(this.keys[4])) {
-                switch (direction) {
-
+            if(Gdx.input.isKeyJustPressed(this.keys[4])){
+                switch (direction){
                     case 0:
-                        Ball ball1 = new Ball(this, 0, this.x, this.y);
+                        Ball ball1 = new Ball(this, 0, this.x + 40,this.y + 15);
                         balls.add(ball1);
                         break;
                     case 1:
-                        Ball ball2 = new Ball(this, 45, this.x , this.y );
+                        Ball ball2 = new Ball(this, 45, this.x + 40,this.y + 40);
                         balls.add(ball2);
                         break;
                     case 2:
-                        Ball ball3 = new Ball(this, 90, this.x , this.y );
+                        Ball ball3 = new Ball(this, 90, this.x + 10,this.y + 40);
                         balls.add(ball3);
                         break;
                     case 3:
-                        Ball ball4 = new Ball(this, 135, this.x, this.y );
+                        Ball ball4 = new Ball(this, 135, this.x,this.y + 40);
                         balls.add(ball4);
                         break;
                     case 4:
-                        Ball ball5 = new Ball(this, 180, this.x , this.y );
+                        Ball ball5 = new Ball(this, 180, this.x - 11,this.y + 15);
                         balls.add(ball5);
                         break;
                     case 5:
-                        Ball ball6 = new Ball(this, 225, this.x , this.y );
+                        Ball ball6 = new Ball(this, 225, this.x - 11,this.y - 10);
                         balls.add(ball6);
                         break;
                     case 6:
-                        Ball ball7 = new Ball(this, 270, this.x , this.y );
+                        Ball ball7 = new Ball(this, 270, this.x + 10,this.y - 11);
                         balls.add(ball7);
                         break;
                     case 7:
-                        Ball ball8 = new Ball(this, 315, this.x , this.y);
+                        Ball ball8 = new Ball(this, 315, this.x + 40,this.y);
                         balls.add(ball8);
                         break;
+
                 }
-                BALL_AMMO --;
+                indictor = false;
             }
-            indictor = false;
         }
     }
 

@@ -22,6 +22,8 @@ public class PortalDodgeball extends Game {
 	public static int HEIGHT = 900;
 	public static int FPS = 60;
 
+	public int map = 1;
+
 	public float clickVol = 0.5f;
 
 	public String[] names = {null, null, null, null, null, null};

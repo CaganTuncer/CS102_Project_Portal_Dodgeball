@@ -20,9 +20,9 @@ public class PowerUp extends Entity{
 
     public static int [][] spawnLocations;
     public int map;
-    public static int[][] puLocations= {
-            {100,300},{300,500},{1000,350},{700,500},{1300,200},{650,350},{425,700}
-    };
+    public static int[][] puLocations;
+
+
 
     static Random random = new Random();
 
@@ -35,6 +35,8 @@ public class PowerUp extends Entity{
         this.map = map;
         this.x = x;
         this.y = y;
+
+
 
         switch (type){
 
@@ -84,20 +86,24 @@ public class PowerUp extends Entity{
                 break;
             case 1:
                 player.hasShield = true;
-
-
         }
 
     }
 
-    public static void spawnPUs(final MainGameScreen screen){
+    public static void spawnPUs(final MainGameScreen screen, PortalDodgeball game){
+        switch (game.map){
+            case 1:
+                puLocations = new int[][] {
+                        {100,300},{180,680},{625,240},{380,600},{800,550},{1050,600},{1100,170}
+                };
+        }
         Timer timer = new Timer();
         timer.scheduleTask(new Timer.Task() {
             @Override
             public void run() {
                 int location = random.nextInt(puLocations.length);
                 int type = random.nextInt(2);
-                screen.game.powerUps.add(new PowerUp(type,screen,0,puLocations[location][0],puLocations[location][1]));
+                screen.game.powerUps.add(new PowerUp(type,screen,1,puLocations[location][0],puLocations[location][1]));
 
             }
         }, 0f,10f);

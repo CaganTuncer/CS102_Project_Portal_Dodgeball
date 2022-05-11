@@ -24,19 +24,15 @@ public class MainGameScreen implements Screen {
     Texture p1Screen;
     Texture p2Screen;
     Texture p3Screen;
-
-
-
-
     Texture timer;
 
     public long startTime = 0;
-    int timeSecond = 40;
+    int timeSecond = 180;
     int secondRemaining = 0;
     int timeMinute = timeSecond / 60;
 
     Texture wallUnit;
-    MapRender g = new MapRender(1);
+    MapRender g;
 
     public MainGameScreen(PortalDodgeball game){
         this.game = game;
@@ -48,12 +44,8 @@ public class MainGameScreen implements Screen {
         p3Screen = new Texture("Players/Player3edited/p3ThrowBeforeMiddle.png");
         timer = new Texture("Game_Screen/timer.png");
         wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
-        PowerUp.spawnPUs(this);
-
-        /*this.game.powerUps.add(new PowerUp(1,this,0, 1000,350));
-        this.game.powerUps.add(new PowerUp(1,this,0, 700,500));
-        this.game.powerUps.add(new PowerUp(0,this,0, 1300,200));
-        this.game.powerUps.add(new PowerUp(0,this,0, 650,350));*/
+        PowerUp.spawnPUs(this, this.game);
+        g = new MapRender(game.map);
     }
 
     @Override
@@ -79,11 +71,12 @@ public class MainGameScreen implements Screen {
         if(game.players.length == 3) {
             game.batch.draw(player3Score, 687, 0);
             game.p3ScoreFont.draw(game.batch, game.players[2].score + "", 825, 85);
+            game.batch.draw(p3Screen,711,30);
 
         }
         game.batch.draw(p1Screen,62,817);
         game.batch.draw(p2Screen,1499,817);
-        game.batch.draw(p3Screen,711,30);
+
 
 
         if (TimeUtils.timeSinceNanos(startTime) > 1000000000) {
@@ -184,6 +177,21 @@ public class MainGameScreen implements Screen {
 
         for(int i = 0; i < game.players.length; i++){
             game.players[i].balls.removeAll(Player.deadBalls);
+        }
+        for(int i = 0; i < game.players.length; i++){
+            for (Portal portal: game.players[i].portals) {
+                for(int j = 0; j < game.walls.length; j++ ){
+                    if(portal.getHitbox().collidesWith(game.walls[j].wallHitbox)){
+                        StillPortal still = new StillPortal(game.players[i], portal.x + Math.round(portal.xChange), portal.y + Math.round(portal.yChange));
+                        Player.thrownPortals.add(portal);
+                        game.players[i].stillPortals.add(still);
+                        still.Alternator();
+                    }
+                }
+            }
+        }
+        for(int i = 0; i < game.players.length; i++){
+            game.players[i].portals.removeAll(Player.thrownPortals);
         }
 
         for (int i = 0; i < game.powerUps.size(); i++) {

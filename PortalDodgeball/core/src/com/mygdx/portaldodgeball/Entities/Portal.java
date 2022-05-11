@@ -34,11 +34,16 @@ public class Portal extends Entity{
         this.angle = angle;
 
         this.hitbox = new Hitbox(x, y,10,10);
-        //texture = new Texture("Players/Player 1/player3.png");
-        texture = new Texture("PowerUps/shield.png");
-        if(isStill){
-            SIDE_SPEED = 0;
-            isStill = false;
+        switch (this.player.number){
+            case 0:
+                texture = new Texture("Portals/portalsThrowP1.png");
+                break;
+            case 1:
+                texture = new Texture("Portals/portalsThrowP2.png");
+                break;
+            case 2:
+                texture = new Texture("Portals/portalsThrowP3.png");
+                break;
         }
     }
 

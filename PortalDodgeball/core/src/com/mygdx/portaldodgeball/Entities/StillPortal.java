@@ -25,6 +25,7 @@ public class StillPortal {
     public Wall wallHit;
 
     public StillPortal(final Player player, int x, int y){
+
         this.player = player;
         this.x = x;
         this.y = y;
@@ -75,13 +76,34 @@ public class StillPortal {
     public void calcRotation(){
         if(wallHit.wallRotation==1){
             if(y>wallHit.wallHitbox.y){
-                direction = 2;
-                texture = new Texture("Portals/p1InDown.png");
+                direction = 4;
+                switch (this.player.number){
+                    case 0:
+                        texture = new Texture("Portals/p1InDown.png");
+                        break;
+                    case 1:
+                        texture = new Texture("Portals/p2InDown.png");
+                        break;
+                    case 2:
+                        texture = new Texture("Portals/p3InDown.png");
+                        break;
+                }
+
                 this.y = wallHit.y+29;
             }
             else{
-                direction = 4;
-                texture = new Texture("Portals/p1InUp.png");
+                direction = 2;
+                switch (this.player.number){
+                    case 0:
+                        texture = new Texture("Portals/p1InUp.png");
+                        break;
+                    case 1:
+                        texture = new Texture("Portals/p2InUp.png");
+                        break;
+                    case 2:
+                        texture = new Texture("Portals/p3InUp.png");
+                        break;
+                }
                 this.y = wallHit.y;
             }
             width = 39;
@@ -90,12 +112,34 @@ public class StillPortal {
         if(wallHit.wallRotation==2){
             if(x>(wallHit.wallHitbox.x)){
                 direction = 3;
-                texture = new Texture("Portals/p1InLeft.png");
+                switch (this.player.number){
+                    case 0:
+                        texture = new Texture("Portals/p1InLeft.png");
+                        break;
+                    case 1:
+                        texture = new Texture("Portals/p2InLeft.png");
+                        break;
+                    case 2:
+                        texture = new Texture("Portals/p3InLeft.png");
+                        break;
+                }
+
+
                 this.x = wallHit.x+29;
             }
             else{
                 direction = 1;
-                texture = new Texture("Portals/p1InRight.png");
+                switch (this.player.number){
+                    case 0:
+                        texture = new Texture("Portals/p1InRight.png");
+                        break;
+                    case 1:
+                        texture = new Texture("Portals/p2InRight.png");
+                        break;
+                    case 2:
+                        texture = new Texture("Portals/p3InRight.png");
+                        break;
+                }
                 this.x = wallHit.x;
             }
             width = 21;
