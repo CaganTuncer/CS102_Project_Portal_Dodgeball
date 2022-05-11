@@ -333,7 +333,6 @@ public class Player extends Entity {
     }
 
     public void checkOrientation(){
-
        if(hasShield){
            if(this.BALL_AMMO > 0){
                switch (this.direction) {
@@ -878,6 +877,7 @@ public class Player extends Entity {
     public void throwBall(){
         if(BALL_AMMO > 0) {
             if(Gdx.input.isKeyJustPressed(this.keys[4])){
+                this.BALL_AMMO--;
                 switch (direction){
                     case 0:
                         Ball ball1 = new Ball(this, 0, this.x + 40,this.y + 15);
