@@ -1,16 +1,55 @@
 package com.mygdx.portaldodgeball.screens;
 
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.portaldodgeball.Entities.Player;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class End_Game implements Screen {
+
+
+
+    public static class Data {
+
+        public int  id;
+        public String winner;
+        public int highestScore = 0;
+        public Date date = new Date();
+        public Calendar calendarG = new GregorianCalendar();
+        public int minutes = calendarG.get(Calendar.MINUTE);
+        public int hours = calendarG.get(Calendar.HOUR_OF_DAY);
+
+        MainGameScreen screen;
+
+        public Data returnData(MainGameScreen screen) {
+            return this;
+        }
+
+        public Data (MainGameScreen screen){
+
+
+            for (int i = 0; i <screen.game.players.length ; i++) {
+                if(screen.game.players[i].score > highestScore){
+                    highestScore = screen.game.players[i].score;
+                    winner = screen.game.players[i].name;
+                }
+            }
+
+            calendarG.setTime(date);
+        }
+    }
+
 
     PortalDodgeball game;
 
@@ -23,7 +62,11 @@ public class End_Game implements Screen {
     Texture p1, p2, p3, frame, menu, menu_sel, rematch, rematch_sel;
 
 
-    public End_Game(PortalDodgeball game){
+    public End_Game(PortalDodgeball game, MainGameScreen screen){
+        Json json = new Json();
+        Data data = new Data(screen);
+        System.out.println(json.prettyPrint(data));
+
         playersEnd = new ArrayList<Player>();
         for(int i = 0; i < game.players.length; i++){
             Player temp = game.players[i];
