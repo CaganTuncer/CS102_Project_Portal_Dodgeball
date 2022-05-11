@@ -7,11 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.mygdx.portaldodgeball.Entities.Ball;
-import com.mygdx.portaldodgeball.Entities.Player;
-import com.mygdx.portaldodgeball.Entities.Portal;
-import com.mygdx.portaldodgeball.Entities.PowerUp;
-import com.mygdx.portaldodgeball.Entities.StillPortal;
+import com.mygdx.portaldodgeball.Entities.*;
 import com.mygdx.portaldodgeball.Entities.map.MapRender;
 import com.mygdx.portaldodgeball.PortalDodgeball;
 
@@ -37,6 +33,8 @@ public class MainGameScreen implements Screen {
 
     Texture wallUnit;
     MapRender g = new MapRender(1);
+
+
 
     public MainGameScreen(PortalDodgeball game){
         this.game = game;
