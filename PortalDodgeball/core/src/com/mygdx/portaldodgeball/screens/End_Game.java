@@ -19,6 +19,7 @@ import java.util.GregorianCalendar;
 public class End_Game implements Screen {
 
 
+    private Player[] players;
 
     public static class Data {
 
@@ -138,9 +139,7 @@ public class End_Game implements Screen {
             game.batch.draw(rematch_sel, rematchX, rematchY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
-                for(Player player : this.game.players)
-                    player.score = 0;
-                game.setScreen(new MainGameScreen(game));
+                game.setScreen(new Mode_Selection(game));
             }
         } else {
             game.batch.draw(rematch, rematchX, rematchY);

@@ -73,12 +73,12 @@ public class PowerUp extends Entity{
                 if(!player.hasSpeed) {
                     Timer timer = new Timer();
                     player.hasSpeed = true;
-                    player.speed *= 2;
+                    player.speed *= 3.0 /2;
 
                     timer.scheduleTask(new Timer.Task() {
                         @Override
                         public void run() {
-                            player.speed /= 2;
+                            player.speed /= 3.0 /2;
                             player.hasSpeed = false;
                         }
                     },10f);

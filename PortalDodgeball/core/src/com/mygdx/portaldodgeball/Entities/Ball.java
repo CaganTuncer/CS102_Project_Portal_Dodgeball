@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Ball extends Entity{
 
     public float angle,time;
-    public int ballSpeed = 250;
+    public int ballSpeed = 350;
     public Player player;
     public Texture texture;
 
@@ -23,7 +23,17 @@ public class Ball extends Entity{
         this.hitbox = new Hitbox(this.x, this.y,10,10);
 
         this.angle = angle;
-        texture = player.texture;
+        switch (this.player.number){
+            case 0:
+                this.texture = new Texture("Gameplay sprites/p1Ball.png");
+                break;
+            case 1:
+                this.texture = new Texture("Gameplay sprites/p2Ball.png");
+                break;
+            case 2:
+                this.texture = new Texture("Gameplay sprites/p3Ball.png");
+                break;
+        }
 
     }
     public void update(float delta){

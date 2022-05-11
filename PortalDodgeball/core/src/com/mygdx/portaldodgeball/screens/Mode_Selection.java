@@ -96,12 +96,11 @@ public class Mode_Selection implements Screen {
             game.batch.draw(twop_sel, twopX, twopY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
-                if(this.game.players.length == 0){
-                    Player player1 = new Player("EFE", game);
-                    Player player2 = new Player("ALP", game);
-                    this.players = new Player[]{player1, player2};
-                    game.setPlayers(players);
-                }
+                Player.id = 0;
+                Player player1 = new Player("EFE", game);
+                Player player2 = new Player("ALP", game);
+                this.players = new Player[]{player1, player2};
+                game.setPlayers(players);
                 game.setScreen(new MainGameScreen(game));
             }
         } else {
@@ -112,13 +111,12 @@ public class Mode_Selection implements Screen {
             game.batch.draw(threep_sel, threepX, threepY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
-                if(this.game.players.length == 0){
-                    Player player1 = new Player("EFE", game);
-                    Player player2 = new Player("ALP", game);
-                    Player player3 = new Player("ART", game);
-                    this.players = new Player[]{player1, player2, player3};
-                    game.setPlayers(players);
-                }
+                Player.id = 0;
+                Player player1 = new Player("EFE", game);
+                Player player2 = new Player("ALP", game);
+                Player player3 = new Player("ART", game);
+                this.players = new Player[]{player1, player2, player3};
+                game.setPlayers(players);
                 game.setScreen(new MainGameScreen(game));
             }
         } else {
