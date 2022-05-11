@@ -869,7 +869,6 @@ public class Player extends Entity {
                     this.canIncreaseY = true;
                     this.canDecreaseY = true;
                 }
-                System.out.println(hit + " " + this.number);
             }
         }
     }

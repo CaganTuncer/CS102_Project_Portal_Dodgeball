@@ -139,6 +139,7 @@ public class End_Game implements Screen {
             game.batch.draw(rematch_sel, rematchX, rematchY);
             if(Gdx.input.justTouched()){
                 game.click.play(game.clickVol);
+                game.powerUps = new ArrayList<>();
                 game.setScreen(new Mode_Selection(game));
             }
         } else {
