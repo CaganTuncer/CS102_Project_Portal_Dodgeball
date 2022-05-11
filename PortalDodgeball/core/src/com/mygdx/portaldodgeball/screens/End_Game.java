@@ -3,6 +3,7 @@ package com.mygdx.portaldodgeball.screens;
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Json;
@@ -18,17 +19,24 @@ import java.util.GregorianCalendar;
 
 public class End_Game implements Screen {
 
-
+    public FileHandle file = Gdx.files.local("data.json");
 
     public static class Data {
 
-        public int  id;
-        public String winner;
+        public static int  runningId = 0;
+        public int id;
+        public String winner = "";
         public int highestScore = 0;
         public Date date = new Date();
-        public Calendar calendarG = new GregorianCalendar();
+
+        public transient Calendar calendarG = new GregorianCalendar();
         public int minutes = calendarG.get(Calendar.MINUTE);
         public int hours = calendarG.get(Calendar.HOUR_OF_DAY);
+        public int day = calendarG.get(Calendar.DAY_OF_MONTH);
+        public int month = calendarG.get(Calendar.MONTH) + 1;
+        public int year = calendarG.get(Calendar.YEAR);
+
+
 
         MainGameScreen screen;
 
@@ -37,10 +45,11 @@ public class End_Game implements Screen {
         }
 
         public Data (MainGameScreen screen){
-
+            id = runningId + 1;
+            runningId++;
 
             for (int i = 0; i <screen.game.players.length ; i++) {
-                if(screen.game.players[i].score > highestScore){
+                if(screen.game.players[i].score >= highestScore){
                     highestScore = screen.game.players[i].score;
                     winner = screen.game.players[i].name;
                 }
@@ -66,6 +75,8 @@ public class End_Game implements Screen {
         Json json = new Json();
         Data data = new Data(screen);
         System.out.println(json.prettyPrint(data));
+        file.writeString(json.prettyPrint(data),true);
+
 
         playersEnd = new ArrayList<Player>();
         for(int i = 0; i < game.players.length; i++){

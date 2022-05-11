@@ -28,7 +28,7 @@ public class PortalDodgeball extends Game {
 	public Player[] players;
 	public FreeTypeFontGenerator fontGenerator;
 	public FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
-	public BitmapFont p1ScoreFont, p2ScoreFont, p3ScoreFont, minuteFont, secondFont;
+	public BitmapFont p1ScoreFont, p2ScoreFont, p3ScoreFont, minuteFont, secondFont,dataFont;
 
 	public ArrayList<Player> playerList = new ArrayList<Player>();
 	public ArrayList<Player> deadPlayerList = new ArrayList<Player>();
@@ -65,6 +65,7 @@ public class PortalDodgeball extends Game {
 		p3ScoreFont = fontGenerator.generateFont(fontParameter);
 		secondFont = fontGenerator.generateFont(fontParameter);
 		minuteFont = fontGenerator.generateFont(fontParameter);
+		dataFont = fontGenerator.generateFont(fontParameter);
 
 	}
 

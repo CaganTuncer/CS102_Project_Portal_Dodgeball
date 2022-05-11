@@ -33,7 +33,7 @@ public class Wall extends Entity {
         else{
             wallRotation = 2;
             wallEdgeHb1 = new Hitbox(Wx+2,Wy-4, 4,4);
-            wallEdgeHb1 = new Hitbox(Wx+2,Wy+height, 4,4);
+            wallEdgeHb2 = new Hitbox(Wx+2,Wy+height, 4,4);
         }
     }
 }

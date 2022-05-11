@@ -21,13 +21,15 @@ public class MainGameScreen implements Screen {
     Texture p2Screen;
     Texture p3Screen;
 
+    History h;
+
 
 
 
     Texture timer;
 
     public long startTime = 0;
-    int timeSecond = 5;
+    int timeSecond = 50;
     int secondRemaining = 0;
     int timeMinute = timeSecond / 60;
 
@@ -47,6 +49,7 @@ public class MainGameScreen implements Screen {
         timer = new Texture("Game_Screen/timer.png");
         wallUnit = new Texture("Gameplay sprites/wall unit piece.png");
         PowerUp.spawnPUs(this);
+        h = new History();
 
         /*this.game.powerUps.add(new PowerUp(1,this,0, 1000,350));
         this.game.powerUps.add(new PowerUp(1,this,0, 700,500));
@@ -82,6 +85,8 @@ public class MainGameScreen implements Screen {
         game.batch.draw(p1Screen,62,817);
         game.batch.draw(p2Screen,1499,817);
         game.batch.draw(p3Screen,711,30);
+
+        h.printHistory();
 
 
         if (TimeUtils.timeSinceNanos(startTime) > 1000000000) {
@@ -149,6 +154,15 @@ public class MainGameScreen implements Screen {
                 for (int j = 0; j < game.walls.length; j++) {
 
                     if(ball.getHitbox().collidesWith(game.walls[j].wallHitbox)){
+                        int rotation = game.walls[j].wallRotation;
+                        if(ball.getHitbox().collidesWith(game.walls[j].wallEdgeHb1) || ball.getHitbox().collidesWith(game.walls[j].wallEdgeHb2)){
+                            if (rotation == 1){
+                                rotation =2;
+                            }
+                            else if(rotation== 2){
+                                rotation = 1;
+                            }
+                        }
 
                         if(ball.angle == 0){
                             ball.angle = 180;
