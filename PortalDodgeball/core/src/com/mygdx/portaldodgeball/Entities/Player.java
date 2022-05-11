@@ -103,22 +103,7 @@ public class Player extends Entity {
             keys[5] = Input.Keys.NUMPAD_9;
         }
 
-        switch (this.number){
-            case 0:
-                this.x = 80;
-                this.y = 150;
-                break;
-
-            case 1:
-                this.x = 1280;
-                this.y = 700;
-                break;
-
-            case 2:
-                this.x = 1350;
-                this.y = 350;
-                break;
-        }
+        spawn();
 
         this.direction = 0;
         this.absMove = 0;
@@ -793,18 +778,6 @@ public class Player extends Entity {
         for(int j = 0; j < game.walls.length; j++) {
             boolean hit = this.hitbox.collidesWith((game.walls[j].wallHitbox));
             if(hit){
-                Wall aWall = game.walls[j];
-                int Rotat = aWall.wallRotation;
-/*                if((this.hitbox.collidesWidth(aWall.wallEdgeHb1)||this.hitbox.collidesWidth(aWall.wallEdgeHb2)) && !this.hitbox.collidesWidth(aWall.wallHitbox)){
-                    if(Rotat==1){
-                        Rotat = 2;
-                    }
-                    else{
-                        Rotat = 1;
-                    }
-                }
-*/
-
                 if(this.absMove == 0){
                     this.canIncreaseX = false;
                     this.x -= speed;
@@ -901,12 +874,6 @@ public class Player extends Entity {
             }
         }
     }
-    //throw method changed with throwBall* to settle the dispute with general syntax of Java.
-    /*
-    public void transportBall(){
-        Ball ball5 = new Ball(this, (float) Math.toRadians(180), this.x - 11,this.y + 15);
-        balls.add(ball5);
-    }*/
 
     public void throwBall(){
         if(BALL_AMMO > 0) {
@@ -999,21 +966,10 @@ public class Player extends Entity {
         final Texture tempTexture = this.texture;
         final int tempSpeed = this.speed;
 
-        //x = 62;
-        //y = 818;
-
         x = 4000;
         y = 4000;
         this.hitbox.x = 4000;
         this.hitbox.y = 4000;
-
-
-        //this.hitbox.width = 0;
-        //this.hitbox.height = 0;
-        //this.texture = new Texture("Players/death.jpg");
-
-
-        //this.speed = 0;
 
         Timer timer = new Timer();
         timer.scheduleTask(new Timer.Task() {
@@ -1021,10 +977,6 @@ public class Player extends Entity {
             public void run() {
                 isDead = false;
                 spawn();
-
-                //hitbox.width = tempHBWidth;
-                //hitbox.height = tempHBHeight;
-
                 texture = tempTexture;
                 speed = tempSpeed;
             }
@@ -1033,8 +985,22 @@ public class Player extends Entity {
     }
 
     public void spawn(){
-        this.x = 100;
-        this.y = 500;
+        switch (this.number){
+            case 0:
+                this.x = 80;
+                this.y = 150;
+                break;
+
+            case 1:
+                this.x = 1280;
+                this.y = 700;
+                break;
+
+            case 2:
+                this.x = 1350;
+                this.y = 350;
+                break;
+        }
     }
 
 }
